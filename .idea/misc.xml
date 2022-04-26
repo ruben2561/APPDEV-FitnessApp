@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/afronding_xml.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/custom_border.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/ic_excercises_xml.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/ic_info.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/ic_kleren.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/ic_nieuw_kledingstuk.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/ic_opgeslagen_outfits.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/ic_outfit.xml" value="0.124" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/excercise.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/fragment_all_workouts.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/fragment_excercises.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/fragment_kleren.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/fragment_new_progres_picture.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/fragment_new_workout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/fragment_nieuw_kledingstuk.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/fragment_opgeslagen_outfits.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/fragment_outfit.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/layout/nav_header.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/menu/drawer_menu.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
