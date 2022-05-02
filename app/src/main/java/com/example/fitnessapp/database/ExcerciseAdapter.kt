@@ -4,8 +4,6 @@ package com.example.fitnessapp.database
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
@@ -29,4 +27,6 @@ class ExcerciseAdapter(val items: List<Excercise>) : RecyclerView.Adapter<Excerc
     }
 
     override fun getItemCount(): Int = items.size
+
+
 }
