@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/nav_header.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/menu/draweer_menu.xml" value="0.234375" />
+        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/menu/drawer_menu.xml" value="0.234375" />
         <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
         <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/afronding_xml.xml" value="0.124" />
         <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable/custom_border.xml" value="0.124" />
