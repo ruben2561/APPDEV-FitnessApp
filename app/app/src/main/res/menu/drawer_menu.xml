@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_all_workouts"
+            android:icon="@drawable/ic_all_workouts"
+            android:title="All Workouts" />
+        <item
+            android:id="@+id/nav_new_workout"
+            android:icon="@drawable/ic_new_workout"
+            android:title="New Workout" />
+        <item
+            android:id="@+id/nav_excercises"
+            android:icon="@drawable/ic_excercises_xml"
+            android:title="Excercises" />
+        <item
+            android:id="@+id/nav_new_progress_picture"
+            android:icon="@drawable/ic_new_progress_picture"
+            android:title="New Progress Picture" />
+
+    </group>
+
+    <item android:title="information">
+        <menu>
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@drawable/ic_info"
+                android:title="Info" />
+        </menu>
+    </item>
+
+</menu>
