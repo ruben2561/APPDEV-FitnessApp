@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:background="@color/cardview_dark_background"
+    android:background="@color/midnight_blue"
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="16dp"
@@ -14,12 +14,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:text="FitnessApp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/baby_blue" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="www.fitnessapp.com" />
+        android:text="www.fitnessapp.com"
+        android:textColor="@color/baby_blue" />
 
 
 </LinearLayout>
