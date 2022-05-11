@@ -12,13 +12,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.database.Excercise
 import com.example.fitnessapp.database.ExcerciseAdapter
+import com.example.fitnessapp.database.ExcerciseDao
 import com.example.fitnessapp.database.ExcerciseDatabase
+import com.example.fitnessapp.databaseWorkouts.WorkoutDao
+import com.example.fitnessapp.databaseWorkouts.WorkoutDatabase
 import com.example.fitnessapp.databinding.FragmentExcercisesBinding
 
 
 class ExcercisesFragment : Fragment() {
 
     private lateinit var binding: FragmentExcercisesBinding
+    lateinit var db: ExcerciseDatabase
+    lateinit var excerciseDao: ExcerciseDao
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,8 +32,8 @@ class ExcercisesFragment : Fragment() {
     ): View? {
         binding = FragmentExcercisesBinding.inflate(layoutInflater)
         //val db = Room.databaseBuilder(requireContext(), ExcerciseDatabase::class.java, "excercisedatabase-db").allowMainThreadQueries().build()  //
-        val db = Room.databaseBuilder(requireContext(), ExcerciseDatabase::class.java, "excercisedatabase-db").createFromAsset("databases/excercisedatabase-db.db").allowMainThreadQueries().build()
-        val excerciseDao = db.excerciseDao()                                                                                                           //
+        db = Room.databaseBuilder(requireContext(), ExcerciseDatabase::class.java, "excercisedatabase-db").createFromAsset("databases/excercisedatabase-db.db").allowMainThreadQueries().build()
+        excerciseDao = db.excerciseDao()                                                                                                           //
         val excercises: MutableList<Excercise> = excerciseDao.getAll()                                                                                 // gets all database items and puts it in a list
 
         binding.rvwExcercises.adapter = ExcerciseAdapter(excercises)                                              // adds the excercises list in the recyclerview

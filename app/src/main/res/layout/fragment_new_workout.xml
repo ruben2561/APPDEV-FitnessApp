@@ -1,14 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_light">
+    android:background="@color/blue_green">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvwExcercises"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/custom_border"
+        android:backgroundTint="@color/blue_green"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workoutTitle" />
+
+    <EditText
+        android:id="@+id/workoutTitle"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="New Workout"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Workout Title?"
+        android:inputType="textPersonName"
+        android:textColor="@color/text"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/rvwExcercises"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/addExcercise"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/afronding_xml"
+        android:foreground="@android:drawable/ic_menu_add"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/workoutTitle"
+        app:layout_constraintEnd_toEndOf="@+id/rvwExcercises"
+        app:layout_constraintTop_toTopOf="@+id/workoutTitle" />
+
+    <Button
+        android:id="@+id/saveWorkout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/afronding_xml"
+        android:text="Save Workout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvwExcercises" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
