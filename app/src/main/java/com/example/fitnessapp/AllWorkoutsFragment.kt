@@ -44,7 +44,9 @@ class AllWorkoutsFragment : Fragment() {
     }
 
     fun addWorkout(workout: Workout){
-        workoutDao.insertOne(workout)
+        if(workoutDao != null){
+            workoutDao.insertOne(workout)
+        }
     }
 
 

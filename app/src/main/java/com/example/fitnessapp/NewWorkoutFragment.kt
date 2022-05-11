@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.contains
 import androidx.core.view.get
 import androidx.core.view.iterator
@@ -17,7 +18,7 @@ import com.example.fitnessapp.databinding.FragmentNewWorkoutBinding
 class NewWorkoutFragment : Fragment() {
 
     private lateinit var binding: FragmentNewWorkoutBinding
-    private lateinit var allWorkoutsFragment: AllWorkoutsFragment
+    var allWorkoutsFragment: AllWorkoutsFragment = AllWorkoutsFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,12 +34,17 @@ class NewWorkoutFragment : Fragment() {
             var name = binding.workoutTitle.text.toString()
             var excercisesIds = ""
 
-            for (item: View in binding.rvwExcercises){
-                excercisesIds = excercisesIds + binding.rvwExcercises.id + ","
-                //excercisesIds.plus(binding.rvwExcercises.id) + ","
-            }
+            //for (item: View in binding.rvwExcercises){
+              //  excercisesIds = excercisesIds + binding.rvwExcercises.id + ","
+                ////excercisesIds.plus(binding.rvwExcercises.id) + ","
+            //}
 
-            allWorkoutsFragment.addWorkout(Workout(name, excercisesIds, 0))
+            if(name != null && excercisesIds != null){
+                allWorkoutsFragment.addWorkout(Workout(name, excercisesIds, 0))
+            }
+            else{
+                Toast.makeText(this.context, "vul een naam in!", Toast.LENGTH_SHORT).show()
+            }
         }
 
 
