@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/customWorkoutsFragment2">
+    <fragment
+        android:id="@+id/customWorkoutsFragment2"
+        android:name="com.example.fitnessapp.CustomWorkoutsFragment"
+        android:label="fragment_custom_workouts"
+        tools:layout="@layout/fragment_custom_workouts" >
+        <action
+            android:id="@+id/action_customWorkoutsFragment2_to_newWorkoutFragment2"
+            app:destination="@id/newWorkoutFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/newWorkoutFragment2"
+        android:name="com.example.fitnessapp.NewWorkoutFragment"
+        android:label="NewWorkoutFragment"
+        tools:layout="@layout/fragment_custom_workouts_new_workout" >
+        <action
+            android:id="@+id/action_newWorkoutFragment2_to_customWorkoutsFragment2"
+            app:destination="@id/customWorkoutsFragment2" />
+    </fragment>
+</navigation>

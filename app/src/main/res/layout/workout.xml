@@ -23,7 +23,6 @@
         android:id="@+id/txtNumberOfExcercises"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
         android:layout_marginBottom="5dp"
         android:text="Number Of Excercises"
         android:textColor="@color/baby_blue"
@@ -31,6 +30,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/txtWorkoutName"
         app:layout_constraintTop_toBottomOf="@+id/txtWorkoutName" />
+
+    <TextView
+        android:id="@+id/txtExcercises"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"
+        android:text="Excercises"
+        android:textColor="@color/baby_blue"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtNumberOfExcercises"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumberOfExcercises" />
+
+    <ImageButton
+        android:id="@+id/deleteButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#C62828"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

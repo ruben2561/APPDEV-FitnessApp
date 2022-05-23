@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/custom_border"
@@ -24,7 +24,7 @@
 
     <EditText
         android:id="@+id/workoutTitle"
-        android:layout_width="250dp"
+        android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:ems="10"
@@ -32,13 +32,15 @@
         android:inputType="textPersonName"
         android:textColor="@color/text"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/rvwExcercises"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/addExcercise"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/afronding_xml"
         android:foreground="@android:drawable/ic_menu_add"
         android:gravity="center"
@@ -56,5 +58,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvwExcercises" />
+
+    <EditText
+        android:id="@+id/excerciseFilter"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Search Excercises"
+        android:inputType="textPersonName"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/rvwExcercises"
+        app:layout_constraintStart_toStartOf="@+id/rvwExcercises" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Add Excercises"
+        app:layout_constraintEnd_toEndOf="@+id/addExcercise"
+        app:layout_constraintStart_toStartOf="@+id/addExcercise"
+        app:layout_constraintTop_toBottomOf="@+id/addExcercise" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

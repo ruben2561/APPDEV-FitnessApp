@@ -10,12 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import com.example.fitnessapp.database.Excercise
-import com.example.fitnessapp.database.ExcerciseAdapter
-import com.example.fitnessapp.database.ExcerciseDao
-import com.example.fitnessapp.database.ExcerciseDatabase
-import com.example.fitnessapp.databaseWorkouts.WorkoutDao
-import com.example.fitnessapp.databaseWorkouts.WorkoutDatabase
+import com.example.fitnessapp.databaseExcercises.Excercise
+import com.example.fitnessapp.adapters.ExcerciseAdapter
+import com.example.fitnessapp.databaseExcercises.ExcerciseDao
+import com.example.fitnessapp.databaseExcercises.ExcerciseDatabase
 import com.example.fitnessapp.databinding.FragmentExcercisesBinding
 
 

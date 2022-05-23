@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_green">
+    android:background="@color/blue_green"
+    tools:context=".CustomWorkoutsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvwWorkouts"
@@ -22,17 +23,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/newWorkoutButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@color/text"
+        app:layout_constraintBottom_toTopOf="@+id/rvwWorkouts"
+        app:layout_constraintEnd_toEndOf="@+id/rvwWorkouts"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:text="All Workouts"
+        android:text="Custom Workouts"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rvwWorkouts"
         app:layout_constraintStart_toStartOf="@+id/rvwWorkouts"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,13 @@
 package com.example.fitnessapp
 
+/**
+ * sources:
+ * https://www.youtube.com/watch?v=NENEcwihMCo
+ *
+ *
+ *
+ */
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -46,9 +54,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.fragment_container,
                 AllWorkoutsFragment()
             ).commit()
-            R.id.nav_new_workout -> supportFragmentManager.beginTransaction().replace(
+            R.id.nav_custom_workout -> supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
-                NewWorkoutFragment()
+                CustomWorkoutsFragment()
             ).commit()
             R.id.nav_excercises -> supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,

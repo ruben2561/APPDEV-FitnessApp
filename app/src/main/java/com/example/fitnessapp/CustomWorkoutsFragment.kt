@@ -1,23 +1,27 @@
 package com.example.fitnessapp
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import com.example.fitnessapp.databaseWorkouts.Workout
 import com.example.fitnessapp.adapters.WorkoutAdapter
+import com.example.fitnessapp.databaseWorkouts.Workout
 import com.example.fitnessapp.databaseWorkouts.WorkoutDao
 import com.example.fitnessapp.databaseWorkouts.WorkoutDatabase
-import com.example.fitnessapp.databinding.FragmentAllWorkoutsBinding
+import com.example.fitnessapp.databinding.FragmentCustomWorkoutsBinding
 
-class AllWorkoutsFragment : Fragment(), WorkoutAdapter.OnItemClickListener{
+class CustomWorkoutsFragment : Fragment(), WorkoutAdapter.OnItemClickListener{
 
-    private lateinit var binding: FragmentAllWorkoutsBinding
+    private lateinit var binding: FragmentCustomWorkoutsBinding
     lateinit var db: WorkoutDatabase
     lateinit var workoutDao: WorkoutDao
     lateinit var workout: MutableList<Workout>
@@ -27,8 +31,11 @@ class AllWorkoutsFragment : Fragment(), WorkoutAdapter.OnItemClickListener{
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAllWorkoutsBinding.inflate(layoutInflater)
-        db = Room.databaseBuilder(requireContext(), WorkoutDatabase::class.java, "workouts.database").allowMainThreadQueries().build()  //
+        binding = FragmentCustomWorkoutsBinding.inflate(layoutInflater)
+
+
+
+        db = Room.databaseBuilder(requireContext(), WorkoutDatabase::class.java, "custom_workouts.database").allowMainThreadQueries().build()  //
         workoutDao = db.workoutDao()
         workout = workoutDao.getAll()                                                                              // gets all database items and puts it in a list
 
@@ -38,6 +45,16 @@ class AllWorkoutsFragment : Fragment(), WorkoutAdapter.OnItemClickListener{
         binding.rvwWorkouts.adapter = WorkoutAdapter(workout, this)                                                   // adds the excercises list in the recyclerview
         binding.rvwWorkouts.layoutManager = LinearLayoutManager(context)                                        // chooses what type of layout
         binding.rvwWorkouts.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))   // this puts a line between every item
+
+        binding.newWorkoutButton.setOnClickListener{
+            val fragment: Fragment = NewWorkoutFragment()
+            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            val containerId = R.id.fragment_container
+            fragmentTransaction.replace(containerId, fragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
 
         return binding.root
     }
@@ -63,7 +80,4 @@ class AllWorkoutsFragment : Fragment(), WorkoutAdapter.OnItemClickListener{
         binding.rvwWorkouts.adapter = WorkoutAdapter(workout, this)                                                   // adds the excercises list in the recyclerview
         binding.rvwWorkouts.layoutManager = LinearLayoutManager(context)
     }
-
-
-
 }
