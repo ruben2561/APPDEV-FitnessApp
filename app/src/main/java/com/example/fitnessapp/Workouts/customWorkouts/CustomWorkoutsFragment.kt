@@ -70,12 +70,23 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
     }
 
     override fun DeleteWorkout(customWorkout: CustomWorkout) {
-        Toast.makeText(this.context, "delete", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this.context, customWorkout.name + " deleted", Toast.LENGTH_SHORT).show()
         db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()  //
         customWorkoutDao = db.customWorkoutDao()
         customWorkoutDao.delete(customWorkout)
         var customWorkout = customWorkoutDao.getAll()
         binding.rvwWorkouts.adapter = CustomWorkoutAdapter(customWorkout, this)                                                   // adds the excercises list in the recyclerview
         binding.rvwWorkouts.layoutManager = LinearLayoutManager(context)
+    }
+
+    override fun EditWorkout(customWorkout: CustomWorkout) {
+        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()  //
+        customWorkoutDao = db.customWorkoutDao()
+        customWorkoutDao.delete(customWorkout)
+        val fragment: Fragment = NewWorkoutFragment(customWorkout)
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val containerId = R.id.fragment_container
+        fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 }
