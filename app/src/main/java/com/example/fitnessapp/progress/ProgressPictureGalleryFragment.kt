@@ -21,11 +21,13 @@ import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsAdapter
 import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
 import java.util.*
 
-class ProgressPictureGalleryFragment (private val pictureList: MutableList<Picture>) : Fragment(), PictureAdapter.OnItemClickListener {
+class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentProgressPictureGalleryBinding
     lateinit var db: GymBuddyDatabase
     private lateinit var parentActivity: MainActivity
+    private lateinit var pictureDao: PictureDao
+    private lateinit var pictureList: MutableList<Picture>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +35,9 @@ class ProgressPictureGalleryFragment (private val pictureList: MutableList<Pictu
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProgressPictureGalleryBinding.inflate(layoutInflater)
-
+        parentActivity = activity as MainActivity
+        pictureDao = parentActivity.db.pictureDao()
+        pictureList = pictureDao.getAll()
         binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
         val gridLayoutManager = GridLayoutManager(context, 3)
         binding.galleryGrid.layoutManager = gridLayoutManager
