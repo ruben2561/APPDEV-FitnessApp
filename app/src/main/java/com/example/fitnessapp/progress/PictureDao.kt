@@ -2,6 +2,7 @@ package com.example.fitnessapp.progress
 
 import android.graphics.Bitmap
 import androidx.room.*
+import java.util.*
 
 @Dao
 interface PictureDao {
@@ -18,7 +19,7 @@ interface PictureDao {
     fun loadByIds(pictureId: Int): Picture
 
     @Query("SELECT * FROM picture WHERE name LIKE :first")
-    fun findByName(first: String): Picture
+    fun findByDate(first: String): Picture
 
     @Delete
     fun delete(picture: Picture)

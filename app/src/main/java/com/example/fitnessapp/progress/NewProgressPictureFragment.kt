@@ -65,8 +65,8 @@ class NewProgressPictureFragment : Fragment() {
         pictureResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
             // photo taken!
             snapshot.setImageBitmap(it)
-            val tempDate = DateFormat.format("dd-MM-yyyy", Date())
-            val tempPicture = Picture(tempDate.toString(), BitMapToString(it))
+            var tempDate = DateFormat.format("dd-MM-yyyy\nHH.mm.ss", Date()).toString()
+            val tempPicture = Picture(tempDate, BitMapToString(it))
             pictureDao.insert(tempPicture)
         }
         return binding.root

@@ -14,7 +14,6 @@ import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
 import com.google.android.material.snackbar.Snackbar
-import java.util.*
 
 class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClickListener {
 

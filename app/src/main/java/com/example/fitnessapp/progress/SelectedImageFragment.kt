@@ -8,12 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.fitnessapp.MainActivity
-import com.example.fitnessapp.R
-import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
 import com.example.fitnessapp.databinding.FragmentSelectedImageBinding
 
 
@@ -31,7 +26,7 @@ class SelectedImageFragment(val picture: Picture) : Fragment() {
         binding = FragmentSelectedImageBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         pictureDao = parentActivity.db.pictureDao()
-        var selectedImage = pictureDao.findByName(picture.name)
+        var selectedImage = pictureDao.findByDate(picture.name)
         binding.selectedImageName.text = selectedImage.name
         binding.imageView.setImageBitmap(StringToBitMap(selectedImage.imageData))
         return binding.root

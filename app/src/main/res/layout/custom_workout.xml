@@ -65,7 +65,6 @@
 
     <ImageView
         android:id="@+id/shareButton"
-        style="@style/w"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginEnd="5dp"
