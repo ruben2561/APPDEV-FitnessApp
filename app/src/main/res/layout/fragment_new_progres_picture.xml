@@ -4,10 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+     android:background="@color/baby_blue">
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/foto"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -15,7 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="76dp"
-        android:background="@drawable/afronding_xml"
+        android:background="@drawable/rounded_button"
         android:gravity="center"
         android:onClick="onclick2"
         android:text="+"
@@ -41,7 +42,8 @@
         app:layout_constraintBottom_toTopOf="@+id/foto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/blue_green"/>
 
     <Button
         android:id="@+id/btnToGallery"
@@ -51,6 +53,7 @@
         android:text="All Pictures"
         app:layout_constraintBottom_toBottomOf="@+id/foto"
         app:layout_constraintStart_toEndOf="@+id/foto"
-        app:layout_constraintTop_toTopOf="@+id/foto" />
+        app:layout_constraintTop_toTopOf="@+id/foto"
+        android:backgroundTint="@color/midnight_blue"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
