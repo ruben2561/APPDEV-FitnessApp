@@ -15,7 +15,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/rounded_button"
         android:gravity="center"
         android:onClick="onclick2"
@@ -33,17 +33,15 @@
         android:layout_height="0dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/afronding_xml"
+        android:backgroundTint="@color/blue_green"
         app:layout_constraintBottom_toTopOf="@+id/foto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/blue_green"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnToGallery"

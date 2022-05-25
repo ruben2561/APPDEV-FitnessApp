@@ -17,6 +17,7 @@ import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
+import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.example.fitnessapp.exercises.Exercise
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsNewWorkoutBinding
 
@@ -36,14 +37,6 @@ class NewWorkoutFragment : Fragment(), NewWorkoutAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCustomWorkoutsNewWorkoutBinding.inflate(layoutInflater)
-
-        /*val db = Room.databaseBuilder(requireContext(), ExerciseDatabase::class.java, "exercisedatabase-db").createFromAsset("databases/exercisedatabase-db.db").allowMainThreadQueries().build()
-        val exerciseDao = db.exerciseDao()
-        recyclerList = exerciseDao.getAll()
-        val recyclerAdapter = RecyclerAdapter(recyclerList, this)
-        binding.rvwExercises.adapter = recyclerAdapter
-        binding.rvwExercises.layoutManager = LinearLayoutManager(context)
-        binding.rvwExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))*/
 
         binding.addExercise.setOnClickListener{
 
@@ -87,7 +80,7 @@ class NewWorkoutFragment : Fragment(), NewWorkoutAdapter.OnItemClickListener {
                 customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, 0))
                 Toast.makeText(this.context, "Workout saved!", Toast.LENGTH_LONG).show()
 
-                val fragment: Fragment = NewWorkoutFragment()
+                val fragment: Fragment = CustomWorkoutsFragment()
                 val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
                 val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
                 val containerId = R.id.fragment_container

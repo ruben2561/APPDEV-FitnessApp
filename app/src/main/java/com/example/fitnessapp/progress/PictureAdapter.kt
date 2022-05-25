@@ -56,7 +56,6 @@ class PictureAdapter(private var items: List<Picture>, private var onItemClickLi
     }
 }
 
-
 fun StringToBitMap(encodedString: String?): Bitmap? {
     return try {
         val encodeByte: ByteArray = Base64.decode(encodedString, Base64.DEFAULT)

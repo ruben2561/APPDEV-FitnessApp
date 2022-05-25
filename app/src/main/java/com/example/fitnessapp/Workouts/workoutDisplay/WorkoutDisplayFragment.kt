@@ -1,4 +1,4 @@
-package com.example.fitnessapp.Workouts
+package com.example.fitnessapp.Workouts.workoutDisplay
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
-import com.example.fitnessapp.Workouts.WorkoutDisplayAdapter
 import com.example.fitnessapp.databinding.FragmentWorkoutDisplayBinding
 import com.example.fitnessapp.exercises.Exercise
 import com.example.fitnessapp.exercises.ExerciseDao

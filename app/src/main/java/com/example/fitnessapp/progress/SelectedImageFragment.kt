@@ -34,8 +34,11 @@ class SelectedImageFragment(val position: Int) : Fragment() {
         var selectedImage = pictureDao.loadByIds(position)
         binding.selectedImageName.text = selectedImage.name
         binding.imageView.setImageBitmap(StringToBitMap(selectedImage.imageData))
+
+        binding.imageView.setOn
         return binding.root
     }
+
     fun StringToBitMap(encodedString: String?): Bitmap? {
         return try {
             val encodeByte: ByteArray = Base64.decode(encodedString, Base64.DEFAULT)
