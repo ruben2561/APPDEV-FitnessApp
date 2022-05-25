@@ -36,6 +36,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="70dp"
         android:background="@drawable/afronding_xml"
+        android:clipToOutline="true"
         android:backgroundTint="@color/tiffany_blue"
         app:layout_constraintBottom_toTopOf="@+id/foto"
         app:layout_constraintEnd_toEndOf="parent"
