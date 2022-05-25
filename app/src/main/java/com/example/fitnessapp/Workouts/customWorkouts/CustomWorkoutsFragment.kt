@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.CustomWorkout
-import com.example.fitnessapp.Workouts.CustomWorkoutDao
 import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsBinding
 

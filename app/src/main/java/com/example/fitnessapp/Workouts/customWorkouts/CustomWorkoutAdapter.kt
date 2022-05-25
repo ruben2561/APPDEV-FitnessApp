@@ -8,7 +8,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.CustomWorkout
 
 class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var onItemClickListener: OnItemClickListener):
     RecyclerView.Adapter<CustomWorkoutAdapter.ViewHolder>() {

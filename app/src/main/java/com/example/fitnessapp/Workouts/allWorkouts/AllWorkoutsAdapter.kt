@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.DefaultWorkout
 
 class AllWorkoutsAdapter(private var items: List<DefaultWorkout>, private var onItemClickListener: OnItemClickListener):
     RecyclerView.Adapter<AllWorkoutsAdapter.ViewHolder>() {

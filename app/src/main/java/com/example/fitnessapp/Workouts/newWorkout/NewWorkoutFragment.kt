@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.CustomWorkout
+import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
 import com.example.fitnessapp.exercises.Exercise
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsNewWorkoutBinding
 
