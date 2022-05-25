@@ -9,6 +9,7 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -41,11 +42,13 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
         val gridLayoutManager = GridLayoutManager(context, 3)
         binding.galleryGrid.layoutManager = gridLayoutManager
+
         return binding.root
     }
 
     override fun OnClick(position: Int) {
-        val fragment: Fragment = SelectedImageFragment(position)
+        val toast = Toast.makeText(this.context, "position: " + position, Toast.LENGTH_SHORT).show()
+        val fragment: Fragment = SelectedImageFragment(position + 1)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         val containerId = R.id.fragment_container
@@ -55,6 +58,7 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
     }
 
     override fun OnLongClick(position: Int) {
+        val toast = Toast.makeText(this.context, "long click on position: " + position, Toast.LENGTH_SHORT).show()
         TODO("Not yet implemented")
     }
 }

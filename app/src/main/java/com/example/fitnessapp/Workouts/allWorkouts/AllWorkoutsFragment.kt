@@ -10,11 +10,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.WorkoutDisplayFragment
-import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment
+import com.example.fitnessapp.Workouts.workoutDisplay.WorkoutDisplayFragment
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.databinding.FragmentAllWorkoutsBinding
 
