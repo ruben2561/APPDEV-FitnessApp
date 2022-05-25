@@ -2,8 +2,10 @@ package com.example.fitnessapp.progress
 
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.hardware.biometrics.BiometricManager
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,10 +19,20 @@ import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
 import java.util.*
 
-class ProgressPictureGalleryFragment (private val snapshotList: MutableList<Bitmap>, private val dateList: MutableList<Date>) : Fragment() {
+class ProgressPictureGalleryFragment (private val pictureList: MutableList<Picture>) : Fragment() {
 
     private lateinit var binding: FragmentProgressPictureGalleryBinding
     lateinit var db: GymBuddyDatabase
+
+    fun StringToBitMap(encodedString: String?): Bitmap? {
+        return try {
+            val encodeByte: ByteArray = Base64.decode(encodedString, Base64.DEFAULT)
+            BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size)
+        } catch (e: Exception) {
+            e.message
+            null
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,10 +40,10 @@ class ProgressPictureGalleryFragment (private val snapshotList: MutableList<Bitm
     ): View {
         db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()
         binding = FragmentProgressPictureGalleryBinding.inflate(layoutInflater)
-        if(snapshotList.size>0) {
-            binding.selectedImage.setImageBitmap(snapshotList[snapshotList.size - 1]) //Display last image
+        if(pictureList.size>0) {
+            binding.selectedImage.setImageBitmap(StringToBitMap(pictureList[pictureList.size - 1].imageData)) //Display last image
         }
-        val pictureAdapter = PictureAdapter(dateList, snapshotList)
+        val pictureAdapter = PictureAdapter(pictureList)
         binding.galleryGrid.adapter = pictureAdapter
         val gridLayoutManager = GridLayoutManager(context, 3)
         binding.galleryGrid.layoutManager = gridLayoutManager

@@ -21,6 +21,8 @@ import com.google.android.material.snackbar.Snackbar
 import java.io.ByteArrayOutputStream
 import java.util.*
 import android.util.Base64
+import java.util.Arrays.toString
+import java.util.Objects.toString
 
 
 class NewProgressPictureFragment : Fragment() {
@@ -31,8 +33,7 @@ class NewProgressPictureFragment : Fragment() {
     private lateinit var pictureResult: ActivityResultLauncher<Void>
     private lateinit var snapshot: ImageView
     lateinit var db: GymBuddyDatabase
-    private var snapshotList: MutableList<Bitmap> = mutableListOf()
-    private var dateList: MutableList<Date> = mutableListOf()
+    private var pictureList: MutableList<Picture> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +46,7 @@ class NewProgressPictureFragment : Fragment() {
         snapshot = binding.foto1
         binding.foto.setOnClickListener(this::tryToMakeSnapshot)
         binding.btnToGallery.setOnClickListener {
-            val fragment: Fragment = ProgressPictureGalleryFragment(snapshotList, dateList)
+            val fragment: Fragment = ProgressPictureGalleryFragment(pictureList)
             val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             val containerId = R.id.fragment_container
@@ -65,8 +66,8 @@ class NewProgressPictureFragment : Fragment() {
         pictureResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
             // photo taken!
             snapshot.setImageBitmap(it)
-            snapshotList.add(it)
-            dateList.add(Date())
+            val tempPicture = Picture(Date().toString(), BitMapToString(it))
+            pictureList.add(tempPicture)
         }
         return binding.root
     }
@@ -88,9 +89,9 @@ class NewProgressPictureFragment : Fragment() {
     }
 }
 
-/*fun BitMapToString(bitmap: Bitmap): String {
+fun BitMapToString(bitmap: Bitmap): String {
     val baos = ByteArrayOutputStream()
     bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
     val b: ByteArray = baos.toByteArray()
     return Base64.encodeToString(b, Base64.DEFAULT)
-}*/
+}
