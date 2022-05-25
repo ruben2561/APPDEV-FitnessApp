@@ -1,6 +1,7 @@
-package com.example.fitnessapp.Workouts
+package com.example.fitnessapp.Workouts.customWorkouts
 
 import androidx.room.*
+import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
 
 @Dao
 

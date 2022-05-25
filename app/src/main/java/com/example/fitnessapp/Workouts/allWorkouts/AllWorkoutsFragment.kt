@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
-import com.example.fitnessapp.Workouts.DefaultWorkout
-import com.example.fitnessapp.Workouts.DefaultWorkoutDao
 import com.example.fitnessapp.databinding.FragmentAllWorkoutsBinding
 
 class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
