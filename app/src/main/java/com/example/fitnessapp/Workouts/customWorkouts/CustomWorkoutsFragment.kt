@@ -80,9 +80,6 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
     }
 
     override fun EditWorkout(customWorkout: CustomWorkout) {
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()  //
-        customWorkoutDao = db.customWorkoutDao()
-        customWorkoutDao.delete(customWorkout)
         val fragment: Fragment = NewWorkoutFragment(customWorkout)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
