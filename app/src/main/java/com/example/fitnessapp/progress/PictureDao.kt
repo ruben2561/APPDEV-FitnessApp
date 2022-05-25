@@ -25,4 +25,6 @@ interface PictureDao {
 
     @Query("DELETE FROM picture WHERE id = :id")
     fun deleteById(id: Int)
+
+
 }

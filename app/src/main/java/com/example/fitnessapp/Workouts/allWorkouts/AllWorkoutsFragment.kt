@@ -6,10 +6,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
+import com.example.fitnessapp.R
+import com.example.fitnessapp.Workouts.WorkoutDisplayFragment
+import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.databinding.FragmentAllWorkoutsBinding
 
@@ -39,18 +44,17 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
         return binding.root
     }
 
-    override fun OnClick(position: Int) {
-        Toast.makeText(this.context, "short click on item: " + position, Toast.LENGTH_SHORT).show()
+    override fun OnClick(ids: String, title: String) {
+        val fragment: Fragment = WorkoutDisplayFragment(ids, title)
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val containerId = R.id.fragment_container
+        fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 
     override fun OnLongClick(position: Int) {
-        //val intent = Intent(fragment, Activity3Recycler::class.java)
-        //startActivity(intent)
-
         Toast.makeText(this.context, "long click on item: " + position, Toast.LENGTH_SHORT).show()
     }
-
-
 
 }
 

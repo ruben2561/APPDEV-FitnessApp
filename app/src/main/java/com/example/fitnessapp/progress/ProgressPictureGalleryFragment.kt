@@ -41,33 +41,20 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
         val gridLayoutManager = GridLayoutManager(context, 3)
         binding.galleryGrid.layoutManager = gridLayoutManager
-        binding.btnReturn.setOnClickListener {
-            val fragment: Fragment = NewProgressPictureFragment()
-            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            val containerId = R.id.fragment_container
-            fragmentTransaction.replace(containerId, fragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
         return binding.root
     }
 
     override fun OnClick(position: Int) {
-        //binding.selectedImage.setImageBitmap(StringToBitMap(pictureList[position].imageData))
+        val fragment: Fragment = SelectedImageFragment(position)
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val containerId = R.id.fragment_container
+        fragmentTransaction.replace(containerId, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
     override fun OnLongClick(position: Int) {
         TODO("Not yet implemented")
-    }
-
-    fun StringToBitMap(encodedString: String?): Bitmap? {
-        return try {
-            val encodeByte: ByteArray = Base64.decode(encodedString, Base64.DEFAULT)
-            BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size)
-        } catch (e: Exception) {
-            e.message
-            null
-        }
     }
 }
