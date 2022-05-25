@@ -42,7 +42,6 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
         val gridLayoutManager = GridLayoutManager(context, 3)
         binding.galleryGrid.layoutManager = gridLayoutManager
-
         return binding.root
     }
 
@@ -56,8 +55,12 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         fragmentTransaction.commit()
     }
 
-    override fun OnLongClick(position: Int) {
-        val toast = Toast.makeText(this.context, "long click on position: " + position, Toast.LENGTH_SHORT).show()
-        TODO("Not yet implemented")
+    override fun OnLongClick(picture: Picture) {
+        val toast = Toast.makeText(this.context, "picture "+ picture.name +" deleted", Toast.LENGTH_SHORT).show()
+        pictureDao.delete(picture)
+        pictureList = pictureDao.getAll()
+        binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
+        val gridLayoutManager = GridLayoutManager(context, 3)
+        binding.galleryGrid.layoutManager = gridLayoutManager
     }
 }

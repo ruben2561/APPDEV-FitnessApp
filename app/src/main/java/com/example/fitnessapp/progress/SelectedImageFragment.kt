@@ -35,6 +35,10 @@ class SelectedImageFragment(val position: Int) : Fragment() {
         binding.selectedImageName.text = selectedImage.name
         binding.imageView.setImageBitmap(StringToBitMap(selectedImage.imageData))
 
+<<<<<<< HEAD
+=======
+        //binding.imageView.setOn
+>>>>>>> 3769dac56bb5c74713fd450ae4363c6504686485
         return binding.root
     }
 
