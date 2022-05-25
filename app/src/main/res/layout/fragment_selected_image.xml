@@ -18,8 +18,8 @@
 
     <TextView
         android:id="@+id/selectedImageName"
-        android:layout_width="287dp"
-        android:layout_height="74dp"
+        android:layout_width="280dp"
+        android:layout_height="120dp"
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="TextView"
