@@ -38,11 +38,12 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addExercise"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/rounded_button"
-        android:foreground="@android:drawable/ic_menu_add"
+        android:background="@color/transparant"
+        android:backgroundTint="@color/transparant"
+        android:foreground="@android:drawable/ic_menu_edit"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/workoutTitle"
         app:layout_constraintEnd_toEndOf="@+id/rvwExercises"

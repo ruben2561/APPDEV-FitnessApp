@@ -23,15 +23,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <Button
         android:id="@+id/newWorkoutButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@color/text"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/transparant"
+        android:backgroundTint="@color/transparant"
+        android:gravity="center"
+        android:scaleX="3"
+        android:scaleY="3"
+        android:text="+"
+        android:textColor="@color/baby_blue"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/rvwWorkouts"
         app:layout_constraintEnd_toEndOf="@+id/rvwWorkouts"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
