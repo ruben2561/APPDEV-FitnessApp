@@ -8,9 +8,9 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.Workout
+import com.example.fitnessapp.Workouts.CustomWorkout
 
-class CustomWorkoutAdapter(private var items: List<Workout>, private var onItemClickListener: OnItemClickListener):
+class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var onItemClickListener: OnItemClickListener):
     RecyclerView.Adapter<CustomWorkoutAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,13 +22,13 @@ class CustomWorkoutAdapter(private var items: List<Workout>, private var onItemC
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val workout = items[position]
-        holder.bind(workout)
-        holder.workout = workout
+        val customWorkout = items[position]
+        holder.bind(customWorkout)
+        holder.customWorkout = customWorkout
     }
 
     class ViewHolder(itemView: View, onItemClickListener: OnItemClickListener): RecyclerView.ViewHolder(itemView) {
-        lateinit var workout: Workout
+        lateinit var customWorkout: CustomWorkout
         init {
             itemView.setOnClickListener {
                 onItemClickListener.OnClick(adapterPosition)
@@ -39,19 +39,19 @@ class CustomWorkoutAdapter(private var items: List<Workout>, private var onItemC
                 return@setOnLongClickListener true
             }
             itemView.apply { findViewById<ImageButton>(R.id.deleteButton).setOnClickListener{
-                onItemClickListener.DeleteWorkout(workout)
+                onItemClickListener.DeleteWorkout(customWorkout)
             }}
         }
 
-        fun bind(workout: Workout) {
-            itemView.apply { findViewById<TextView>(R.id.txtWorkoutName).text = workout.name }
+        fun bind(customWorkout: CustomWorkout) {
+            itemView.apply { findViewById<TextView>(R.id.txtWorkoutName).text = customWorkout.name }
             itemView.apply {
                 findViewById<TextView>(R.id.txtExercises).text =
-                    "Excercises id's: " + workout.exersicesId
+                    "Excercises id's: " + customWorkout.exersicesId
             }
             itemView.apply {
                 findViewById<TextView>(R.id.txtNumberOfExercises).text =
-                    "Number of excercises: " + ((workout.exersicesId.length / 2) - 2)
+                    "Number of excercises: " + ((customWorkout.exersicesId.length / 2) - 2)
             }
         }
     }
@@ -59,6 +59,6 @@ class CustomWorkoutAdapter(private var items: List<Workout>, private var onItemC
     interface OnItemClickListener{
         fun OnClick(position: Int)
         fun OnLongClick(position: Int)
-        fun DeleteWorkout(workout: Workout)
+        fun DeleteWorkout(customWorkout: CustomWorkout)
     }
 }

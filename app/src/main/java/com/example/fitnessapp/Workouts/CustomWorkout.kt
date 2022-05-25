@@ -6,10 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity
 
-data class Workout(
+data class CustomWorkout(
 
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "exersices id") var exersicesId: String,
     @PrimaryKey (autoGenerate = true) val id: Int = 0
 )
-

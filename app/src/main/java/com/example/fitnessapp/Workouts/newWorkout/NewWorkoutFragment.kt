@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.Workout
+import com.example.fitnessapp.Workouts.CustomWorkout
 import com.example.fitnessapp.exercises.Exercise
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsNewWorkoutBinding
 
@@ -77,7 +77,7 @@ class NewWorkoutFragment : Fragment(), NewWorkoutAdapter.OnItemClickListener {
                 exercisesIds = exercisesIds + item.id + ","
             }
             if(!name.contentEquals("") && exercisesIds != ""){
-                customWorkoutDao.insertOne(Workout(name, exercisesIds, 0))
+                customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, 0))
                 Toast.makeText(this.context, "Workout saved!", Toast.LENGTH_LONG).show()
 
                 val fragment: Fragment = NewWorkoutFragment()
