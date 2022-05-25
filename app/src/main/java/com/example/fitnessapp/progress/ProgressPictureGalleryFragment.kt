@@ -54,7 +54,7 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
     }
 
     override fun OnClick(position: Int) {
-        binding.selectedImage.setImageBitmap(StringToBitMap(pictureList[position].imageData))
+        //binding.selectedImage.setImageBitmap(StringToBitMap(pictureList[position].imageData))
     }
 
     override fun OnLongClick(position: Int) {
