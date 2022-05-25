@@ -30,7 +30,7 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
         lateinit var customWorkout: CustomWorkout
         init {
             itemView.setOnClickListener {
-                onItemClickListener.OnClick(adapterPosition)
+                onItemClickListener.OnClick(customWorkout.exersicesId, customWorkout.name)
             }
 
             itemView.setOnLongClickListener {
@@ -56,7 +56,7 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
     }
 
     interface OnItemClickListener{
-        fun OnClick(position: Int)
+        fun OnClick(ids: String, title: String)
         fun OnLongClick(position: Int)
         fun DeleteWorkout(customWorkout: CustomWorkout)
     }

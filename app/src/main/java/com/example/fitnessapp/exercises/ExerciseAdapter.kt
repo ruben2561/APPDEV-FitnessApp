@@ -26,19 +26,6 @@ class ExerciseAdapter(val items: List<Exercise>) : RecyclerView.Adapter<Exercise
             findViewById<TextView>(R.id.txtExerciseName).text = currentExerciseItem.name
             findViewById<TextView>(R.id.txtMuscleGroup).text = "Muscle Group: " + currentExerciseItem.muscleGroup
         }
-        /*holder.itemView.setOnClickListener(View.OnClickListener {
-            strings.add(position)
-            stringsLong = stringsLong + position + ","
-            holder.itemView.apply {
-                findViewById<TextView>(R.id.txtExerciseName).text = "ooo"
-                findViewById<TextView>(R.id.txtExerciseName).setTextColor(Color.DKGRAY)
-                findViewById<TextView>(R.id.txtMuscleGroup).setTextColor(Color.DKGRAY)
-
-            }
-        })*/
-
-
-
     }
 
     override fun getItemCount(): Int = items.size

@@ -74,7 +74,12 @@ class NewWorkoutFragment : Fragment(), NewWorkoutAdapter.OnItemClickListener {
             var name = binding.workoutTitle.text.toString()
             var exercisesIds = ""
             for (item in choisesList){
-                exercisesIds = exercisesIds + item.id + ","
+                if (item != choisesList[choisesList.size -1]){
+                    exercisesIds = exercisesIds + item.id + ","
+                }
+                else {
+                    exercisesIds = exercisesIds + item.id
+                }
             }
             if(!name.contentEquals("") && exercisesIds != ""){
                 customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, 0))

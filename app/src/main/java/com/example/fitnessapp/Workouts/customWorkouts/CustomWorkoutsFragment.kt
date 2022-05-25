@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.R
+import com.example.fitnessapp.Workouts.WorkoutDisplayFragment
 import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsBinding
 
@@ -46,16 +47,18 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
             val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             val containerId = R.id.fragment_container
-            fragmentTransaction.replace(containerId, fragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
         }
 
         return binding.root
     }
 
-    override fun OnClick(position: Int) {
-        Toast.makeText(this.context, "short click on item: " + position, Toast.LENGTH_SHORT).show()
+    override fun OnClick(ids: String, title: String) {
+        val fragment: Fragment = WorkoutDisplayFragment(ids, title)
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val containerId = R.id.fragment_container
+        fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 
     override fun OnLongClick(position: Int) {
