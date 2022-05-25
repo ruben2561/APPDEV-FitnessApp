@@ -95,3 +95,4 @@ fun BitMapToString(bitmap: Bitmap): String {
     val b: ByteArray = baos.toByteArray()
     return Base64.encodeToString(b, Base64.DEFAULT)
 }
+

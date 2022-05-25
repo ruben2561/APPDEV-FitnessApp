@@ -45,8 +45,8 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         return binding.root
     }
 
-    override fun OnClick(position: Int) {
-        val fragment: Fragment = SelectedImageFragment(position + 1)
+    override fun OnClick(picture: Picture) {
+        val fragment: Fragment = SelectedImageFragment(picture)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         val containerId = R.id.fragment_container
@@ -56,7 +56,7 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
     }
 
     override fun OnLongClick(picture: Picture) {
-        val toast = Toast.makeText(this.context, "do you want to delete "+ picture.name +"'s picture?", Toast.LENGTH_LONG).show()
+        val toast = Toast.makeText(this.context, "do you want to delete "+ picture.name +"'s picture?", Toast.LENGTH_SHORT).show()
         pictureDao.delete(picture)
         pictureList = pictureDao.getAll()
         binding.galleryGrid.adapter = PictureAdapter(pictureList,this)

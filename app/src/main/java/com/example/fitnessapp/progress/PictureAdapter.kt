@@ -33,7 +33,7 @@ class PictureAdapter(private var items: List<Picture>, private var onItemClickLi
         lateinit var currentPicture: Picture
         init {
             itemView.setOnClickListener {
-                onItemClickListener.OnClick(adapterPosition)
+                onItemClickListener.OnClick(currentPicture)
             }
 
             itemView.setOnLongClickListener {
@@ -51,7 +51,7 @@ class PictureAdapter(private var items: List<Picture>, private var onItemClickLi
         }
     }
     interface OnItemClickListener{
-        fun OnClick(position: Int)
+        fun OnClick(picture: Picture)
         fun OnLongClick(picture: Picture)
     }
 }

@@ -17,7 +17,7 @@ import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
 import com.example.fitnessapp.databinding.FragmentSelectedImageBinding
 
 
-class SelectedImageFragment(val position: Int) : Fragment() {
+class SelectedImageFragment(val picture: Picture) : Fragment() {
 
     private lateinit var binding: FragmentSelectedImageBinding
     private lateinit var parentActivity: MainActivity
@@ -31,14 +31,9 @@ class SelectedImageFragment(val position: Int) : Fragment() {
         binding = FragmentSelectedImageBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         pictureDao = parentActivity.db.pictureDao()
-        var selectedImage = pictureDao.loadByIds(position)
+        var selectedImage = pictureDao.findByName(picture.name)
         binding.selectedImageName.text = selectedImage.name
         binding.imageView.setImageBitmap(StringToBitMap(selectedImage.imageData))
-
-<<<<<<< HEAD
-=======
-        //binding.imageView.setOn
->>>>>>> 3769dac56bb5c74713fd450ae4363c6504686485
         return binding.root
     }
 
