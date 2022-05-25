@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
+import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
 import com.example.fitnessapp.exercises.Exercise
@@ -22,6 +23,7 @@ import com.example.fitnessapp.databinding.FragmentCustomWorkoutsNewWorkoutBindin
 class NewWorkoutFragment : Fragment(), NewWorkoutAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentCustomWorkoutsNewWorkoutBinding
+    private lateinit var parentActivity: MainActivity
 
     var choisesList = ArrayList<Exercise>()
     var filteredList = ArrayList<Exercise>()
@@ -69,8 +71,8 @@ class NewWorkoutFragment : Fragment(), NewWorkoutAdapter.OnItemClickListener {
          * saves workout in workout database if fields arent empty
          */
         binding.saveWorkout.setOnClickListener{
-            var db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()  //
-            var customWorkoutDao = db.customWorkoutDao()
+            parentActivity = activity as MainActivity
+            var customWorkoutDao = parentActivity.db.customWorkoutDao()
             var name = binding.workoutTitle.text.toString()
             var exercisesIds = ""
             for (item in choisesList){

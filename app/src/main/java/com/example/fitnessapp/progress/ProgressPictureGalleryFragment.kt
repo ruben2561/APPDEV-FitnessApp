@@ -2,8 +2,10 @@ package com.example.fitnessapp.progress
 
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.hardware.biometrics.BiometricManager
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,26 +15,30 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
+import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
+import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsAdapter
 import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
 import java.util.*
 
-class ProgressPictureGalleryFragment (private val snapshotList: MutableList<Bitmap>, private val dateList: MutableList<Date>) : Fragment() {
+class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentProgressPictureGalleryBinding
     lateinit var db: GymBuddyDatabase
+    private lateinit var parentActivity: MainActivity
+    private lateinit var pictureDao: PictureDao
+    private lateinit var pictureList: MutableList<Picture>
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()
+    ): View? {
         binding = FragmentProgressPictureGalleryBinding.inflate(layoutInflater)
-        if(snapshotList.size>0) {
-            binding.selectedImage.setImageBitmap(snapshotList[snapshotList.size - 1]) //Display last image
-        }
-        val pictureAdapter = PictureAdapter(dateList, snapshotList)
-        binding.galleryGrid.adapter = pictureAdapter
+        parentActivity = activity as MainActivity
+        pictureDao = parentActivity.db.pictureDao()
+        pictureList = pictureDao.getAll()
+        binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
         val gridLayoutManager = GridLayoutManager(context, 3)
         binding.galleryGrid.layoutManager = gridLayoutManager
         binding.btnReturn.setOnClickListener {
@@ -45,5 +51,23 @@ class ProgressPictureGalleryFragment (private val snapshotList: MutableList<Bitm
             fragmentTransaction.commit()
         }
         return binding.root
+    }
+
+    override fun OnClick(position: Int) {
+        binding.selectedImage.setImageBitmap(StringToBitMap(pictureList[position].imageData))
+    }
+
+    override fun OnLongClick(position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    fun StringToBitMap(encodedString: String?): Bitmap? {
+        return try {
+            val encodeByte: ByteArray = Base64.decode(encodedString, Base64.DEFAULT)
+            BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size)
+        } catch (e: Exception) {
+            e.message
+            null
+        }
     }
 }

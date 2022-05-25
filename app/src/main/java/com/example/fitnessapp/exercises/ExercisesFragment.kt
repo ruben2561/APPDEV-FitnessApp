@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
+import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.databinding.FragmentExercisesBinding
 
 
 class ExercisesFragment : Fragment() {
 
     private lateinit var binding: FragmentExercisesBinding
-    lateinit var db: GymBuddyDatabase
     lateinit var exerciseDao: ExerciseDao
+    private lateinit var parentActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,9 +27,8 @@ class ExercisesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentExercisesBinding.inflate(layoutInflater)
-        //db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "exercises.database").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")
-        exerciseDao = db.exerciseDao()                                                                                                               //
+        parentActivity = activity as MainActivity
+        exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
         val exercises: MutableList<Exercise> = exerciseDao.getAll()                                                                                 // gets all database items and puts it in a list
 
         binding.rvwExercises.adapter = ExerciseAdapter(exercises)                                                // adds the exercises list in the recyclerview

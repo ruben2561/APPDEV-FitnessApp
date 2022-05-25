@@ -15,6 +15,7 @@ import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.R
 import com.example.fitnessapp.Workouts.WorkoutDisplayFragment
 import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment
+import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.databinding.FragmentAllWorkoutsBinding
 
 class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
@@ -23,6 +24,7 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
     lateinit var db: GymBuddyDatabase
     lateinit var defaultWorkoutDao: DefaultWorkoutDao
     lateinit var defaultWorkout: MutableList<DefaultWorkout>
+    private lateinit var parentActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,9 +32,8 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAllWorkoutsBinding.inflate(layoutInflater)
-        //db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()  //
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build()
-        defaultWorkoutDao = db.defaultWorkoutDao()
+        parentActivity = activity as MainActivity
+        defaultWorkoutDao = parentActivity.db.defaultWorkoutDao()
         defaultWorkout = defaultWorkoutDao.getAll()                                                                              // gets all database items and puts it in a list
 
 
