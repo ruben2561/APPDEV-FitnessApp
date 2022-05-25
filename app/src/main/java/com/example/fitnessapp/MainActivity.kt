@@ -8,7 +8,6 @@ package com.example.fitnessapp
  *
  */
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -17,8 +16,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.fitnessapp.exercises.ExercisesFragment
+import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsFragment
+import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.google.android.material.navigation.NavigationView
 import com.example.fitnessapp.databinding.ActivityMainBinding
+import com.example.fitnessapp.progress.NewProgressPictureFragment
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -58,14 +61,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.fragment_container,
                 CustomWorkoutsFragment()
             ).commit()
-            R.id.nav_excercises -> supportFragmentManager.beginTransaction().replace(
+            R.id.nav_exercises -> supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
-                ExcercisesFragment()
+                ExercisesFragment()
             ).commit()
-            R.id.nav_new_progress_picture -> {
-                val intent = Intent(this, NewProgressPictureFragment::class.java)
-                startActivity(intent)
-            }
+            R.id.nav_new_progress_picture -> supportFragmentManager.beginTransaction().replace(
+                R.id.fragment_container,
+                NewProgressPictureFragment()
+            ).commit()
             R.id.nav_info -> Toast.makeText(this, "ik ben ruben", Toast.LENGTH_SHORT).show()
         }
         drawer!!.closeDrawer(GravityCompat.START)

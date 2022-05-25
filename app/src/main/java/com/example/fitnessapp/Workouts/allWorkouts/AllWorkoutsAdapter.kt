@@ -1,17 +1,16 @@
-package com.example.fitnessapp.adapters
+package com.example.fitnessapp.Workouts.allWorkouts
 
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
-import com.example.fitnessapp.databaseWorkouts.Workout
+import com.example.fitnessapp.Workouts.Workout
 
-class WorkoutAdapter(private var items: List<Workout>, private var onItemClickListener: OnItemClickListener):
-    RecyclerView.Adapter<WorkoutAdapter.ViewHolder>() {
+class AllWorkoutsAdapter(private var items: List<Workout>, private var onItemClickListener: OnItemClickListener):
+    RecyclerView.Adapter<AllWorkoutsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -38,20 +37,17 @@ class WorkoutAdapter(private var items: List<Workout>, private var onItemClickLi
                 onItemClickListener.OnLongClick(adapterPosition)
                 return@setOnLongClickListener true
             }
-            itemView.apply { findViewById<ImageButton>(R.id.deleteButton).setOnClickListener{
-                onItemClickListener.DeleteWorkout(workout)
-            }}
         }
 
         fun bind(workout: Workout) {
             itemView.apply { findViewById<TextView>(R.id.txtWorkoutName).text = workout.name }
             itemView.apply {
-                findViewById<TextView>(R.id.txtExcercises).text =
-                    "Excercises id's: " + workout.excersicesId
+                findViewById<TextView>(R.id.txtExercises).text =
+                    "Exercises id's: " + workout.exersicesId
             }
             itemView.apply {
-                findViewById<TextView>(R.id.txtNumberOfExcercises).text =
-                    "Number of excercises: " + ((workout.excersicesId.length / 2) - 2)
+                findViewById<TextView>(R.id.txtNumberOfExercises).text =
+                    "Number of exercises: " + ((workout.exersicesId.length / 2) - 2)
             }
         }
     }
@@ -61,6 +57,5 @@ class WorkoutAdapter(private var items: List<Workout>, private var onItemClickLi
     interface OnItemClickListener{
         fun OnClick(position: Int)
         fun OnLongClick(position: Int)
-        fun DeleteWorkout(workout: Workout)
     }
 }

@@ -13,9 +13,9 @@
             android:icon="@drawable/ic_custom_workout"
             android:title="Custom Workout" />
         <item
-            android:id="@+id/nav_excercises"
-            android:icon="@drawable/ic_excercises_xml"
-            android:title="Excercises" />
+            android:id="@+id/nav_exercises"
+            android:icon="@drawable/ic_exercises_xml"
+            android:title="Exercises" />
         <item
             android:id="@+id/nav_new_progress_picture"
             android:icon="@drawable/ic_new_progress_picture"

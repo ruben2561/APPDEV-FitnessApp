@@ -8,7 +8,7 @@
     app:barrierMargin="10dp">
 
     <TextView
-        android:id="@+id/txtExcerciseName"
+        android:id="@+id/txtExerciseName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -29,8 +29,8 @@
         android:textColor="@color/baby_blue"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/txtExcerciseName"
-        app:layout_constraintTop_toBottomOf="@+id/txtExcerciseName" />
+        app:layout_constraintStart_toStartOf="@+id/txtExerciseName"
+        app:layout_constraintTop_toBottomOf="@+id/txtExerciseName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

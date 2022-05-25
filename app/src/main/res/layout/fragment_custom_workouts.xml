@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_green"
-    tools:context=".CustomWorkoutsFragment">
+    tools:context=".Workouts.customWorkouts.CustomWorkoutsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvwWorkouts"

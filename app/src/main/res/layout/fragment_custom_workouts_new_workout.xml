@@ -7,11 +7,11 @@
     android:background="@color/blue_green">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvwExcercises"
+        android:id="@+id/rvwExercises"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/custom_border"
@@ -26,18 +26,18 @@
         android:id="@+id/workoutTitle"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Workout Title?"
         android:inputType="textPersonName"
         android:textColor="@color/text"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/rvwExcercises"
+        app:layout_constraintStart_toStartOf="@+id/rvwExercises"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addExcercise"
+        android:id="@+id/addExercise"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="10dp"
@@ -45,7 +45,7 @@
         android:foreground="@android:drawable/ic_menu_add"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/workoutTitle"
-        app:layout_constraintEnd_toEndOf="@+id/rvwExcercises"
+        app:layout_constraintEnd_toEndOf="@+id/rvwExercises"
         app:layout_constraintTop_toTopOf="@+id/workoutTitle" />
 
     <Button
@@ -57,27 +57,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvwExcercises" />
+        app:layout_constraintTop_toBottomOf="@+id/rvwExercises" />
 
     <EditText
-        android:id="@+id/excerciseFilter"
+        android:id="@+id/exerciseFilter"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Search Excercises"
+        android:hint="Search Exercises"
         android:inputType="textPersonName"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/rvwExcercises"
-        app:layout_constraintStart_toStartOf="@+id/rvwExcercises" />
+        app:layout_constraintBottom_toTopOf="@+id/rvwExercises"
+        app:layout_constraintStart_toStartOf="@+id/rvwExercises" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Add Excercises"
-        app:layout_constraintEnd_toEndOf="@+id/addExcercise"
-        app:layout_constraintStart_toStartOf="@+id/addExcercise"
-        app:layout_constraintTop_toBottomOf="@+id/addExcercise" />
+        android:text="Add Exercises"
+        app:layout_constraintEnd_toEndOf="@+id/addExercise"
+        app:layout_constraintStart_toStartOf="@+id/addExercise"
+        app:layout_constraintTop_toBottomOf="@+id/addExercise" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

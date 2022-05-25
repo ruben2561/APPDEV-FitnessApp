@@ -1,4 +1,4 @@
-package com.example.fitnessapp.adapters
+package com.example.fitnessapp.Workouts.newWorkout
 
 
 import android.view.LayoutInflater
@@ -7,23 +7,23 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
-import com.example.fitnessapp.databaseExcercises.Excercise
+import com.example.fitnessapp.exercises.Exercise
 
 
-class RecyclerAdapter(private var items: List<Excercise>, private var onItemClickListener: OnItemClickListener):
-    RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class NewWorkoutAdapter(private var items: List<Exercise>, private var onItemClickListener: OnItemClickListener):
+    RecyclerView.Adapter<NewWorkoutAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.excercise, parent, false)
+        val view = layoutInflater.inflate(R.layout.exercise, parent, false)
         return ViewHolder(view, onItemClickListener)
     }
 
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val excercise = items[position]
-        holder.bind(excercise)
+        val exercise = items[position]
+        holder.bind(exercise)
     }
 
     class ViewHolder(itemView: View, onItemClickListener: OnItemClickListener): RecyclerView.ViewHolder(itemView){
@@ -36,9 +36,9 @@ class RecyclerAdapter(private var items: List<Excercise>, private var onItemClic
             }
         }
 
-        fun bind(excercise: Excercise){
-            itemView.apply{findViewById<TextView>(R.id.txtExcerciseName).text = excercise.name}
-            itemView.apply{findViewById<TextView>(R.id.txtMuscleGroup).text = excercise.muscleGroup}
+        fun bind(exercise: Exercise){
+            itemView.apply{findViewById<TextView>(R.id.txtExerciseName).text = exercise.name}
+            itemView.apply{findViewById<TextView>(R.id.txtMuscleGroup).text = exercise.muscleGroup}
         }
     }
 

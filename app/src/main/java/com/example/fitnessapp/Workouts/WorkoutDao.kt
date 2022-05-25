@@ -1,4 +1,4 @@
-package com.example.fitnessapp.databaseWorkouts
+package com.example.fitnessapp.Workouts
 
 import androidx.room.*
 

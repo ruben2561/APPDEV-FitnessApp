@@ -6,7 +6,7 @@
     app:startDestination="@id/customWorkoutsFragment2">
     <fragment
         android:id="@+id/customWorkoutsFragment2"
-        android:name="com.example.fitnessapp.CustomWorkoutsFragment"
+        android:name="com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment"
         android:label="fragment_custom_workouts"
         tools:layout="@layout/fragment_custom_workouts" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/newWorkoutFragment2"
-        android:name="com.example.fitnessapp.NewWorkoutFragment"
+        android:name="com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment"
         android:label="NewWorkoutFragment"
         tools:layout="@layout/fragment_custom_workouts_new_workout" >
         <action

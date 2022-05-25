@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewProgressPictureFragment"
+        <activity android:name=".progress.NewProgressPictureFragment"
             android:theme="@style/Theme.FitnessApp.NoActionBar"/>
     </application>
 

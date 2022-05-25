@@ -4,18 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:onClick="onClick">
+    android:layout_height="match_parent">
 
 
     <Button
         android:id="@+id/foto"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="76dp"
         android:background="@drawable/afronding_xml"
         android:gravity="center"
         android:onClick="onclick2"
@@ -24,6 +23,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -42,5 +42,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnToGallery"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="40dp"
+        android:text="All Pictures"
+        app:layout_constraintBottom_toBottomOf="@+id/foto"
+        app:layout_constraintStart_toEndOf="@+id/foto"
+        app:layout_constraintTop_toTopOf="@+id/foto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
