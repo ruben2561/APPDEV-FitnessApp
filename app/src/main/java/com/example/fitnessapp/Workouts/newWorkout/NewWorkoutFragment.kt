@@ -140,6 +140,9 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","",0)) 
                     val exerciseDao = db.exerciseDao()
                     showAddedExercise(filteredExercisename)
                     choisesList.add(exerciseDao.findByName(filteredExercisename))
+                    if(!choisesList.contains(exerciseDao.findByName(filteredExercisename))){
+                        choisesList.add(exerciseDao.findByName(filteredExercisename))
+                    }
                 }
             })
         }
@@ -151,7 +154,9 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","",0)) 
         val db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/exercisedatabase-db.db").allowMainThreadQueries().build()
         val exerciseDao = db.exerciseDao()
         showAddedExercise(exerciseDao.loadByIds(position+1).name)
-        choisesList.add(exerciseDao.loadByIds(position+1))
+        if(!choisesList.contains(exerciseDao.loadByIds(position+1))){
+            choisesList.add(exerciseDao.loadByIds(position+1))
+        }
     }
 
     fun showAddedExercise(name: String){
