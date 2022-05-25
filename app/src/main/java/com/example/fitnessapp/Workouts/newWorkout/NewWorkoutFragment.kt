@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -20,8 +21,9 @@ import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
 import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.example.fitnessapp.exercises.Exercise
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsNewWorkoutBinding
+import org.w3c.dom.Text
 
-class NewWorkoutFragment : Fragment(), NewWorkoutAdapter.OnItemClickListener {
+class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","",0)) : Fragment(), NewWorkoutAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentCustomWorkoutsNewWorkoutBinding
     private lateinit var parentActivity: MainActivity
@@ -30,6 +32,7 @@ class NewWorkoutFragment : Fragment(), NewWorkoutAdapter.OnItemClickListener {
     var filteredList = ArrayList<Exercise>()
     lateinit var recyclerList: MutableList<Exercise>
     var toggleState = 1; //0 when all exercises are showen, 1 when the chosen exercises are displayed
+    var workoutToEdit = customWorkout
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +40,23 @@ class NewWorkoutFragment : Fragment(), NewWorkoutAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCustomWorkoutsNewWorkoutBinding.inflate(layoutInflater)
+
+        if(workoutToEdit.name != ""){
+            binding.workoutTitle.setText(workoutToEdit.name)
+            val input: String = workoutToEdit.exersicesId
+            var result = input.split(",").map { it.trim() }
+            val resultInt = result.map { it.toInt() }.toIntArray()
+
+            var db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase.db").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")
+            var exerciseDao = db.exerciseDao()                                                                                                               //
+            var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
+
+            choisesList.addAll(exercises)
+
+            recyclerList = choisesList
+            binding.rvwExercises.adapter = NewWorkoutAdapter(recyclerList, this)
+            binding.rvwExercises.layoutManager = LinearLayoutManager(context)
+        }
 
         binding.addExercise.setOnClickListener{
 

@@ -8,7 +8,7 @@
     app:barrierMargin="10dp">
 
     <ImageButton
-        android:id="@+id/deleteButton2"
+        android:id="@+id/deleteButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="5dp"
@@ -35,11 +35,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:layout_marginBottom="5dp"
         android:text="Number Of Exercises"
         android:textColor="@color/baby_blue"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/dateOfMaking"
         app:layout_constraintStart_toStartOf="@+id/txtWorkoutName"
         app:layout_constraintTop_toBottomOf="@+id/txtWorkoutName" />
 
@@ -49,10 +48,21 @@
         android:layout_height="40dp"
         android:backgroundTint="#7CB342"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/deleteButton2"
+        app:layout_constraintEnd_toStartOf="@+id/deleteButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.49"
         app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/dateOfMaking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Making date"
+        android:textColor="@color/baby_blue"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtNumberOfExercises" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

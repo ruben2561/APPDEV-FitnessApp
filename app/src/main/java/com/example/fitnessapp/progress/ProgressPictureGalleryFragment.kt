@@ -1,25 +1,19 @@
 package com.example.fitnessapp.progress
 
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.hardware.biometrics.BiometricManager
 import android.os.Bundle
-import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsAdapter
 import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
+import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
 class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClickListener {
@@ -56,11 +50,16 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
     }
 
     override fun OnLongClick(picture: Picture) {
-        val toast = Toast.makeText(this.context, "do you want to delete "+ picture.name +"'s picture?", Toast.LENGTH_SHORT).show()
-        pictureDao.delete(picture)
-        pictureList = pictureDao.getAll()
-        binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
-        val gridLayoutManager = GridLayoutManager(context, 3)
-        binding.galleryGrid.layoutManager = gridLayoutManager
+        val snackbar = Snackbar
+            .make(this.requireView(), "Selected: " + picture.name+". Confirm delete?", Snackbar.LENGTH_LONG)
+            .setAction("YES") {
+                pictureDao.delete(picture)
+                pictureList = pictureDao.getAll()
+                binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
+                val gridLayoutManager = GridLayoutManager(context, 3)
+                binding.galleryGrid.layoutManager = gridLayoutManager
+                Snackbar.make(this.requireView(), "Picture successfully deleted.", Snackbar.LENGTH_SHORT).show()
+            }
+        snackbar.show()
     }
 }
