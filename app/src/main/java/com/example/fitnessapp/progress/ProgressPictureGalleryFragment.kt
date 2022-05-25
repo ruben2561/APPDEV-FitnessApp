@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
+import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsAdapter
 import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
@@ -24,13 +25,13 @@ class ProgressPictureGalleryFragment (private val pictureList: MutableList<Pictu
 
     private lateinit var binding: FragmentProgressPictureGalleryBinding
     lateinit var db: GymBuddyDatabase
+    private lateinit var parentActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()
         binding = FragmentProgressPictureGalleryBinding.inflate(layoutInflater)
 
         binding.galleryGrid.adapter = PictureAdapter(pictureList,this)

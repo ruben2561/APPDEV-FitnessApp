@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
+import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsBinding
@@ -22,6 +23,7 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
     lateinit var db: GymBuddyDatabase
     lateinit var customWorkoutDao: CustomWorkoutDao
     lateinit var customWorkout: MutableList<CustomWorkout>
+    private lateinit var parentActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,9 +31,8 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCustomWorkoutsBinding.inflate(layoutInflater)
-
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()  //
-        customWorkoutDao = db.customWorkoutDao()
+        parentActivity = activity as MainActivity
+        customWorkoutDao = parentActivity.db.customWorkoutDao()
         customWorkout = customWorkoutDao.getAll()                                                                              // gets all database items and puts it in a list
 
         /*customWorkoutDao.insert(listOf(CustomWorkout("schema 1", "20,50,88,100", 0),

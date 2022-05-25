@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.room.Room
 import com.example.fitnessapp.exercises.ExercisesFragment
 import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsFragment
 import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
@@ -28,12 +29,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private final var drawer: DrawerLayout? = null
     private lateinit var binding: ActivityMainBinding
+    lateinit var db: GymBuddyDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        db = Room.databaseBuilder(this, GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build()
         val toolbar1 = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar1)
         drawer = findViewById(R.id.drawer_layout)
