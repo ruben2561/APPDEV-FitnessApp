@@ -56,7 +56,7 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
     }
 
     override fun OnLongClick(picture: Picture) {
-        val toast = Toast.makeText(this.context, "picture "+ picture.name +" deleted", Toast.LENGTH_SHORT).show()
+        val toast = Toast.makeText(this.context, "do you want to delete "+ picture.name +"'s picture?", Toast.LENGTH_LONG).show()
         pictureDao.delete(picture)
         pictureList = pictureDao.getAll()
         binding.galleryGrid.adapter = PictureAdapter(pictureList,this)

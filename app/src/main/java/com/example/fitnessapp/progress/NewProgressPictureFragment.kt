@@ -3,9 +3,11 @@ package com.example.fitnessapp.progress
 import android.Manifest
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Base64.DEFAULT
-import android.util.Base64.encodeToString
-import android.view.*
+import android.text.format.DateFormat
+import android.util.Base64
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -13,17 +15,12 @@ import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.room.Room
-import com.example.fitnessapp.GymBuddyDatabase
+import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentNewProgresPictureBinding
 import com.google.android.material.snackbar.Snackbar
 import java.io.ByteArrayOutputStream
 import java.util.*
-import android.util.Base64
-import com.example.fitnessapp.MainActivity
-import java.util.Arrays.toString
-import java.util.Objects.toString
 
 
 class NewProgressPictureFragment : Fragment() {
@@ -68,7 +65,8 @@ class NewProgressPictureFragment : Fragment() {
         pictureResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
             // photo taken!
             snapshot.setImageBitmap(it)
-            val tempPicture = Picture(Date().toString(), BitMapToString(it))
+            val tempDate = DateFormat.format("yyyy-MM-dd", Date())
+            val tempPicture = Picture(tempDate.toString(), BitMapToString(it))
             pictureDao.insert(tempPicture)
         }
         return binding.root
