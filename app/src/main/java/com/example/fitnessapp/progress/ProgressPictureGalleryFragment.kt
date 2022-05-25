@@ -16,35 +16,24 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.R
+import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsAdapter
 import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
 import java.util.*
 
-class ProgressPictureGalleryFragment (private val pictureList: MutableList<Picture>) : Fragment() {
+class ProgressPictureGalleryFragment (private val pictureList: MutableList<Picture>) : Fragment(), PictureAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentProgressPictureGalleryBinding
     lateinit var db: GymBuddyDatabase
 
-    fun StringToBitMap(encodedString: String?): Bitmap? {
-        return try {
-            val encodeByte: ByteArray = Base64.decode(encodedString, Base64.DEFAULT)
-            BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size)
-        } catch (e: Exception) {
-            e.message
-            null
-        }
-    }
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()
         binding = FragmentProgressPictureGalleryBinding.inflate(layoutInflater)
-        if(pictureList.size>0) {
-            binding.selectedImage.setImageBitmap(StringToBitMap(pictureList[pictureList.size - 1].imageData)) //Display last image
-        }
-        val pictureAdapter = PictureAdapter(pictureList)
-        binding.galleryGrid.adapter = pictureAdapter
+
+        binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
         val gridLayoutManager = GridLayoutManager(context, 3)
         binding.galleryGrid.layoutManager = gridLayoutManager
         binding.btnReturn.setOnClickListener {
@@ -57,5 +46,23 @@ class ProgressPictureGalleryFragment (private val pictureList: MutableList<Pictu
             fragmentTransaction.commit()
         }
         return binding.root
+    }
+
+    override fun OnClick(position: Int) {
+        binding.selectedImage.setImageBitmap(StringToBitMap(pictureList[position].imageData))
+    }
+
+    override fun OnLongClick(position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    fun StringToBitMap(encodedString: String?): Bitmap? {
+        return try {
+            val encodeByte: ByteArray = Base64.decode(encodedString, Base64.DEFAULT)
+            BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size)
+        } catch (e: Exception) {
+            e.message
+            null
+        }
     }
 }
