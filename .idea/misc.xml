@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/drawable/afronding_xml.xml" value="0.121" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/drawable/rounded_button.xml" value="0.12" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/fragment_new_progres_picture.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/rounded_button.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/afronding_xml.xml" value="0.115" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/custom_border.xml" value="0.115" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_all_workouts.xml" value="0.2555" />
@@ -59,7 +63,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

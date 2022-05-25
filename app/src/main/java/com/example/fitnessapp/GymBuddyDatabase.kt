@@ -10,7 +10,7 @@ import com.example.fitnessapp.Workouts.WorkoutDao
 import com.example.fitnessapp.progress.Picture
 import com.example.fitnessapp.progress.PictureDao
 
-@Database(entities = arrayOf(Exercise::class, Workout::class, Workout::class, Picture::class), version = 1)
+@Database(entities = arrayOf(Exercise::class, Workout::class, Picture::class), version = 1)
 abstract class GymBuddyDatabase : RoomDatabase() {
     abstract fun exerciseDao() : ExerciseDao
     abstract fun workoutDao() : WorkoutDao
