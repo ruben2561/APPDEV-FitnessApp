@@ -45,12 +45,10 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
         fun bind(customWorkout: CustomWorkout) {
             itemView.apply { findViewById<TextView>(R.id.txtWorkoutName).text = customWorkout.name }
             itemView.apply {
-                findViewById<TextView>(R.id.txtExercises).text =
-                    "Excercises id's: " + customWorkout.exersicesId
-            }
-            itemView.apply {
+                val input: String = customWorkout.exersicesId
+                var result = input.split(",").map { it.trim() }
                 findViewById<TextView>(R.id.txtNumberOfExercises).text =
-                    "Number of excercises: " + ((customWorkout.exersicesId.length / 2) - 2)
+                    "Excercises: " + result.size
             }
         }
     }

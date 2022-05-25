@@ -47,7 +47,6 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
     }
 
     override fun OnClick(position: Int) {
-        val toast = Toast.makeText(this.context, "position: " + position, Toast.LENGTH_SHORT).show()
         val fragment: Fragment = SelectedImageFragment(position + 1)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
