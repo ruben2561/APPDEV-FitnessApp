@@ -97,6 +97,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","",0)) 
                 }
             }
             if(!name.contentEquals("") && exercisesIds != ""){
+                customWorkoutDao.delete(workoutToEdit)
                 customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, 0))
                 Toast.makeText(this.context, "Workout saved!", Toast.LENGTH_LONG).show()
 
