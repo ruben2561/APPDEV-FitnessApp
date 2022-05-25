@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     android:background="@color/baby_blue">
+    android:background="@color/blue_green">
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -15,29 +15,28 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/rounded_button"
-        android:gravity="center"
+        android:gravity="center|center_horizontal|center_vertical"
         android:onClick="onclick2"
         android:text="+"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/foto1" />
 
     <ImageView
         android:id="@+id/foto1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/afronding_xml"
-        android:backgroundTint="@color/blue_green"
+        android:backgroundTint="@color/tiffany_blue"
         app:layout_constraintBottom_toTopOf="@+id/foto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,10 +47,12 @@
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:layout_marginStart="40dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/midnight_blue"
         android:text="All Pictures"
         app:layout_constraintBottom_toBottomOf="@+id/foto"
+        app:layout_constraintEnd_toEndOf="@+id/foto1"
         app:layout_constraintStart_toEndOf="@+id/foto"
-        app:layout_constraintTop_toTopOf="@+id/foto"
-        android:backgroundTint="@color/midnight_blue"/>
+        app:layout_constraintTop_toTopOf="@+id/foto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
