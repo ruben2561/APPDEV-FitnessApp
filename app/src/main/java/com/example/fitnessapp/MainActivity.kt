@@ -20,6 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.room.Room
 import com.example.fitnessapp.exercises.ExercisesFragment
 import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsFragment
+import com.example.fitnessapp.Workouts.allWorkouts.InfoFragment
 import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.google.android.material.navigation.NavigationView
 import com.example.fitnessapp.databinding.ActivityMainBinding
@@ -72,7 +73,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.fragment_container,
                 NewProgressPictureFragment()
             ).commit()
-            R.id.nav_info -> Toast.makeText(this, "ik ben ruben", Toast.LENGTH_SHORT).show()
+            R.id.nav_info -> supportFragmentManager.beginTransaction().replace(
+                R.id.fragment_container,
+                InfoFragment()).commit()
         }
         drawer!!.closeDrawer(GravityCompat.START)
         return true
