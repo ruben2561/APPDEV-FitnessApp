@@ -7,15 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.MainActivity
+import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentExercisesBinding
+import com.example.fitnessapp.progress.SelectedImageFragment
+import com.google.android.material.snackbar.Snackbar
 
 
-class ExercisesFragment : Fragment() {
+class ExercisesFragment : Fragment(), ExerciseAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentExercisesBinding
     lateinit var exerciseDao: ExerciseDao
@@ -30,9 +35,7 @@ class ExercisesFragment : Fragment() {
         parentActivity = activity as MainActivity
         exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
         val exercises: MutableList<Exercise> = exerciseDao.getAll()                                                                                 // gets all database items and puts it in a list
-
-
-        binding.rvwExercises.adapter = ExerciseAdapter(exercises)                                                // adds the exercises list in the recyclerview
+        binding.rvwExercises.adapter = ExerciseAdapter(exercises,this)                                                // adds the exercises list in the recyclerview
         binding.rvwExercises.layoutManager = LinearLayoutManager(context)                                        // chooses what type of layout
         binding.rvwExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))   // this puts a line between every item
 
@@ -49,14 +52,22 @@ class ExercisesFragment : Fragment() {
                         filteredList.add(item)                                                //
                     }                                                                         //
                 }                                                                             //
-                binding.rvwExercises.adapter = ExerciseAdapter(filteredList)                  // redraws the recyclerview
+                binding.rvwExercises.adapter = ExerciseAdapter(filteredList,this@ExercisesFragment)                  // redraws the recyclerview
                 binding.rvwExercises.layoutManager = LinearLayoutManager(context)             //
             }                                                                                 //
         })                                                                                    //
 
         return binding.root
     }
-
+    override fun OnClick(exercise: Exercise){
+        val fragment: Fragment = ExercisesDetailsFragment(exercise)
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val containerId = R.id.fragment_container
+        fragmentTransaction.replace(containerId, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
 }
 
 
