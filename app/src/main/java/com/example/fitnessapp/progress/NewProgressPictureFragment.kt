@@ -33,7 +33,6 @@ class NewProgressPictureFragment : Fragment() {
     private lateinit var parentActivity: MainActivity
     private lateinit var pictureDao: PictureDao
     private lateinit var tempBitmap: Bitmap
-    private var pictureList: MutableList<Picture> = mutableListOf()
 
 
     override fun onCreateView(
@@ -73,10 +72,10 @@ class NewProgressPictureFragment : Fragment() {
         }
 
         binding.savePhoto.setOnClickListener {
-            if(binding.editTextWeight.text.toString() != "" && tempBitmap != null){
+            if(binding.editTextWeight.text.toString() != ""){
                 val tempDate = DateFormat.format("dd-MM-yyyy", Date())
                 val tempWeight = binding.editTextWeight.text.toString()
-                val tempPicture = Picture(tempDate.toString(), BitMapToString(tempBitmap), tempWeight)
+                val tempPicture = Picture(tempDate.toString(), bitMapToString(tempBitmap), tempWeight)
                 /*var tempDate = DateFormat.format("dd-MM-yyyy\nHH.mm.ss", Date()).toString()
                 val tempPicture = Picture(tempDate, BitMapToString(it))*/
                 pictureDao.insert(tempPicture)
@@ -108,10 +107,10 @@ class NewProgressPictureFragment : Fragment() {
     }
 }
 
-fun BitMapToString(bitmap: Bitmap): String {
-    val baos = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
-    val b: ByteArray = baos.toByteArray()
+fun bitMapToString(bitmap: Bitmap): String {
+    val bas = ByteArrayOutputStream()
+    bitmap.compress(Bitmap.CompressFormat.PNG, 100, bas)
+    val b: ByteArray = bas.toByteArray()
     return Base64.encodeToString(b, Base64.DEFAULT)
 }
 

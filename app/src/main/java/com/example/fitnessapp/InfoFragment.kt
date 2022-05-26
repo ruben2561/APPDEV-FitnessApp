@@ -1,4 +1,4 @@
-package com.example.fitnessapp.Workouts.allWorkouts
+package com.example.fitnessapp
 
 import android.content.Intent
 import android.net.Uri
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.databinding.FragmentInfoBinding
 
 
@@ -20,7 +19,7 @@ class InfoFragment : Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentInfoBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         binding.imgKuLeuven.setOnClickListener{

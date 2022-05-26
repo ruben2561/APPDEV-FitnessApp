@@ -1,33 +1,32 @@
 package com.example.fitnessapp.Workouts.allWorkouts
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fitnessapp.GymBuddyDatabase
+import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.Workouts.workoutDisplay.WorkoutDisplayFragment
-import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.databinding.FragmentAllWorkoutsBinding
 
 class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
 
     private lateinit var binding: FragmentAllWorkoutsBinding
-    lateinit var defaultWorkoutDao: DefaultWorkoutDao
-    lateinit var defaultWorkout: MutableList<DefaultWorkout>
+    private lateinit var defaultWorkoutDao: DefaultWorkoutDao
+    private lateinit var defaultWorkout: MutableList<DefaultWorkout>
     private lateinit var parentActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAllWorkoutsBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         defaultWorkoutDao = parentActivity.db.defaultWorkoutDao()
@@ -41,7 +40,7 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
         return binding.root
     }
 
-    override fun OnClick(ids: String, title: String) {
+    override fun onClick(ids: String, title: String) {
         val fragment: Fragment = WorkoutDisplayFragment(ids, title)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -49,8 +48,8 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
         fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 
-    override fun OnLongClick(position: Int) {
-        Toast.makeText(this.context, "long click on item: " + position, Toast.LENGTH_SHORT).show()
+    override fun onLongClick(position: Int) {
+        Toast.makeText(this.context, "long click on item: $position", Toast.LENGTH_SHORT).show()
     }
 
 }

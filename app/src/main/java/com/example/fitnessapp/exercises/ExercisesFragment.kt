@@ -11,26 +11,22 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
-import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentExercisesBinding
-import com.example.fitnessapp.progress.SelectedImageFragment
-import com.google.android.material.snackbar.Snackbar
 
 
 class ExercisesFragment : Fragment(), ExerciseAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentExercisesBinding
-    lateinit var exerciseDao: ExerciseDao
+    private lateinit var exerciseDao: ExerciseDao
     private lateinit var parentActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentExercisesBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
@@ -59,7 +55,7 @@ class ExercisesFragment : Fragment(), ExerciseAdapter.OnItemClickListener {
 
         return binding.root
     }
-    override fun OnClick(exercise: Exercise){
+    override fun onClick(exercise: Exercise){
         val fragment: Fragment = ExercisesDetailsFragment(exercise)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()

@@ -33,11 +33,11 @@ class PictureAdapter(private var items: List<Picture>, private var onItemClickLi
         lateinit var currentPicture: Picture
         init {
             itemView.setOnClickListener {
-                onItemClickListener.OnClick(currentPicture)
+                onItemClickListener.onClick(currentPicture)
             }
 
             itemView.setOnLongClickListener {
-                onItemClickListener.OnLongClick(currentPicture)
+                onItemClickListener.onLongClick(currentPicture)
                 return@setOnLongClickListener true
             }
         }
@@ -46,18 +46,18 @@ class PictureAdapter(private var items: List<Picture>, private var onItemClickLi
             itemView.apply { findViewById<TextView>(R.id.txtDate).text = currentPicture.name }
             itemView.apply { findViewById<TextView>(R.id.txtWeight).text = "Weight: " + currentPicture.weight + "Kg"}
             itemView.apply {
-                findViewById<ImageView>(R.id.galleryPicture).setImageBitmap(StringToBitMap(currentPicture.imageData))
+                findViewById<ImageView>(R.id.galleryPicture).setImageBitmap(stringToBitMap(currentPicture.imageData))
             }
 
         }
     }
     interface OnItemClickListener{
-        fun OnClick(picture: Picture)
-        fun OnLongClick(picture: Picture)
+        fun onClick(picture: Picture)
+        fun onLongClick(picture: Picture)
     }
 }
 
-fun StringToBitMap(encodedString: String?): Bitmap? {
+fun stringToBitMap(encodedString: String?): Bitmap? {
     return try {
         val encodeByte: ByteArray = Base64.decode(encodedString, Base64.DEFAULT)
         BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size)

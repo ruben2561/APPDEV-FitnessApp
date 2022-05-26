@@ -1,8 +1,6 @@
 package com.example.fitnessapp.exercises
 
-import android.graphics.Bitmap
 import android.os.Bundle
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +18,7 @@ class ExercisesDetailsFragment(val exercise: Exercise) : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentExerciseDetailsBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         binding.txtChosenExercise.text = exercise.name

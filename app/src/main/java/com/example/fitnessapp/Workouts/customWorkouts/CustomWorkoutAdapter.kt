@@ -30,21 +30,21 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
         lateinit var customWorkout: CustomWorkout
         init {
             itemView.setOnClickListener {
-                onItemClickListener.OnClick(customWorkout.exersicesId, customWorkout.name)
+                onItemClickListener.onClick(customWorkout.exersicesId, customWorkout.name)
             }
 
             itemView.setOnLongClickListener {
-                onItemClickListener.OnLongClick(adapterPosition)
+                onItemClickListener.onLongClick(adapterPosition)
                 return@setOnLongClickListener true
             }
             itemView.apply { findViewById<ImageButton>(R.id.deleteButton).setOnClickListener{
-                onItemClickListener.DeleteWorkout(customWorkout)
+                onItemClickListener.deleteWorkout(customWorkout)
             }}
             itemView.apply { findViewById<ImageButton>(R.id.editButton).setOnClickListener{
-                onItemClickListener.EditWorkout(customWorkout)
+                onItemClickListener.editWorkout(customWorkout)
             }}
             itemView.apply { findViewById<ImageButton>(R.id.shareButton).setOnClickListener{
-                onItemClickListener.ShareWorkout(customWorkout)
+                onItemClickListener.shareWorkout(customWorkout)
             }}
         }
 
@@ -52,9 +52,9 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
             itemView.apply { findViewById<TextView>(R.id.txtWorkoutName).text = customWorkout.name }
             itemView.apply {
                 val input: String = customWorkout.exersicesId
-                var result = input.split(",").map { it.trim() }
+                val result = input.split(",").map { it.trim() }
                 findViewById<TextView>(R.id.txtNumberOfExercises).text =
-                    "Excercises: " + result.size
+                    "Exercises: " + result.size
             }
             itemView.apply { findViewById<TextView>(R.id.dateOfMaking).text = customWorkout.creationDate }
 
@@ -62,10 +62,10 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
     }
 
     interface OnItemClickListener{
-        fun OnClick(ids: String, title: String)
-        fun OnLongClick(position: Int)
-        fun DeleteWorkout(customWorkout: CustomWorkout)
-        fun EditWorkout(customWorkout: CustomWorkout)
-        fun ShareWorkout(customWorkout: CustomWorkout)
+        fun onClick(ids: String, title: String)
+        fun onLongClick(position: Int)
+        fun deleteWorkout(customWorkout: CustomWorkout)
+        fun editWorkout(customWorkout: CustomWorkout)
+        fun shareWorkout(customWorkout: CustomWorkout)
     }
 }

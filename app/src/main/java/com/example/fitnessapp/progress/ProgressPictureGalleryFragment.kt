@@ -37,7 +37,7 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         return binding.root
     }
 
-    override fun OnClick(picture: Picture) {
+    override fun onClick(picture: Picture) {
         val fragment: Fragment = SelectedImageFragment(picture)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -47,7 +47,7 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         fragmentTransaction.commit()
     }
 
-    override fun OnLongClick(picture: Picture) {
+    override fun onLongClick(picture: Picture) {
         val snackbar = Snackbar
             .make(this.requireView(), "Selected: " + picture.name+". Confirm delete?", Snackbar.LENGTH_LONG)
             .setAction("YES") {

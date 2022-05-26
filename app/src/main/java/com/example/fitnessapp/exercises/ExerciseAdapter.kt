@@ -30,7 +30,7 @@ class ExerciseAdapter(val items: List<Exercise>, private var onItemClickListener
         lateinit var currentExercise: Exercise
         init{
             currentItemView.setOnClickListener{
-                onItemClickListener.OnClick(currentExercise)
+                onItemClickListener.onClick(currentExercise)
             }
         }
 
@@ -43,6 +43,6 @@ class ExerciseAdapter(val items: List<Exercise>, private var onItemClickListener
     }
 
     interface OnItemClickListener{
-        fun OnClick(exercise: Exercise)
+        fun onClick(exercise: Exercise)
     }
 }

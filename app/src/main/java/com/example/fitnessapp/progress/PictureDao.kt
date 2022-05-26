@@ -1,8 +1,6 @@
 package com.example.fitnessapp.progress
 
-import android.graphics.Bitmap
 import androidx.room.*
-import java.util.*
 
 @Dao
 interface PictureDao {

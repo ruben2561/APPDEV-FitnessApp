@@ -32,10 +32,10 @@ class ChosenExercisesAdapter(private var items: List<Exercise>, private var onIt
 
         init{
             itemView.setOnClickListener{
-                onItemClickListener.OnClick(adapterPosition)
+                onItemClickListener.onClick(adapterPosition)
             }
             itemView.setOnLongClickListener{
-                onItemClickListener.OnLongClick(adapterPosition)
+                onItemClickListener.onLongClick(adapterPosition)
                 return@setOnLongClickListener true
             }
         }
@@ -55,8 +55,8 @@ class ChosenExercisesAdapter(private var items: List<Exercise>, private var onIt
     }
 
     interface OnItemClickListener{
-        fun OnClick(position: Int)
-        fun OnLongClick(position: Int)
+        fun onClick(position: Int)
+        fun onLongClick(position: Int)
     }
 
 

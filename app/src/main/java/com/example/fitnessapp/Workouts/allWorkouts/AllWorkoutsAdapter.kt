@@ -29,11 +29,11 @@ class AllWorkoutsAdapter(private var items: List<DefaultWorkout>, private var on
         lateinit var defaultWorkout: DefaultWorkout
         init {
             itemView.setOnClickListener {
-                onItemClickListener.OnClick(defaultWorkout.exersicesId, defaultWorkout.name)
+                onItemClickListener.onClick(defaultWorkout.exersicesId, defaultWorkout.name)
             }
 
             itemView.setOnLongClickListener {
-                onItemClickListener.OnLongClick(adapterPosition)
+                onItemClickListener.onLongClick(adapterPosition)
                 return@setOnLongClickListener true
             }
         }
@@ -42,7 +42,7 @@ class AllWorkoutsAdapter(private var items: List<DefaultWorkout>, private var on
             itemView.apply { findViewById<TextView>(R.id.txtWorkoutName).text = defaultWorkout.name }
             itemView.apply {
                 val input: String = defaultWorkout.exersicesId
-                var result = input.split(",").map { it.trim() }
+                val result = input.split(",").map { it.trim() }
                 findViewById<TextView>(R.id.txtNumberOfExercises).text =
                     "Exercises: " + result.size
             }
@@ -52,7 +52,7 @@ class AllWorkoutsAdapter(private var items: List<DefaultWorkout>, private var on
 
 
     interface OnItemClickListener{
-        fun OnClick(ids: String, title: String)
-        fun OnLongClick(position: Int)
+        fun onClick(ids: String, title: String)
+        fun onLongClick(position: Int)
     }
 }

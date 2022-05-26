@@ -11,13 +11,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
-import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutAdapter
-import com.example.fitnessapp.Workouts.workoutDisplay.WorkoutDisplayFragment
 import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment
+import com.example.fitnessapp.Workouts.workoutDisplay.WorkoutDisplayFragment
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsBinding
 import com.example.fitnessapp.exercises.Exercise
 import com.google.android.material.snackbar.Snackbar
@@ -25,15 +22,15 @@ import com.google.android.material.snackbar.Snackbar
 class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListener{
 
     private lateinit var binding: FragmentCustomWorkoutsBinding
-    lateinit var customWorkoutDao: CustomWorkoutDao
-    lateinit var customWorkout: MutableList<CustomWorkout>
+    private lateinit var customWorkoutDao: CustomWorkoutDao
+    private lateinit var customWorkout: MutableList<CustomWorkout>
     private lateinit var parentActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCustomWorkoutsBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         customWorkoutDao = parentActivity.db.customWorkoutDao()
@@ -42,7 +39,7 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         /*customWorkoutDao.insert(listOf(CustomWorkout("schema 1", "20,50,88,100", 0),
                                  CustomWorkout("schema 2", "101,50,88,14,55", 0)))*/
 
-        binding.rvwWorkouts.adapter = CustomWorkoutAdapter(customWorkout, this)                                                   // adds the excercises list in the recyclerview
+        binding.rvwWorkouts.adapter = CustomWorkoutAdapter(customWorkout, this)                                                   // adds the exercises list in the recyclerview
         binding.rvwWorkouts.layoutManager = LinearLayoutManager(context)                                        // chooses what type of layout
         binding.rvwWorkouts.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))   // this puts a line between every item
 
@@ -57,7 +54,7 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         return binding.root
     }
 
-    override fun OnClick(ids: String, title: String) {
+    override fun onClick(ids: String, title: String) {
         val fragment: Fragment = WorkoutDisplayFragment(ids, title)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -65,31 +62,31 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 
-    override fun OnLongClick(position: Int) {
+    override fun onLongClick(position: Int) {
         //val intent = Intent(fragment, Activity3Recycler::class.java)
         //startActivity(intent)
 
         Toast.makeText(this.context, "long click on item: " + position, Toast.LENGTH_SHORT).show()
     }
 
-    override fun DeleteWorkout(customWorkout: CustomWorkout) {
+    override fun deleteWorkout(customWorkout: CustomWorkout) {
         val custom = customWorkout
-        val snackbar = Snackbar
+        val snack = Snackbar
             .make(this.requireView(), "Selected: " + custom.name +". Confirm delete?", Snackbar.LENGTH_LONG)
             .setAction("YES") {
                 customWorkoutDao = parentActivity.db.customWorkoutDao()
                 customWorkoutDao.delete(customWorkout)
-                var customWorkout = customWorkoutDao.getAll()
-                binding.rvwWorkouts.adapter = CustomWorkoutAdapter(customWorkout, this)                                                   // adds the excercises list in the recyclerview
+                val customWorkouts = customWorkoutDao.getAll()
+                binding.rvwWorkouts.adapter = CustomWorkoutAdapter(customWorkouts, this)                                                   // adds the exercises list in the recyclerview
                 binding.rvwWorkouts.layoutManager = LinearLayoutManager(context)
                 Snackbar.make(this.requireView(), "" + custom.name + " successfully deleted.", Snackbar.LENGTH_SHORT).show()
             }
-        snackbar.show()
+        snack.show()
 
 
     }
 
-    override fun EditWorkout(customWorkout: CustomWorkout) {
+    override fun editWorkout(customWorkout: CustomWorkout) {
         val fragment: Fragment = NewWorkoutFragment(customWorkout)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -97,12 +94,12 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 
-    override fun ShareWorkout(customWorkout: CustomWorkout){
+    override fun shareWorkout(customWorkout: CustomWorkout){
         val input: String = customWorkout.exersicesId
-        var result = input.split(",").map { it.trim() }
+        val result = input.split(",").map { it.trim() }
         val resultInt = result.map { it.toInt() }.toIntArray()
         val exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
-        var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
+        val exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
         //var stringToSend: String = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
         var stringToSend: String = customWorkout.name + "\n" + "\n"
 

@@ -22,18 +22,18 @@ class SelectedImageFragment(val picture: Picture) : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSelectedImageBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         pictureDao = parentActivity.db.pictureDao()
-        var selectedImage = pictureDao.findByDate(picture.name)
+        val selectedImage = pictureDao.findByDate(picture.name)
         binding.selectedImageName.text = selectedImage.name
         binding.selectedImageWeight.text = "Weight: " + selectedImage.weight + "Kg"
-        binding.imageView.setImageBitmap(StringToBitMap(selectedImage.imageData))
+        binding.imageView.setImageBitmap(stringToBitMap(selectedImage.imageData))
         return binding.root
     }
 
-    fun StringToBitMap(encodedString: String?): Bitmap? {
+    private fun stringToBitMap(encodedString: String?): Bitmap? {
         return try {
             val encodeByte: ByteArray = Base64.decode(encodedString, Base64.DEFAULT)
             BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size)
