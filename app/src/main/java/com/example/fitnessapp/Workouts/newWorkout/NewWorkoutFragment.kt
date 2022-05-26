@@ -51,7 +51,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
         if(workoutToEdit.name != ""){
             binding.workoutTitle.setText(workoutToEdit.name)
             val input: String = workoutToEdit.exersicesId
-            var result = input.split(",").map { it.trim() }
+            val result = input.split(",").map { it.trim() }
             val resultInt = result.map { it.toInt() }.toIntArray()
 
             var db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase.db").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")

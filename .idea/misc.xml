@@ -3,42 +3,50 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.132" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/drawable/afronding_xml.xml" value="0.121" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/drawable/rounded_button.xml" value="0.12" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/custom_workout.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/default_workout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workouts.xml" value="0.25" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workouts_new_workout.xml" value="0.25" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/fragment_new_progres_picture.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/fragment_progress_picture_gallery.xml" value="0.264" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/fragment_selected_image.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/fragment_workout_display.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/picture.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/jonas/Documents/AndroidStudioProjects/APPDEV-FitnessApp/app/src/main/res/layout/rounded_button.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/afronding_xml.xml" value="0.115" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/custom_border.xml" value="0.115" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_all_workouts.xml" value="0.2555" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_custom_workout.xml" value="0.132" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_customlauncher_foreground.xml" value="0.1255" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_excercises_xml.xml" value="0.2555" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_exercises_xml.xml" value="0.1255" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_info.xml" value="0.1255" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2555" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_new_workout.xml" value="0.124" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/rounded_button.xml" value="0.133" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+<<<<<<< HEAD
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/custom_exercise.xml" value="0.536" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/custom_workout.xml" value="0.4" />
+=======
+        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/custom_workout.xml" value="0.264" />
+>>>>>>> a88b0d5461f8ab439a1acee7f292dbf647efff9a
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/default_workout.xml" value="0.25" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/excercise.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/exercise.xml" value="0.4" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_all_workouts.xml" value="0.2" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workout_main.xml" value="0.24230072463768115" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workouts.xml" value="0.264" />
+        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workouts.xml" value="0.24230072463768115" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workouts_main.xml" value="0.1609375" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workouts_new_workout.xml" value="0.2" />
+        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workouts_new_workout.xml" value="0.21920289855072464" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_excercises.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_exercises.xml" value="0.23278985507246377" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_new_progres_picture.xml" value="0.264" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_new_workout.xml" value="0.264" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_progress_picture_gallery.xml" value="0.2" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_selected_image.xml" value="0.17291666666666666" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_workout_display.xml" value="0.25" />
+        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_progress_picture_gallery.xml" value="0.1" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/nav_header.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/picture.xml" value="0.1" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/workout.xml" value="0.2" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/menu/drawer_menu.xml" value="0.25" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/mipmap-anydpi-v26/ic_customlauncher.xml" value="0.132" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/mipmap-anydpi-v26/ic_customlauncher_round.xml" value="0.132" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1375" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1375" />
         <entry key="..\:/Users/ruben/Documents/school/School 2021-2022/android studio/FitnessApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
