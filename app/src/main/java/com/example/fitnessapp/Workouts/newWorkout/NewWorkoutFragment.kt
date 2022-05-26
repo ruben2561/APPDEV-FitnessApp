@@ -46,14 +46,13 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCustomWorkoutsNewWorkoutBinding.inflate(layoutInflater)
-
+        parentActivity = activity as MainActivity
         // this takes the optional parameter and takes the title and exercises
         if(workoutToEdit.name != ""){
             binding.workoutTitle.setText(workoutToEdit.name)
             val input: String = workoutToEdit.exersicesId
             val result = input.split(",").map { it.trim() }
             val resultInt = result.map { it.toInt() }.toIntArray()
-            parentActivity = activity as MainActivity
             var exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
             var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
 
