@@ -32,7 +32,9 @@ class NewProgressPictureFragment : Fragment() {
     private lateinit var snapshot: ImageView
     private lateinit var parentActivity: MainActivity
     private lateinit var pictureDao: PictureDao
+    private lateinit var tempBitmap: Bitmap
     private var pictureList: MutableList<Picture> = mutableListOf()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +45,9 @@ class NewProgressPictureFragment : Fragment() {
         pictureDao = parentActivity.db.pictureDao()
         binding = FragmentNewProgresPictureBinding.inflate(inflater)
         snapshot = binding.foto1
-        binding.foto.setOnClickListener(this::tryToMakeSnapshot)
+
+        binding.foto1.setOnClickListener(this::tryToMakeSnapshot)
+
         binding.btnToGallery.setOnClickListener {
             val fragment: Fragment = ProgressPictureGalleryFragment()
             val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
@@ -64,14 +68,25 @@ class NewProgressPictureFragment : Fragment() {
 
         pictureResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
             // photo taken!
-            snapshot.setImageBitmap(it)
-            val tempDate = DateFormat.format("dd-MM-yyyy", Date())
-            val tempWeight = binding.textViewWeight.text.toString()
-            val tempPicture = Picture(tempDate.toString(), BitMapToString(it), tempWeight)
-            /*var tempDate = DateFormat.format("dd-MM-yyyy\nHH.mm.ss", Date()).toString()
-            val tempPicture = Picture(tempDate, BitMapToString(it))*/
-            pictureDao.insert(tempPicture)
+            tempBitmap = it
         }
+
+        binding.savePhoto.setOnClickListener {
+            if(binding.editTextWeight.text.toString() != "" && tempBitmap != null){
+                val tempDate = DateFormat.format("dd-MM-yyyy", Date())
+                val tempWeight = binding.editTextWeight.text.toString()
+                val tempPicture = Picture(tempDate.toString(), BitMapToString(tempBitmap), tempWeight)
+                /*var tempDate = DateFormat.format("dd-MM-yyyy\nHH.mm.ss", Date()).toString()
+                val tempPicture = Picture(tempDate, BitMapToString(it))*/
+                pictureDao.insert(tempPicture)
+                Snackbar.make(binding.root, "Progress Picture Saved", Snackbar.LENGTH_SHORT).show()
+            }
+            else{
+                Snackbar.make(binding.root, "Take a picture and enter weight", Snackbar.LENGTH_SHORT).show()
+            }
+
+        }
+
         return binding.root
     }
 

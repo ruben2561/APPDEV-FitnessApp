@@ -8,24 +8,6 @@
     android:background="@color/blue_green">
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/foto"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/rounded_button"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:onClick="onclick2"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/foto1" />
-
     <ImageView
         android:id="@+id/foto1"
         android:layout_width="0dp"
@@ -38,24 +20,41 @@
         android:background="@drawable/afronding_xml"
         android:backgroundTint="@color/midnight_blue"
         android:clipToOutline="true"
-        app:layout_constraintBottom_toTopOf="@+id/foto"
+        app:layout_constraintBottom_toTopOf="@+id/savePhoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnToGallery"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
+        android:id="@+id/savePhoto"
+        android:layout_width="125dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/baby_blue"
-        android:text="All Pictures"
-        app:layout_constraintBottom_toBottomOf="@+id/foto"
-        app:layout_constraintEnd_toEndOf="@+id/foto1"
-        app:layout_constraintStart_toEndOf="@+id/foto"
-        app:layout_constraintTop_toTopOf="@+id/foto" />
+        android:gravity="center|center_horizontal|center_vertical"
+        android:onClick="onclick2"
+        android:text="Save"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnToGallery"
+        android:layout_width="125dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/baby_blue"
+        android:text="Gallery"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/savePhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/savePhoto" />
 
     <TextView
         android:id="@+id/textViewWeight"
@@ -68,8 +67,8 @@
         app:layout_constraintTop_toBottomOf="@+id/foto1" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
+        android:id="@+id/editTextWeight"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter Weight"
@@ -78,5 +77,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewWeight"
         app:layout_constraintStart_toEndOf="@+id/textViewWeight"
         app:layout_constraintTop_toTopOf="@+id/textViewWeight" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap to take picture"
+        app:layout_constraintBottom_toBottomOf="@+id/foto1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/foto1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

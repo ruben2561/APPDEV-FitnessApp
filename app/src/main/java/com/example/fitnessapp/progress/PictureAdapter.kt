@@ -44,6 +44,7 @@ class PictureAdapter(private var items: List<Picture>, private var onItemClickLi
 
         fun bind(currentPicture: Picture) {
             itemView.apply { findViewById<TextView>(R.id.txtDate).text = currentPicture.name }
+            itemView.apply { findViewById<TextView>(R.id.txtWeight).text = "Weight: " + currentPicture.weight + "Kg"}
             itemView.apply {
                 findViewById<ImageView>(R.id.galleryPicture).setImageBitmap(StringToBitMap(currentPicture.imageData))
             }
