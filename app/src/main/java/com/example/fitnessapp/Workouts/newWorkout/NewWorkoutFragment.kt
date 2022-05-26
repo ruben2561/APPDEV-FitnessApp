@@ -53,7 +53,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             val input: String = workoutToEdit.exersicesId
             val result = input.split(",").map { it.trim() }
             val resultInt = result.map { it.toInt() }.toIntArray()
-
+            parentActivity = activity as MainActivity
             var exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
             var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
 
