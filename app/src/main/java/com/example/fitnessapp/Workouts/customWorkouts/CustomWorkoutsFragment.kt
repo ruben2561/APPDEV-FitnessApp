@@ -25,7 +25,6 @@ import com.google.android.material.snackbar.Snackbar
 class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListener{
 
     private lateinit var binding: FragmentCustomWorkoutsBinding
-    lateinit var db: GymBuddyDatabase
     lateinit var customWorkoutDao: CustomWorkoutDao
     lateinit var customWorkout: MutableList<CustomWorkout>
     private lateinit var parentActivity: MainActivity
@@ -78,8 +77,7 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         val snackbar = Snackbar
             .make(this.requireView(), "Selected: " + custom.name +". Confirm delete?", Snackbar.LENGTH_LONG)
             .setAction("YES") {
-                db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()  //
-                customWorkoutDao = db.customWorkoutDao()
+                customWorkoutDao = parentActivity.db.customWorkoutDao()
                 customWorkoutDao.delete(customWorkout)
                 var customWorkout = customWorkoutDao.getAll()
                 binding.rvwWorkouts.adapter = CustomWorkoutAdapter(customWorkout, this)                                                   // adds the excercises list in the recyclerview
@@ -103,8 +101,7 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         val input: String = customWorkout.exersicesId
         var result = input.split(",").map { it.trim() }
         val resultInt = result.map { it.toInt() }.toIntArray()
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase.db").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")
-        val exerciseDao = db.exerciseDao()                                                                                                               //
+        val exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
         var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
         //var stringToSend: String = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
         var stringToSend: String = customWorkout.name + "\n" + "\n"

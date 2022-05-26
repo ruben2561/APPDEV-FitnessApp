@@ -9,16 +9,17 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
+import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.databinding.FragmentWorkoutDisplayBinding
 import com.example.fitnessapp.exercises.Exercise
 import com.example.fitnessapp.exercises.ExerciseDao
 
 class WorkoutDisplayFragment(exercisesIds: String, workoutTitle: String) : Fragment(){
     private lateinit var binding: FragmentWorkoutDisplayBinding
-    lateinit var db: GymBuddyDatabase
     lateinit var exerciseDao: ExerciseDao
     var ids = exercisesIds
     var workoutTitle = workoutTitle
+    lateinit var parentActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,13 +27,11 @@ class WorkoutDisplayFragment(exercisesIds: String, workoutTitle: String) : Fragm
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentWorkoutDisplayBinding.inflate(layoutInflater)
-
+        parentActivity = activity as MainActivity
         val input: String = ids
         var result = input.split(",").map { it.trim() }
         val resultInt = result.map { it.toInt() }.toIntArray()
-
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase.db").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")
-        exerciseDao = db.exerciseDao()                                                                                                               //
+        exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
         var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)                                                                              // gets all database items and puts it in a list
 
         binding.rvExercises.adapter = WorkoutDisplayAdapter(exercises)                                                  // adds the exercises list in the recyclerview

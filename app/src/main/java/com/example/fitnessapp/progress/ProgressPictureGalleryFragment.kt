@@ -18,7 +18,6 @@ import com.google.android.material.snackbar.Snackbar
 class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentProgressPictureGalleryBinding
-    lateinit var db: GymBuddyDatabase
     private lateinit var parentActivity: MainActivity
     private lateinit var pictureDao: PictureDao
     private lateinit var pictureList: MutableList<Picture>

@@ -1,15 +1,5 @@
 package com.example.fitnessapp.Workouts.newWorkout
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+class CustomExercise(var name: String, var muscleGroup: String, var repsAndWeight: String) {
 
-@Entity
-
-data class CustomExercise(
-
-    @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "muscleGroup") var muscleGroup: String,
-    @ColumnInfo(name = "repsAndWeight") var RepsAndWeight: String,
-    @PrimaryKey (autoGenerate = true) val id: Int = 0
-)
+}

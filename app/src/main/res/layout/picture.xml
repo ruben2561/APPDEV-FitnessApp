@@ -24,6 +24,19 @@
         android:background="@color/midnight_blue"
         android:gravity="center"
         android:text="Date"
+        app:layout_constraintBottom_toTopOf="@id/txtWeight"
+        app:layout_constraintEnd_toEndOf="@id/galleryPicture"
+        app:layout_constraintStart_toStartOf="@id/galleryPicture"
+        app:layout_constraintTop_toBottomOf="@+id/galleryPicture" />
+
+    <TextView
+        android:id="@+id/txtWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/midnight_blue"
+        android:gravity="center"
+        android:text="Weight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/galleryPicture"
         app:layout_constraintStart_toStartOf="@id/galleryPicture"

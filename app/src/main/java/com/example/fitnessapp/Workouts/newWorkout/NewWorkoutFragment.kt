@@ -29,7 +29,7 @@ import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 
-class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0)) : Fragment(), NewWorkoutAdapter.OnItemClickListener {
+class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","", 0)) : Fragment(), NewWorkoutAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentCustomWorkoutsNewWorkoutBinding
     private lateinit var parentActivity: MainActivity
@@ -54,8 +54,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
             val result = input.split(",").map { it.trim() }
             val resultInt = result.map { it.toInt() }.toIntArray()
 
-            var db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase.db").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")
-            var exerciseDao = db.exerciseDao()                                                                                                               //
+            var exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
             var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
 
             choisesList.addAll(exercises)
@@ -77,8 +76,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
 
             else if(toggleState == 1){
                 binding.exerciseFilter.visibility = View.VISIBLE
-                val db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/exercisedatabase-db.db").allowMainThreadQueries().build()
-                val exerciseDao = db.exerciseDao()                                                                                                           //
+                val exerciseDao = parentActivity.db.exerciseDao()                                                                                                           //
                 recyclerList = exerciseDao.getAll()
                 binding.rvwExercises.adapter = NewWorkoutAdapter(recyclerList, this)                                              // adds the exercises list in the recyclerview
                 binding.rvwExercises.layoutManager = LinearLayoutManager(context)                                        // chooses what type of layout
@@ -106,7 +104,8 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
             if(!name.contentEquals("") && exercisesIds != ""){
                 val tempDate = DateFormat.format("dd-MM-yyyy", Date())
                 customWorkoutDao.delete(workoutToEdit)
-                customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, tempDate.toString(),0))
+                var repsAndWeight = "0,0,0,0,0,0"
+                customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, tempDate.toString(), repsAndWeight, 0))
                 Toast.makeText(this.context, "Workout saved!", Toast.LENGTH_LONG).show()
 
                 val fragment: Fragment = CustomWorkoutsFragment()
@@ -127,8 +126,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
                 override fun afterTextChanged(s: Editable) {
                     filteredList = ArrayList()
-                    val db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/exercisedatabase-db.db").allowMainThreadQueries().build()
-                    val exerciseDao = db.exerciseDao()
+                    val exerciseDao = parentActivity.db.exerciseDao()
                     var tempList = exerciseDao.getAll()
                     for (item in tempList) {
                         if (item.name.lowercase().contains(s.toString().lowercase())) {
@@ -145,8 +143,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
 
                 override fun OnClick(position: Int) {
                     var filteredExercisename = filteredList[position].name
-                    val db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/exercisedatabase-db.db").allowMainThreadQueries().build()
-                    val exerciseDao = db.exerciseDao()
+                    val exerciseDao = parentActivity.db.exerciseDao()
                     showAddedExercise(filteredExercisename)
                     choisesList.add(exerciseDao.findByName(filteredExercisename))
                     if(!choisesList.contains(exerciseDao.findByName(filteredExercisename))){
@@ -165,8 +162,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
 
     override fun OnClick(position: Int) {
         if( toggleState == 0){
-            val db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/exercisedatabase-db.db").allowMainThreadQueries().build()
-            val exerciseDao = db.exerciseDao()
+            val exerciseDao = parentActivity.db.exerciseDao()
             showAddedExercise(exerciseDao.loadByIds(position+1).name)
             if(!choisesList.contains(exerciseDao.loadByIds(position+1))){
                 choisesList.add(exerciseDao.loadByIds(position+1))
@@ -188,8 +184,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
     }
 
     fun showAddedExercise(name: String){
-        val db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/exercisedatabase-db.db").allowMainThreadQueries().build()
-        val exerciseDao = db.exerciseDao()
+        val exerciseDao = parentActivity.db.exerciseDao()
         val toast = Toast.makeText(this.context, name + " added to routine", Toast.LENGTH_SHORT)
         toast.show()
 

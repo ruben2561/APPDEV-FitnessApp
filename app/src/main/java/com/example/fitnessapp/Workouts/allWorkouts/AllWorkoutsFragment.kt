@@ -19,7 +19,6 @@ import com.example.fitnessapp.databinding.FragmentAllWorkoutsBinding
 class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
 
     private lateinit var binding: FragmentAllWorkoutsBinding
-    lateinit var db: GymBuddyDatabase
     lateinit var defaultWorkoutDao: DefaultWorkoutDao
     lateinit var defaultWorkout: MutableList<DefaultWorkout>
     private lateinit var parentActivity: MainActivity
@@ -56,7 +55,7 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
 
 }
 
-/*workoutDao.insert(listOf(
+/*defaultWorkoutDao.insert(listOf(
             DefaultWorkout("Biceps Workout", "10,208,200", 0),
             DefaultWorkout("Back Workout", "888,103,861,358", 0),
             DefaultWorkout("Triceps Workout", "236,152,851,198", 0),
