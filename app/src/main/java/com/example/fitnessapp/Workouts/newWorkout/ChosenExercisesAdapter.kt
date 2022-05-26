@@ -10,7 +10,7 @@ import com.example.fitnessapp.R
 import com.example.fitnessapp.exercises.Exercise
 
 
-class ChosenExercisesAdapter(private var items: List<CustomExercise>, private var onItemClickListener: OnItemClickListener):
+class ChosenExercisesAdapter(private var items: List<Exercise>, private var onItemClickListener: OnItemClickListener):
     RecyclerView.Adapter<ChosenExercisesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -40,7 +40,7 @@ class ChosenExercisesAdapter(private var items: List<CustomExercise>, private va
             }
         }
 
-        fun bind(exercise: CustomExercise){
+        fun bind(exercise: Exercise){
             itemView.apply{findViewById<TextView>(R.id.txtExerciseName).text = exercise.name}
             itemView.apply{findViewById<TextView>(R.id.txtMuscleGroup).text = exercise.muscleGroup}
             /*itemView.apply{exercise.repsAndWeight = findViewById<TextView>(R.id.reps1).text.toString()}

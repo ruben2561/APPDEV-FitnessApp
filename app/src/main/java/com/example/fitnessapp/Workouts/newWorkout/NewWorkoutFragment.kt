@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
@@ -29,7 +30,8 @@ import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 
-class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","", 0)) : Fragment(), NewWorkoutAdapter.OnItemClickListener {
+class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","", 0)):
+    Fragment(), NewWorkoutAdapter.OnItemClickListener, ChosenExercisesAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentCustomWorkoutsNewWorkoutBinding
     private lateinit var parentActivity: MainActivity
@@ -55,20 +57,19 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             val resultInt = result.map { it.toInt() }.toIntArray()
             var exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
             var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
-
             choisesList.addAll(exercises)
-
             recyclerList = choisesList
-            binding.rvwExercises.adapter = NewWorkoutAdapter(recyclerList, this)
+            binding.rvwExercises.adapter = ChosenExercisesAdapter(recyclerList, this)
             binding.rvwExercises.layoutManager = LinearLayoutManager(context)
         }
+        binding.rvwExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         binding.addExercise.setOnClickListener{
 
             if(toggleState == 0){
                 binding.exerciseFilter.visibility = View.INVISIBLE
                 recyclerList = choisesList
-                binding.rvwExercises.adapter = NewWorkoutAdapter(recyclerList, this)
+                binding.rvwExercises.adapter = ChosenExercisesAdapter(recyclerList, this)
                 binding.rvwExercises.layoutManager = LinearLayoutManager(context)
                 toggleState = 1
             }
