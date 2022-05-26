@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private final var drawer: DrawerLayout? = null
     private lateinit var binding: ActivityMainBinding
-    lateinit var db: GymBuddyDatabase
+    private lateinit var db:GymBuddyDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
