@@ -66,7 +66,8 @@ class NewProgressPictureFragment : Fragment() {
             // photo taken!
             snapshot.setImageBitmap(it)
             val tempDate = DateFormat.format("dd-MM-yyyy", Date())
-            val tempPicture = Picture(tempDate.toString(), BitMapToString(it))
+            val tempWeight = binding.textViewWeight.text.toString()
+            val tempPicture = Picture(tempDate.toString(), BitMapToString(it), tempWeight)
             pictureDao.insert(tempPicture)
         }
         return binding.root

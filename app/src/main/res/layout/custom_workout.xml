@@ -57,18 +57,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="Making date"
+        android:text="Creation date: "
         android:textColor="@color/baby_blue"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/txtNumberOfExercises" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/shareButton"
-        style="@style/w"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginEnd="5dp"
+        android:backgroundTint="@color/transparant"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

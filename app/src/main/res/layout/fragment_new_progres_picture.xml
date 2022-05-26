@@ -57,4 +57,25 @@
         app:layout_constraintStart_toEndOf="@+id/foto"
         app:layout_constraintTop_toTopOf="@+id/foto" />
 
+    <TextView
+        android:id="@+id/textViewWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight: "
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/foto1"
+        tools:layout_editor_absoluteY="563dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Weight"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewWeight"
+        app:layout_constraintStart_toEndOf="@+id/textViewWeight"
+        app:layout_constraintTop_toTopOf="@+id/textViewWeight" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

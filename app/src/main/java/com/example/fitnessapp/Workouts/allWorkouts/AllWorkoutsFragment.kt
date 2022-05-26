@@ -57,12 +57,12 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
 }
 
 /*workoutDao.insert(listOf(
-            Workout("Biceps", "10,208,200", 0),
-            Workout("Back", "888,103,861,358", 0),
-            Workout("Triceps", "236,152,851,198", 0),
-            Workout("Chest", "369,883,590", 0),
-            Workout("Legs", "74,474,73,162,579", 0),
-            Workout("Shoulders", "270,960,150,293", 0),
-            Workout("Abs", "614,216,640,564", 0),
-            Workout("Forearms", "808,895", 0)))
+            DefaultWorkout("Biceps Workout", "10,208,200", 0),
+            DefaultWorkout("Back Workout", "888,103,861,358", 0),
+            DefaultWorkout("Triceps Workout", "236,152,851,198", 0),
+            DefaultWorkout("Chest Workout", "369,883,590", 0),
+            DefaultWorkout("Legs Workout", "74,474,73,162,579", 0),
+            DefaultWorkout("Shoulders Workout", "270,960,150,293", 0),
+            DefaultWorkout("Abs Workout", "614,216,640,564", 0),
+            DefaultWorkout("Forearms Workout", "808,895", 0)))
             */

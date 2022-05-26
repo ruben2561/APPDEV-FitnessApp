@@ -15,7 +15,7 @@ class NewWorkoutAdapter(private var items: List<Exercise>, private var onItemCli
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.exercise, parent, false)
+        val view = layoutInflater.inflate(R.layout.default_exercise, parent, false)
         return ViewHolder(view, onItemClickListener)
     }
 
@@ -30,9 +30,11 @@ class NewWorkoutAdapter(private var items: List<Exercise>, private var onItemCli
 
         init{
             itemView.setOnClickListener{
-                //val snack: String = "item position clicked: $adapterPosition"
-                //Snackbar.make(itemView, snack, Snackbar.LENGTH_SHORT).show()
                 onItemClickListener.OnClick(adapterPosition)
+            }
+            itemView.setOnLongClickListener{
+                onItemClickListener.OnLongClick(adapterPosition)
+                return@setOnLongClickListener true
             }
         }
 
@@ -44,6 +46,7 @@ class NewWorkoutAdapter(private var items: List<Exercise>, private var onItemCli
 
     interface OnItemClickListener{
         fun OnClick(position: Int)
+        fun OnLongClick(position: Int)
     }
 
 

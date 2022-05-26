@@ -1,5 +1,6 @@
 package com.example.fitnessapp.Workouts.customWorkouts
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +15,12 @@ import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
+import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutAdapter
 import com.example.fitnessapp.Workouts.workoutDisplay.WorkoutDisplayFragment
 import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsBinding
+import com.example.fitnessapp.exercises.Exercise
+import com.google.android.material.snackbar.Snackbar
 
 class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListener{
 
@@ -70,13 +74,21 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
     }
 
     override fun DeleteWorkout(customWorkout: CustomWorkout) {
-        Toast.makeText(this.context, customWorkout.name + " deleted", Toast.LENGTH_SHORT).show()
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()  //
-        customWorkoutDao = db.customWorkoutDao()
-        customWorkoutDao.delete(customWorkout)
-        var customWorkout = customWorkoutDao.getAll()
-        binding.rvwWorkouts.adapter = CustomWorkoutAdapter(customWorkout, this)                                                   // adds the excercises list in the recyclerview
-        binding.rvwWorkouts.layoutManager = LinearLayoutManager(context)
+        val custom = customWorkout
+        val snackbar = Snackbar
+            .make(this.requireView(), "Selected: " + custom.name +". Confirm delete?", Snackbar.LENGTH_LONG)
+            .setAction("YES") {
+                db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").allowMainThreadQueries().build()  //
+                customWorkoutDao = db.customWorkoutDao()
+                customWorkoutDao.delete(customWorkout)
+                var customWorkout = customWorkoutDao.getAll()
+                binding.rvwWorkouts.adapter = CustomWorkoutAdapter(customWorkout, this)                                                   // adds the excercises list in the recyclerview
+                binding.rvwWorkouts.layoutManager = LinearLayoutManager(context)
+                Snackbar.make(this.requireView(), "" + custom.name + " successfully deleted.", Snackbar.LENGTH_SHORT).show()
+            }
+        snackbar.show()
+
+
     }
 
     override fun EditWorkout(customWorkout: CustomWorkout) {
@@ -85,5 +97,36 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         val containerId = R.id.fragment_container
         fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
+    }
+
+    override fun ShareWorkout(customWorkout: CustomWorkout){
+        val input: String = customWorkout.exersicesId
+        var result = input.split(",").map { it.trim() }
+        val resultInt = result.map { it.toInt() }.toIntArray()
+        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase.db").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")
+        val exerciseDao = db.exerciseDao()                                                                                                               //
+        var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
+        //var stringToSend: String = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+        var stringToSend: String = customWorkout.name + "\n" + "\n"
+
+        for (item in exercises){
+            stringToSend = stringToSend + item.name + "\n"
+        }
+
+        /*var i = 0
+        while(i <= 4800){
+            stringToSend = stringToSend + "ok\n" //"\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+            i++
+        }
+        stringToSend = stringToSend + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"*/
+
+
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, stringToSend)
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
     }
 }

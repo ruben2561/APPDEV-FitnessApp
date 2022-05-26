@@ -10,5 +10,6 @@ data class CustomWorkout(
 
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "exersices id") var exersicesId: String,
+    @ColumnInfo(name = "creation date") var creationDate: String,
     @PrimaryKey (autoGenerate = true) val id: Int = 0
 )

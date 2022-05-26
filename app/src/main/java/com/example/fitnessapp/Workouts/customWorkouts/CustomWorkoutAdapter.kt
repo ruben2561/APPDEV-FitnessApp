@@ -43,6 +43,9 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
             itemView.apply { findViewById<ImageButton>(R.id.editButton).setOnClickListener{
                 onItemClickListener.EditWorkout(customWorkout)
             }}
+            itemView.apply { findViewById<ImageButton>(R.id.shareButton).setOnClickListener{
+                onItemClickListener.ShareWorkout(customWorkout)
+            }}
         }
 
         fun bind(customWorkout: CustomWorkout) {
@@ -53,6 +56,8 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
                 findViewById<TextView>(R.id.txtNumberOfExercises).text =
                     "Excercises: " + result.size
             }
+            itemView.apply { findViewById<TextView>(R.id.dateOfMaking).text = customWorkout.creationDate }
+
         }
     }
 
@@ -61,5 +66,6 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
         fun OnLongClick(position: Int)
         fun DeleteWorkout(customWorkout: CustomWorkout)
         fun EditWorkout(customWorkout: CustomWorkout)
+        fun ShareWorkout(customWorkout: CustomWorkout)
     }
 }

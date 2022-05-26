@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.fitnessapp.GymBuddyDatabase
@@ -21,9 +23,13 @@ import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
 import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.example.fitnessapp.exercises.Exercise
 import com.example.fitnessapp.databinding.FragmentCustomWorkoutsNewWorkoutBinding
+import com.example.fitnessapp.progress.PictureAdapter
+import com.google.android.material.snackbar.Snackbar
 import org.w3c.dom.Text
+import java.util.*
+import kotlin.collections.ArrayList
 
-class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","",0)) : Fragment(), NewWorkoutAdapter.OnItemClickListener {
+class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0)) : Fragment(), NewWorkoutAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentCustomWorkoutsNewWorkoutBinding
     private lateinit var parentActivity: MainActivity
@@ -41,6 +47,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","",0)) 
     ): View? {
         binding = FragmentCustomWorkoutsNewWorkoutBinding.inflate(layoutInflater)
 
+        // this takes the optional parameter and takes the title and exercises
         if(workoutToEdit.name != ""){
             binding.workoutTitle.setText(workoutToEdit.name)
             val input: String = workoutToEdit.exersicesId
@@ -97,8 +104,9 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","",0)) 
                 }
             }
             if(!name.contentEquals("") && exercisesIds != ""){
+                val tempDate = DateFormat.format("dd-MM-yyyy", Date())
                 customWorkoutDao.delete(workoutToEdit)
-                customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, 0))
+                customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, tempDate.toString(),0))
                 Toast.makeText(this.context, "Workout saved!", Toast.LENGTH_LONG).show()
 
                 val fragment: Fragment = CustomWorkoutsFragment()
@@ -145,6 +153,10 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","",0)) 
                         choisesList.add(exerciseDao.findByName(filteredExercisename))
                     }
                 }
+
+                override fun OnLongClick(position: Int) {
+                    TODO("Not yet implemented")
+                }
             })
         }
 
@@ -152,12 +164,27 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","",0)) 
     }
 
     override fun OnClick(position: Int) {
-        val db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/exercisedatabase-db.db").allowMainThreadQueries().build()
-        val exerciseDao = db.exerciseDao()
-        showAddedExercise(exerciseDao.loadByIds(position+1).name)
-        if(!choisesList.contains(exerciseDao.loadByIds(position+1))){
-            choisesList.add(exerciseDao.loadByIds(position+1))
+        if( toggleState == 0){
+            val db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/exercisedatabase-db.db").allowMainThreadQueries().build()
+            val exerciseDao = db.exerciseDao()
+            showAddedExercise(exerciseDao.loadByIds(position+1).name)
+            if(!choisesList.contains(exerciseDao.loadByIds(position+1))){
+                choisesList.add(exerciseDao.loadByIds(position+1))
+            }
         }
+    }
+
+    override fun OnLongClick(position: Int) {
+        val snackbar = Snackbar
+            .make(this.requireView(), "Selected: " + position +". Confirm delete?", Snackbar.LENGTH_LONG)
+            .setAction("YES") {
+                choisesList.removeAt(position)
+                recyclerList = choisesList
+                binding.rvwExercises.adapter = NewWorkoutAdapter(recyclerList, this)
+                binding.rvwExercises.layoutManager = LinearLayoutManager(context)
+                Snackbar.make(this.requireView(), "Picture successfully deleted.", Snackbar.LENGTH_SHORT).show()
+            }
+        snackbar.show()
     }
 
     fun showAddedExercise(name: String){
