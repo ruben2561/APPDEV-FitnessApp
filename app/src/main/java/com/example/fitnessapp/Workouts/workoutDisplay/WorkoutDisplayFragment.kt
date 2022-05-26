@@ -31,7 +31,7 @@ class WorkoutDisplayFragment(exercisesIds: String, workoutTitle: String) : Fragm
         var result = input.split(",").map { it.trim() }
         val resultInt = result.map { it.toInt() }.toIntArray()
 
-        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase.db").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")
+        db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")
         exerciseDao = db.exerciseDao()                                                                                                               //
         var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)                                                                              // gets all database items and puts it in a list
 

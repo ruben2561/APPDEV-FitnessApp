@@ -29,7 +29,7 @@ import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 
-class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0)) : Fragment(), NewWorkoutAdapter.OnItemClickListener {
+class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","", 0)) : Fragment(), NewWorkoutAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentCustomWorkoutsNewWorkoutBinding
     private lateinit var parentActivity: MainActivity
@@ -54,7 +54,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
             val result = input.split(",").map { it.trim() }
             val resultInt = result.map { it.toInt() }.toIntArray()
 
-            var db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase.db").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build() // .createFromAsset("databases/exercisedatabase-db.db")
+            var db = Room.databaseBuilder(requireContext(), GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build()
             var exerciseDao = db.exerciseDao()                                                                                                               //
             var exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
 
@@ -106,7 +106,8 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","",0
             if(!name.contentEquals("") && exercisesIds != ""){
                 val tempDate = DateFormat.format("dd-MM-yyyy", Date())
                 customWorkoutDao.delete(workoutToEdit)
-                customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, tempDate.toString(),0))
+                var repsAndWeight = "0,0,0,0,0,0"
+                customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, tempDate.toString(), repsAndWeight, 0))
                 Toast.makeText(this.context, "Workout saved!", Toast.LENGTH_LONG).show()
 
                 val fragment: Fragment = CustomWorkoutsFragment()
