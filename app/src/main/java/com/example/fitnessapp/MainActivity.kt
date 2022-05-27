@@ -4,7 +4,7 @@ package com.example.fitnessapp
  * sources:
  * making recyclerview clickable: https://www.youtube.com/watch?v=NENEcwihMCo
  * sharing data: https://developer.android.com/training/sharing/send
- *
+ * Accessing description through JSoup: https://www.youtube.com/watch?v=PgkNC7AneKI&t=551s
  *
  *
  */
