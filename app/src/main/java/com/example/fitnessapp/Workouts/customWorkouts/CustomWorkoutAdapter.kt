@@ -30,13 +30,13 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
         lateinit var customWorkout: CustomWorkout
         init {
             itemView.setOnClickListener {
-                onItemClickListener.onClick(customWorkout.exersicesId, customWorkout.name)
+                onItemClickListener.onClick(customWorkout)
             }
-
             itemView.setOnLongClickListener {
                 onItemClickListener.onLongClick(adapterPosition)
                 return@setOnLongClickListener true
             }
+
             itemView.apply { findViewById<ImageButton>(R.id.deleteButton).setOnClickListener{
                 onItemClickListener.deleteWorkout(customWorkout)
             }}
@@ -57,12 +57,13 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
                     "Exercises: " + result.size
             }
             itemView.apply { findViewById<TextView>(R.id.dateOfMaking).text = customWorkout.creationDate }
+            itemView.apply { findViewById<TextView>(R.id.weights).text = customWorkout.repsAndWeight }
 
         }
     }
 
     interface OnItemClickListener{
-        fun onClick(ids: String, title: String)
+        fun onClick(customWorkout: CustomWorkout)
         fun onLongClick(position: Int)
         fun deleteWorkout(customWorkout: CustomWorkout)
         fun editWorkout(customWorkout: CustomWorkout)

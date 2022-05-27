@@ -39,7 +39,7 @@
         android:gravity="center_horizontal"
         android:text="Reps"
         android:textColor="@color/baby_blue"
-        app:layout_constraintBottom_toTopOf="@+id/reps1"
+        app:layout_constraintBottom_toTopOf="@+id/repsDisplay1"
         app:layout_constraintStart_toStartOf="@+id/txtMuscleGroup" />
 
     <TextView
@@ -50,70 +50,68 @@
         android:gravity="center_horizontal"
         android:text="Kg(s)"
         android:textColor="@color/baby_blue"
-        app:layout_constraintBottom_toTopOf="@+id/weight1"
+        app:layout_constraintBottom_toTopOf="@+id/weightDisplay1"
         app:layout_constraintStart_toEndOf="@+id/textReps" />
 
-    <EditText
-        android:id="@+id/reps1"
+    <TextView
+        android:id="@+id/repsDisplay1"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:ems="10"
-        android:gravity="center_horizontal"
+        android:gravity="center|center_horizontal"
         android:inputType="numberDecimal"
         android:text="12"
         android:textColor="@color/baby_blue"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/reps2"
+        app:layout_constraintBottom_toTopOf="@id/repsDisplay2"
         app:layout_constraintStart_toStartOf="@+id/txtMuscleGroup" />
 
-    <EditText
-        android:id="@+id/weight1"
+    <TextView
+        android:id="@+id/weightDisplay1"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:ems="10"
-        android:gravity="center_horizontal"
-        android:text="10"
+        android:gravity="center|center_horizontal"
         android:textColor="@color/baby_blue"
         android:textSize="16sp"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@id/weight2"
-        app:layout_constraintStart_toEndOf="@+id/reps1" />
+        app:layout_constraintBottom_toTopOf="@id/weightDisplay2"
+        app:layout_constraintStart_toEndOf="@+id/repsDisplay1" />
 
-    <EditText
-        android:id="@+id/reps2"
+    <TextView
+        android:id="@+id/repsDisplay2"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:ems="10"
-        android:gravity="center_horizontal"
+        android:gravity="center|center_horizontal"
         android:inputType="numberDecimal"
         android:text="12"
         android:textColor="@color/baby_blue"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/reps3"
+        app:layout_constraintBottom_toTopOf="@id/repsDisplay3"
         app:layout_constraintStart_toStartOf="@+id/txtMuscleGroup" />
 
-    <EditText
-        android:id="@+id/weight2"
+    <TextView
+        android:id="@+id/weightDisplay2"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:ems="10"
-        android:gravity="center_horizontal"
-        android:text="10"
+        android:gravity="center|center_horizontal"
         android:textColor="@color/baby_blue"
         android:textSize="16sp"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@id/weight3"
-        app:layout_constraintStart_toEndOf="@+id/reps2" />
+        app:layout_constraintBottom_toTopOf="@id/weightDisplay3"
+        app:layout_constraintStart_toEndOf="@+id/repsDisplay2" />
 
-    <EditText
-        android:id="@+id/reps3"
+    <TextView
+        android:id="@+id/repsDisplay3"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
-        android:gravity="center_horizontal"
+        android:gravity="center|center_horizontal"
         android:inputType="numberDecimal"
         android:text="12"
         android:textColor="@color/baby_blue"
@@ -121,20 +119,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/txtMuscleGroup" />
 
-    <EditText
-        android:id="@+id/weight3"
+    <TextView
+        android:id="@+id/weightDisplay3"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="5dp"
         android:ems="10"
-        android:gravity="center_horizontal"
-        android:text="10"
+        android:gravity="center|center_horizontal"
         android:textColor="@color/baby_blue"
         android:textSize="16sp"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/reps3" />
+        app:layout_constraintStart_toEndOf="@+id/repsDisplay3" />
 
 
 

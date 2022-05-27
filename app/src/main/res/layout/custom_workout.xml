@@ -52,17 +52,6 @@
         app:layout_constraintVertical_bias="0.49"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
-    <TextView
-        android:id="@+id/dateOfMaking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="Creation date: "
-        android:textColor="@color/baby_blue"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/txtNumberOfExercises" />
-
     <ImageButton
         android:id="@+id/shareButton"
         android:layout_width="35dp"
@@ -73,6 +62,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_share" />
+
+    <TextView
+        android:id="@+id/dateOfMaking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Creation date: "
+        android:textColor="@color/baby_blue"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/weights"
+        app:layout_constraintStart_toStartOf="@+id/txtNumberOfExercises" />
+
+    <TextView
+        android:id="@+id/weights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Weights: "
+        android:textColor="@color/baby_blue"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtNumberOfExercises" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

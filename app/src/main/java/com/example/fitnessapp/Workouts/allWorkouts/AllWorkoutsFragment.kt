@@ -41,11 +41,11 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
     }
 
     override fun onClick(ids: String, title: String) {
-        val fragment: Fragment = WorkoutDisplayFragment(ids, title)
+        /*val fragment: Fragment = WorkoutDisplayFragment(ids, title)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         val containerId = R.id.fragment_container
-        fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
+        fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()*/
     }
 
     override fun onLongClick(position: Int) {

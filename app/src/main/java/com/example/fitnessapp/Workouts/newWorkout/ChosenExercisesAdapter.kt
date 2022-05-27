@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.exercises.Exercise
+import java.util.*
 
 
-class ChosenExercisesAdapter(private var items: List<Exercise>, private var onItemClickListener: OnItemClickListener):
+class ChosenExercisesAdapter(private var items: List<CustomExercise>, private var onItemClickListener: OnItemClickListener):
     RecyclerView.Adapter<ChosenExercisesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -40,16 +41,21 @@ class ChosenExercisesAdapter(private var items: List<Exercise>, private var onIt
             }
         }
 
-        fun bind(exercise: Exercise){
-            itemView.apply{findViewById<TextView>(R.id.txtExerciseName).text = exercise.name}
-            itemView.apply{findViewById<TextView>(R.id.txtMuscleGroup).text = exercise.muscleGroup}
-            /*itemView.apply{exercise.repsAndWeight = findViewById<TextView>(R.id.reps1).text.toString()}
-            itemView.apply{exercise.repsAndWeight = findViewById<TextView>(R.id.weight1).text.toString()}
-            itemView.apply{exercise.repsAndWeight = findViewById<TextView>(R.id.reps2).text.toString()}
-            itemView.apply{exercise.repsAndWeight = findViewById<TextView>(R.id.weight2).text.toString()}
-            itemView.apply{exercise.repsAndWeight = findViewById<TextView>(R.id.reps3).text.toString()}
-            itemView.apply{exercise.repsAndWeight = findViewById<TextView>(R.id.weight3).text.toString()}*/
+        fun bind(customExercise: CustomExercise){
+            var listRepsAndWeight = Arrays.asList("","","","","","")
 
+            itemView.apply{findViewById<TextView>(R.id.txtExerciseName).text = customExercise.name}
+            itemView.apply{findViewById<TextView>(R.id.txtMuscleGroup).text = customExercise.muscleGroup}
+
+            itemView.apply{listRepsAndWeight[0] = findViewById<TextView>(R.id.reps1).text.toString()}
+            itemView.apply{listRepsAndWeight[1] = findViewById<TextView>(R.id.weight1).text.toString()}
+            itemView.apply{listRepsAndWeight[2] = findViewById<TextView>(R.id.reps2).text.toString()}
+            itemView.apply{listRepsAndWeight[3] = findViewById<TextView>(R.id.weight2).text.toString()}
+            itemView.apply{listRepsAndWeight[4] = findViewById<TextView>(R.id.reps3).text.toString()}
+            itemView.apply{listRepsAndWeight[5] = findViewById<TextView>(R.id.weight3).text.toString()}
+
+            val separatedSerialNumber = listRepsAndWeight.joinToString (separator = ",") {it}
+            customExercise.repsAndWeight = separatedSerialNumber
         }
 
     }

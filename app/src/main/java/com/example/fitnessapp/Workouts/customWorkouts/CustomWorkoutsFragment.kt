@@ -54,8 +54,8 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         return binding.root
     }
 
-    override fun onClick(ids: String, title: String) {
-        val fragment: Fragment = WorkoutDisplayFragment(ids, title)
+    override fun onClick(customWorkout: CustomWorkout) {
+        val fragment: Fragment = WorkoutDisplayFragment(customWorkout)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         val containerId = R.id.fragment_container

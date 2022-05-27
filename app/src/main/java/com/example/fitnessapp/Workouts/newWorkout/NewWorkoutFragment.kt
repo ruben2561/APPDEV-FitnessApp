@@ -30,7 +30,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
 
     private lateinit var binding: FragmentCustomWorkoutsNewWorkoutBinding
     private lateinit var parentActivity: MainActivity
-
+    var choicesListCustom = ArrayList<CustomExercise>()
     var choicesList = ArrayList<Exercise>()
     var filteredList = ArrayList<Exercise>()
     lateinit var recyclerList: MutableList<Exercise>
@@ -52,9 +52,13 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             val resultInt = result.map { it.toInt() }.toIntArray()
             val exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
             val exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
-            choicesList.addAll(exercises)
+            for(item in exercises){
+                val exer = exerciseDao.findByName(item.name)
+                choicesList.add(exer)
+                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,""))
+            }
             recyclerList = choicesList
-            binding.rvwExercises.adapter = ChosenExercisesAdapter(recyclerList, this)
+            binding.rvwExercises.adapter = ChosenExercisesAdapter(choicesListCustom, this)
             binding.rvwExercises.layoutManager = LinearLayoutManager(context)
         }
         binding.rvwExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
@@ -64,7 +68,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             if(toggleState == 0){
                 binding.exerciseFilter.visibility = View.INVISIBLE
                 recyclerList = choicesList
-                binding.rvwExercises.adapter = ChosenExercisesAdapter(recyclerList, this)
+                binding.rvwExercises.adapter = ChosenExercisesAdapter(choicesListCustom, this)
                 binding.rvwExercises.layoutManager = LinearLayoutManager(context)
                 toggleState = 1
             }
@@ -88,6 +92,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             val customWorkoutDao = parentActivity.db.customWorkoutDao()
             val name = binding.workoutTitle.text.toString()
             var exercisesIds = ""
+            var exercisesRepsAndWeight = ""
             for (item in choicesList){
                 exercisesIds = if (item != choicesList[choicesList.size -1]){
                     exercisesIds + item.id + ","
@@ -95,11 +100,14 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                     exercisesIds + item.id
                 }
             }
+            for(item in choicesListCustom){
+                exercisesRepsAndWeight = exercisesRepsAndWeight + item.repsAndWeight + ","
+            }
+
             if(!name.contentEquals("") && exercisesIds != ""){
                 val tempDate = DateFormat.format("dd-MM-yyyy", Date())
                 customWorkoutDao.delete(workoutToEdit)
-                val repsAndWeight = "0,0,0,0,0,0"
-                customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, tempDate.toString(), repsAndWeight, 0))
+                customWorkoutDao.insertOne(CustomWorkout(name, exercisesIds, tempDate.toString(), exercisesRepsAndWeight, 0))
                 Toast.makeText(this.context, "Workout saved!", Toast.LENGTH_LONG).show()
 
                 val fragment: Fragment = CustomWorkoutsFragment()
@@ -141,7 +149,9 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                     showAddedExercise(filteredExercisename)
                     choicesList.add(exerciseDao.findByName(filteredExercisename))
                     if(!choicesList.contains(exerciseDao.findByName(filteredExercisename))){
-                        choicesList.add(exerciseDao.findByName(filteredExercisename))
+                        val exer = exerciseDao.findByName(filteredExercisename)
+                        choicesList.add(exer)
+                        choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,""))
                     }
                 }
 
@@ -159,7 +169,9 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             val exerciseDao = parentActivity.db.exerciseDao()
             showAddedExercise(exerciseDao.loadByIds(position+1).name)
             if(!choicesList.contains(exerciseDao.loadByIds(position+1))){
-                choicesList.add(exerciseDao.loadByIds(position+1))
+                val exer = exerciseDao.loadByIds(position+1)
+                choicesList.add(exer)
+                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,""))
             }
         }
     }
