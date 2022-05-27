@@ -15,10 +15,10 @@ All Workouts:
 /
 
 Settings:
-- Instellingen tapkke maken en bedenken wat daarin komt
-
-Exercises:
 /
 
+Exercises:
+- bij klik eerste foto van google inladen
+
 Progress:
-- “Progress” tapke afmaken met mischien gewicht en foto bijhouden et grafiek ofzo
+/
