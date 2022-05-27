@@ -25,9 +25,12 @@ class ExercisesDetailsFragment(val exercise: Exercise) : Fragment() {
         binding = FragmentExerciseDetailsBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         binding.txtChosenExercise.text = exercise.name
-        val intent = Intent(Intent.ACTION_WEB_SEARCH)
-        intent.putExtra(SearchManager.QUERY, exercise.name + " exercise")
-        startActivity(intent)
+        binding.txtExerciseVideoURL.text = "Search the web for: " + exercise.name
+        binding.txtExerciseVideoURL.setOnClickListener {
+            val intent = Intent(Intent.ACTION_WEB_SEARCH)
+            intent.putExtra(SearchManager.QUERY, exercise.name + " exercise")
+            startActivity(intent)
+        }
 
 
         return binding.root
