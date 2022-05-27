@@ -55,7 +55,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             for(item in exercises){
                 val exer = exerciseDao.findByName(item.name)
                 choicesList.add(exer)
-                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,""))
+                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12,-,12,-,12,-"))
             }
             recyclerList = choicesList
             binding.rvwExercises.adapter = ChosenExercisesAdapter(choicesListCustom, this)
@@ -151,7 +151,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                     if(!choicesList.contains(exerciseDao.findByName(filteredExercisename))){
                         val exer = exerciseDao.findByName(filteredExercisename)
                         choicesList.add(exer)
-                        choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,""))
+                        choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12,-,12,-,12,-"))
                     }
                 }
 
@@ -171,7 +171,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             if(!choicesList.contains(exerciseDao.loadByIds(position+1))){
                 val exer = exerciseDao.loadByIds(position+1)
                 choicesList.add(exer)
-                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,""))
+                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12,-,12,-,12,-"))
             }
         }
     }
