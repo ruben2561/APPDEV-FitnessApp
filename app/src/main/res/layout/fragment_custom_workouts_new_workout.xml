@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/custom_border"
         android:backgroundTint="@color/midnight_blue"
         android:scrollbars="vertical"
@@ -24,9 +24,9 @@
 
     <EditText
         android:id="@+id/workoutTitle"
-        android:layout_width="225dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"
         android:ems="10"
         android:hint="Workout Title?"
         android:inputType="textPersonName"
@@ -38,12 +38,12 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addExercise"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:background="@color/transparant"
-        android:backgroundTint="@color/transparant"
-        android:foreground="@android:drawable/ic_menu_edit"
+        android:foreground="@drawable/ic_exercises_xml"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/workoutTitle"
         app:layout_constraintEnd_toEndOf="@+id/rvwExercises"
@@ -51,18 +51,15 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/saveWorkout"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/baby_blue"
-        android:text="Save Workout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvwExercises"
-        app:layout_constraintVertical_bias="0.666" />
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="@+id/rvwExercises"
+        app:layout_constraintEnd_toEndOf="@+id/rvwExercises" />
 
     <EditText
         android:id="@+id/exerciseFilter"
@@ -76,8 +73,8 @@
         app:layout_constraintStart_toStartOf="@+id/rvwExercises" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="75dp"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Add Exercises"

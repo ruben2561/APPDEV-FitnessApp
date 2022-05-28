@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.Workouts.newWorkout.CustomExercise
 
-class WorkoutDisplayAdapter(private var items: List<CustomExercise>):
-    RecyclerView.Adapter<WorkoutDisplayAdapter.ViewHolder>() {
+class CustomWorkoutDisplayAdapter(private var items: List<CustomExercise>):
+    RecyclerView.Adapter<CustomWorkoutDisplayAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

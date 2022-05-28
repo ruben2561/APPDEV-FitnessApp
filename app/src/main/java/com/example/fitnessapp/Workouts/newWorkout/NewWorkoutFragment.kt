@@ -9,7 +9,9 @@ import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -44,18 +46,33 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
     ): View {
         binding = FragmentCustomWorkoutsNewWorkoutBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
+
         // this takes the optional parameter and takes the title and exercises
         if(workoutToEdit.name != ""){
             binding.workoutTitle.setText(workoutToEdit.name)
+
             val input: String = workoutToEdit.exersicesId
             val result = input.split(",").map { it.trim() }
             val resultInt = result.map { it.toInt() }.toIntArray()
+
             val exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
             val exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
+
+            val input2: String = workoutToEdit.repsAndWeight
+            val result2 = input2.split(",").map { it.trim() }
+
+            var teller = 0
             for(item in exercises){
                 val exer = exerciseDao.findByName(item.name)
                 choicesList.add(exer)
-                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12,-,12,-,12,-"))
+
+                var repsAndWeight = ""
+                for (i in 0..4) {
+                    repsAndWeight = repsAndWeight + result2[i+teller] + ","
+                }
+                repsAndWeight = repsAndWeight + result2[5+teller]
+                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,repsAndWeight))
+                teller = teller + 6
             }
             recyclerList = choicesList
             binding.rvwExercises.adapter = ChosenExercisesAdapter(choicesListCustom, this)
@@ -64,12 +81,10 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
         binding.rvwExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         binding.addExercise.setOnClickListener{
-
             if(toggleState == 0){
                 binding.exerciseFilter.visibility = View.INVISIBLE
-                recyclerList = choicesList
                 binding.rvwExercises.adapter = ChosenExercisesAdapter(choicesListCustom, this)
-                binding.rvwExercises.layoutManager = LinearLayoutManager(context)
+                binding.rvwExercises.layoutManager = LinearLayoutManager(context);
                 toggleState = 1
             }
 
@@ -92,7 +107,8 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             val customWorkoutDao = parentActivity.db.customWorkoutDao()
             val name = binding.workoutTitle.text.toString()
             var exercisesIds = ""
-            var exercisesRepsAndWeight = ""
+
+
             for (item in choicesList){
                 exercisesIds = if (item != choicesList[choicesList.size -1]){
                     exercisesIds + item.id + ","
@@ -100,6 +116,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                     exercisesIds + item.id
                 }
             }
+            var exercisesRepsAndWeight = ""
             for(item in choicesListCustom){
                 exercisesRepsAndWeight = exercisesRepsAndWeight + item.repsAndWeight + ","
             }
@@ -134,7 +151,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                         if (item.name.lowercase().contains(s.toString().lowercase())) {
                             filteredList.add(item)
                         }
-                        if (item.muscleGroup.lowercase().contains(s.toString().lowercase())) {
+                        else if (item.muscleGroup.lowercase().contains(s.toString().lowercase())) {
                             filteredList.add(item)
                         }
                     }
@@ -147,7 +164,6 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                     val filteredExercisename = filteredList[position].name
                     val exerciseDao = parentActivity.db.exerciseDao()
                     showAddedExercise(filteredExercisename)
-                    choicesList.add(exerciseDao.findByName(filteredExercisename))
                     if(!choicesList.contains(exerciseDao.findByName(filteredExercisename))){
                         val exer = exerciseDao.findByName(filteredExercisename)
                         choicesList.add(exer)
@@ -160,18 +176,34 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                 }
             })
         }
-
         return binding.root
+    }
+
+    fun showAddedExercise(name: String){
+        parentActivity.db.exerciseDao()
+        val toast = Toast.makeText(this.context, "$name added to routine", Toast.LENGTH_SHORT)
+        toast.show()
+        /*
+        this makes the toast message fade quicker
+        source: https://stackoverflow.com/questions/3775074/set-toast-appear-length/9715422#9715422
+         */
+        Handler(Looper.getMainLooper()).postDelayed({
+            toast.cancel()
+        }, 3000)
     }
 
     override fun onClick(position: Int) {
         if( toggleState == 0){
             val exerciseDao = parentActivity.db.exerciseDao()
-            showAddedExercise(exerciseDao.loadByIds(position+1).name)
             if(!choicesList.contains(exerciseDao.loadByIds(position+1))){
+                showAddedExercise(exerciseDao.loadByIds(position+1).name)
                 val exer = exerciseDao.loadByIds(position+1)
                 choicesList.add(exer)
                 choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12,-,12,-,12,-"))
+            }
+            else{
+                val toast = Toast.makeText(this.context, "Exercise already added to routine", Toast.LENGTH_SHORT)
+                toast.show()
             }
         }
     }
@@ -181,25 +213,23 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             .make(this.requireView(), "Selected: $position. Confirm delete?", Snackbar.LENGTH_LONG)
             .setAction("YES") {
                 choicesList.removeAt(position)
-                recyclerList = choicesList
-                binding.rvwExercises.adapter = NewWorkoutAdapter(recyclerList, this)
+                choicesListCustom.removeAt(position)
+                binding.rvwExercises.adapter = ChosenExercisesAdapter(choicesListCustom, this)
                 binding.rvwExercises.layoutManager = LinearLayoutManager(context)
                 Snackbar.make(this.requireView(), "Picture successfully deleted.", Snackbar.LENGTH_SHORT).show()
             }
         snack.show()
     }
 
-    fun showAddedExercise(name: String){
-        parentActivity.db.exerciseDao()
-        val toast = Toast.makeText(this.context, "$name added to routine", Toast.LENGTH_SHORT)
-        toast.show()
-
-        /*
-        this makes the toast message fade quicker
-        source: https://stackoverflow.com/questions/3775074/set-toast-appear-length/9715422#9715422
-         */
-        Handler(Looper.getMainLooper()).postDelayed({
-            toast.cancel()
-        }, 3000)
+    override fun addWeights(position: Int) {
+        choicesListCustom[position].repsAndWeight =
+            binding.rvwExercises[position].findViewById<TextView>(R.id.reps1).text.toString() + "," +
+                    binding.rvwExercises[position].findViewById<TextView>(R.id.weight1).text.toString() + "," +
+                    binding.rvwExercises[position].findViewById<TextView>(R.id.reps2).text.toString() + "," +
+                    binding.rvwExercises[position].findViewById<TextView>(R.id.weight2).text.toString() + "," +
+                    binding.rvwExercises[position].findViewById<TextView>(R.id.reps3).text.toString() + "," +
+                    binding.rvwExercises[position].findViewById<TextView>(R.id.weight3).text.toString()
     }
+
+
 }
