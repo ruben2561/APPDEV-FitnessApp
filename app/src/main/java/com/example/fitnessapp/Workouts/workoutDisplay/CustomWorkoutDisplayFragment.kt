@@ -50,12 +50,14 @@ class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(){
             teller = teller + 6
         }
 
+        binding.txtWorkoutTitle.text = customWorkout.name
+        binding.txtWorkoutQuantity.text = "Number of exercises: " + resultInt.size
+
         binding.rvExercises.adapter = CustomWorkoutDisplayAdapter(customExercises)                                                  // adds the exercises list in the recyclerview
         binding.rvExercises.layoutManager = LinearLayoutManager(context)                                                // chooses what type of layout
         binding.rvExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))    // this puts a line between every item
 
-        binding.txtWorkoutTitle.text = customWorkout.name
-        binding.txtWorkoutTitle.text = "Number of exercises: " + resultInt.size
+
 
         return binding.root
     }
