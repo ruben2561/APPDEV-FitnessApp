@@ -55,7 +55,7 @@ class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(){
         binding.rvExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))    // this puts a line between every item
 
         binding.txtWorkoutTitle.text = customWorkout.name
-        binding.txtWorkoutTitle.text = "Number of exercises: " + resultInt.size
+        binding.txtWorkoutQuantity.text = "Number of exercises: " + resultInt.size
 
         return binding.root
     }
