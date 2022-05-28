@@ -14,9 +14,9 @@
         android:layout_height="0dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/afronding_xml"
         android:backgroundTint="@color/midnight_blue"
         android:clipToOutline="true"
@@ -25,35 +25,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/savePhoto"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/tiffany_blue"
-        android:foreground="@drawable/ic_save"
-        android:foregroundTint="@color/black"
-        android:gravity="center|center_horizontal|center_vertical"
+        android:layout_width="57dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="35dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_save" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnToGallery"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="80dp"
-        android:background="@drawable/ic_photo_album"
-        android:backgroundTint="@color/baby_blue"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/savePhoto"
+        android:layout_width="57dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="35dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/savePhoto"
-        app:layout_constraintVertical_bias="0.0" />
+        app:srcCompat="@drawable/ic_photo_album" />
 
     <TextView
         android:id="@+id/textViewWeight"
@@ -111,7 +103,7 @@
         android:id="@+id/txtSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="Save"
         android:textColor="@color/baby_blue"
@@ -126,7 +118,7 @@
         android:id="@+id/txtGallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="Gallery"
         android:textColor="@color/baby_blue"
