@@ -69,31 +69,52 @@ class NewProgressPictureFragment(private val takenBitmap: Bitmap?) : Fragment() 
 
         binding.savePhoto.setOnClickListener {
             val textWeight = binding.editTextWeight.text.toString()
-            if(textWeight != ""){
-                var weightIsOnlyDigits = true
-                for (item in textWeight){
-                    if (item !in symbols){
-                        weightIsOnlyDigits = false
+            if(textWeight != "") {
+                if (textWeight.length >= 4) {
+                    Snackbar.make(
+                        binding.root,
+                        "Weight can't be more than 4 digits",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                } else {
+                    var weightIsOnlyDigits = true
+                    for (item in textWeight) {
+                        if (item !in symbols) {
+                            weightIsOnlyDigits = false
+                        }
                     }
-                }
-                if (weightIsOnlyDigits && tempBitmap != null){
-                    val tempDate = DateFormat.format("dd-MM-yyyy", Date())
-                    val tempWeight = binding.editTextWeight.text.toString()
-                    val tempPicture = Picture(tempDate.toString(), bitMapToString(tempBitmap), tempWeight)
-                    pictureDao.insert(tempPicture)
-                    Snackbar.make(binding.root, "Progress Picture Saved", Snackbar.LENGTH_SHORT).show()
+                    if (weightIsOnlyDigits && tempBitmap != null) {
+                        val tempDate = DateFormat.format("dd-MM-yyyy", Date())
+                        val tempWeight = binding.editTextWeight.text.toString()
+                        val tempPicture =
+                            Picture(tempDate.toString(), bitMapToString(tempBitmap), tempWeight)
+                        pictureDao.insert(tempPicture)
+                        Snackbar.make(binding.root, "Progress Picture Saved", Snackbar.LENGTH_SHORT)
+                            .show()
 
-                    val fragment: Fragment = ProgressPictureGalleryFragment()
-                    val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-                    val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-                    val containerId = R.id.fragment_container
-                    fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
-                }
-                if (!weightIsOnlyDigits){
-                    Snackbar.make(binding.root, "Weight can only consist of digits", Snackbar.LENGTH_SHORT).show()
-                }
-                if (tempBitmap == null){
-                    Snackbar.make(binding.root, "Make a picture before trying to save it", Snackbar.LENGTH_SHORT).show()
+                        val fragment: Fragment = ProgressPictureGalleryFragment()
+                        val fragmentManager: FragmentManager =
+                            requireActivity().supportFragmentManager
+                        val fragmentTransaction: FragmentTransaction =
+                            fragmentManager.beginTransaction()
+                        val containerId = R.id.fragment_container
+                        fragmentTransaction.replace(containerId, fragment).addToBackStack(null)
+                            .commit()
+                    }
+                    if (!weightIsOnlyDigits) {
+                        Snackbar.make(
+                            binding.root,
+                            "Weight can only consist of digits",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
+                    if (tempBitmap == null) {
+                        Snackbar.make(
+                            binding.root,
+                            "Make a picture before trying to save it",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
             else{
