@@ -8,10 +8,11 @@
 
     <TextView
         android:id="@+id/txtChosenExercise"
-        android:layout_width="273dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
         android:gravity="center"
+        android:hint="Name"
         android:textColor="@color/midnight_blue"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -45,23 +46,43 @@
 
     <TextView
         android:id="@+id/txtSelectedExerciseMuscleGroup"
-        android:layout_width="240dp"
-        android:layout_height="55dp"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal|top"
+        android:hint="Muscle"
         android:textColor="@color/midnight_blue"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txtChosenExercise"
         app:layout_constraintStart_toStartOf="@+id/txtChosenExercise"
         app:layout_constraintTop_toBottomOf="@+id/txtChosenExercise" />
 
     <TextView
         android:id="@+id/txtExplanation"
-        android:layout_width="344dp"
-        android:layout_height="449dp"
-        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_border"
+        android:gravity="start|top"
         android:scrollbars="vertical"
         android:textColor="@color/midnight_blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtExerciseVideoURL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgChosenExercise" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewExp" />
+
+    <TextView
+        android:id="@+id/textViewExp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Explanation:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/txtExplanation"
+        app:layout_constraintTop_toBottomOf="@+id/txtSelectedExerciseMuscleGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

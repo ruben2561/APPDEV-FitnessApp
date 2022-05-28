@@ -57,7 +57,6 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
                     "Exercises: " + result.size
             }
             itemView.apply { findViewById<TextView>(R.id.dateOfMaking).text = customWorkout.creationDate }
-            itemView.apply { findViewById<TextView>(R.id.weights).text = customWorkout.repsAndWeight }
 
         }
     }
