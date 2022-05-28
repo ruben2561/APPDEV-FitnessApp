@@ -36,30 +36,42 @@
         app:layout_constraintStart_toStartOf="@+id/rvwExercises"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addExercise"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="57dp"
+        android:layout_height="61dp"
+        android:clickable="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/transparant"
-        android:foreground="@drawable/ic_exercises_xml"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/workoutTitle"
         app:layout_constraintEnd_toEndOf="@+id/rvwExercises"
-        app:layout_constraintTop_toTopOf="@+id/workoutTitle" />
+        app:layout_constraintTop_toTopOf="@+id/workoutTitle"
+        app:maxImageSize="36dp"
+        app:srcCompat="@drawable/ic_exercises_xml" />
+
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/saveWorkout"
+        android:id="@+id/saveeeWorkout"
         android:layout_width="80dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="-10dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/baby_blue"
         android:text="Save"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/rvwExercises"
-        app:layout_constraintEnd_toEndOf="@+id/rvwExercises" />
+        app:layout_constraintEnd_toEndOf="@+id/saveWorkout"
+        app:layout_constraintStart_toStartOf="@+id/saveWorkout" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveWorkout"
+        android:layout_width="61dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="25dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/rvwExercises"
+        app:layout_constraintEnd_toEndOf="@+id/rvwExercises"
+        app:srcCompat="@drawable/ic_save" />
 
     <EditText
         android:id="@+id/exerciseFilter"
@@ -78,6 +90,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Add Exercises"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/addExercise"
         app:layout_constraintStart_toStartOf="@+id/addExercise"
         app:layout_constraintTop_toBottomOf="@+id/addExercise" />
