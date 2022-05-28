@@ -16,14 +16,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.example.fitnessapp.databinding.FragmentNewProgresPictureBinding
 import com.google.android.material.snackbar.Snackbar
 import java.io.ByteArrayOutputStream
 import java.util.*
 
 
-class NewProgressPictureFragment(val takenBitmap: Bitmap?) : Fragment() {
+class NewProgressPictureFragment(private val takenBitmap: Bitmap?) : Fragment() {
 
     private lateinit var binding: FragmentNewProgresPictureBinding
     private lateinit var cameraPermissionResult: ActivityResultLauncher<String>
