@@ -33,7 +33,7 @@
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_info.xml" value="0.1255" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/drawable/ic_new_workout.xml" value="0.124" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/custom_exercise.xml" value="0.25" />
+        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/custom_exercise.xml" value="0.536" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/custom_workout.xml" value="0.264" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/default_exercise.xml" value="0.25" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/default_workout.xml" value="0.25" />
@@ -46,6 +46,7 @@
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workouts_main.xml" value="0.1609375" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_custom_workouts_new_workout.xml" value="0.21920289855072464" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_excercises.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_exercise_details.xml" value="0.25" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_exercises.xml" value="0.23278985507246377" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_new_progres_picture.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/ruben/APPDEV-FitnessApp/app/src/main/res/layout/fragment_new_workout.xml" value="0.264" />

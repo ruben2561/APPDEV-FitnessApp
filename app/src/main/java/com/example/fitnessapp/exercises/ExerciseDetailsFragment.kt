@@ -25,6 +25,7 @@ class ExercisesDetailsFragment(val exercise: Exercise) : Fragment() {
     ): View {
         binding = FragmentExerciseDetailsBinding.inflate(layoutInflater)
         binding.txtChosenExercise.text = exercise.name
+        binding.txtSelectedExerciseMuscleGroup.text = exercise.muscleGroup
         binding.txtExerciseVideoURL.text = "Search the web for: " + exercise.name
         binding.txtExerciseVideoURL.setOnClickListener {
             val intent = Intent(Intent.ACTION_WEB_SEARCH)

@@ -47,11 +47,12 @@
         android:id="@+id/textKg"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:gravity="center_horizontal"
         android:text="Kg(s)"
         android:textColor="@color/baby_blue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/textReps"/>
+        app:layout_constraintStart_toStartOf="@id/textReps" />
 
     <EditText
         android:id="@+id/reps1"
