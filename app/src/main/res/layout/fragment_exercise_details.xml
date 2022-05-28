@@ -23,19 +23,18 @@
         android:id="@+id/imgChosenExercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtExerciseVideoURL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtChosenExercise"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSelectedExerciseMuscleGroup" />
 
     <TextView
         android:id="@+id/txtExerciseVideoURL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
+        android:background="@drawable/custom_border"
+        android:clickable="true"
         android:gravity="center"
         android:textColor="@color/midnight_blue"
         android:textSize="20sp"
@@ -43,5 +42,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtSelectedExerciseMuscleGroup"
+        android:layout_width="240dp"
+        android:layout_height="55dp"
+        android:textColor="@color/midnight_blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/txtChosenExercise"
+        app:layout_constraintTop_toBottomOf="@+id/txtChosenExercise" />
+
+    <TextView
+        android:id="@+id/txtExplanation"
+        android:layout_width="344dp"
+        android:layout_height="449dp"
+        android:gravity="center"
+        android:scrollbars="vertical"
+        android:textColor="@color/midnight_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgChosenExercise" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
