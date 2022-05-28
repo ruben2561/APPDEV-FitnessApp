@@ -7,7 +7,7 @@
     android:background="@color/blue_green">
 
     <TextView
-        android:id="@+id/workout_Title"
+        android:id="@+id/txtWorkoutTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -15,12 +15,12 @@
         android:textColor="@color/text"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/rv_exercises"
-        app:layout_constraintStart_toStartOf="@+id/rv_exercises"
+        app:layout_constraintEnd_toEndOf="@+id/rvExercises"
+        app:layout_constraintStart_toStartOf="@+id/rvExercises"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_exercises"
+        android:id="@+id/rvExercises"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
@@ -32,16 +32,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workout_Title" />
+        app:layout_constraintTop_toBottomOf="@+id/txtWorkoutTitle" />
 
     <TextView
-        android:id="@+id/workoutQuantity"
+        android:id="@+id/txtWorkoutQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="@color/text"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/workout_Title"
-        app:layout_constraintStart_toStartOf="@+id/workout_Title"
-        app:layout_constraintTop_toBottomOf="@+id/workout_Title" />
+        app:layout_constraintEnd_toEndOf="@+id/txtWorkoutTitle"
+        app:layout_constraintStart_toStartOf="@+id/txtWorkoutTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtWorkoutTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

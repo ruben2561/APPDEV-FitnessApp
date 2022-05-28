@@ -54,8 +54,8 @@ class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(){
         binding.rvExercises.layoutManager = LinearLayoutManager(context)                                                // chooses what type of layout
         binding.rvExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))    // this puts a line between every item
 
-        binding.workoutTitle.text = customWorkout.name
-        binding.workoutQuantity.text = "Number of exercises: " + resultInt.size
+        binding.txtWorkoutTitle.text = customWorkout.name
+        binding.txtWorkoutTitle.text = "Number of exercises: " + resultInt.size
 
         return binding.root
     }

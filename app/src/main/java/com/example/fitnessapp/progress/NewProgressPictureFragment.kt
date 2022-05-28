@@ -63,7 +63,7 @@ class NewProgressPictureFragment(val takenBitmap: Bitmap?) : Fragment() {
 
         pictureResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
             // photo taken!
-            binding.imgTakenImage.setImageBitmap(it)
+            binding.imgTakenImage .setImageBitmap(it)
             tempBitmap = it
         }
 

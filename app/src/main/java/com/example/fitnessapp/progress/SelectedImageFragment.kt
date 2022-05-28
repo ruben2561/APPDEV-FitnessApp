@@ -27,9 +27,9 @@ class SelectedImageFragment(val picture: Picture) : Fragment() {
         parentActivity = activity as MainActivity
         pictureDao = parentActivity.db.pictureDao()
         val selectedImage = pictureDao.findByDate(picture.name)
-        binding.selectedImageName.text = selectedImage.name
-        binding.selectedImageWeight.text = "Weight: " + selectedImage.weight + "Kg"
-        binding.selectedImagePicture.setImageBitmap(stringToBitMap(selectedImage.imageData))
+        binding.txtSelectedImageName.text = selectedImage.name
+        binding.txtSelectedImageWeight.text = "Weight: " + selectedImage.weight + "Kg"
+        binding.imgSelectedImage.setImageBitmap(stringToBitMap(selectedImage.imageData))
         return binding.root
     }
 

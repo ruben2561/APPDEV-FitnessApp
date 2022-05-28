@@ -6,7 +6,7 @@
     android:background="@color/blue_green">
 
     <ImageView
-        android:id="@+id/selectedImagePicture"
+        android:id="@+id/imgSelectedImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,7 +16,7 @@
         app:layout_constraintVertical_bias="0.531" />
 
     <TextView
-        android:id="@+id/selectedImageName"
+        android:id="@+id/txtSelectedImageName"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/selectedImageWeight"
+        android:id="@+id/txtSelectedImageWeight"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"
@@ -40,7 +40,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/selectedImageName" />
+        app:layout_constraintTop_toBottomOf="@id/txtSelectedImageName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,8 +35,8 @@ class DefaultWorkoutDisplayFragment(exercisesIds: String, private val workoutTit
         binding.rvExercises.layoutManager = LinearLayoutManager(context)                                                // chooses what type of layout
         binding.rvExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))    // this puts a line between every item
 
-        binding.workoutTitle.text = workoutTitle
-        binding.workoutQuantity.text = "Number of exercises: " + resultInt.size
+        binding.txtWorkoutTitle.text = workoutTitle
+        binding.txtWorkoutQuantity.text = "Number of exercises: " + resultInt.size
 
         return binding.root
     }

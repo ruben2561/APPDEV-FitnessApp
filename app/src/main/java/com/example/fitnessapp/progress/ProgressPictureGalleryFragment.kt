@@ -2,7 +2,6 @@ package com.example.fitnessapp.progress
 
 
 import android.Manifest
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,18 +9,16 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.PermissionChecker
-import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.fitnessapp.GymBuddyDatabase
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentProgressPictureGalleryBinding
 import com.google.android.material.snackbar.Snackbar
 
-class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClickListener {
+class ProgressPictureGalleryFragment : Fragment(), PictureAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentProgressPictureGalleryBinding
     private lateinit var parentActivity: MainActivity
@@ -34,13 +31,13 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentProgressPictureGalleryBinding.inflate(layoutInflater)
         parentActivity = activity as MainActivity
         pictureDao = parentActivity.db.pictureDao()
         pictureList = pictureDao.getAll()
         binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
-        if (!pictureList.isEmpty()){
+        if (pictureList.isNotEmpty()){
             binding.textView.visibility = View.INVISIBLE
         }
         val gridLayoutManager = GridLayoutManager(context, 3)
