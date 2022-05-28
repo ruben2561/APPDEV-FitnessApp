@@ -13,15 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="FitnessApp"
+        android:text="Gym Buddy"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/baby_blue" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="www.fitnessapp.com"
-        android:textColor="@color/baby_blue" />
+        android:textColor="@color/baby_blue"
+        android:textSize="24sp" />
 
 
 </LinearLayout>
