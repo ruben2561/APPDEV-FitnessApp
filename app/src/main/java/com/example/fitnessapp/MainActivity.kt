@@ -5,7 +5,7 @@ package com.example.fitnessapp
  * making recyclerview clickable: https://www.youtube.com/watch?v=NENEcwihMCo
  * sharing data: https://developer.android.com/training/sharing/send
  * Accessing description through JSoup: https://www.youtube.com/watch?v=PgkNC7AneKI&t=551s
- *
+ * Converting bitmap to String and vice versa: https://stackoverflow.com/questions/48437564/how-can-i-convert-bitmap-to-string-string-to-bitmap-in-kotlin
  *
  */
 

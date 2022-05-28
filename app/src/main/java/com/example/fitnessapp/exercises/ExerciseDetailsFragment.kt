@@ -4,28 +4,19 @@ import android.app.SearchManager
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.fitnessapp.MainActivity
-import com.example.fitnessapp.R
 import com.example.fitnessapp.databinding.FragmentExerciseDetailsBinding
-import com.google.android.material.snackbar.Snackbar
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
 import java.io.IOException
 
-
-//API key: AIzaSyAkWKRP2go7kpSiMS5sY2N--3UvHgi_cTU
 class ExercisesDetailsFragment(val exercise: Exercise) : Fragment() {
 
     lateinit var binding: FragmentExerciseDetailsBinding
-    private lateinit var parentActivity: MainActivity
-    lateinit var theDescription: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +24,6 @@ class ExercisesDetailsFragment(val exercise: Exercise) : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentExerciseDetailsBinding.inflate(layoutInflater)
-        parentActivity = activity as MainActivity
         binding.txtChosenExercise.text = exercise.name
         binding.txtExerciseVideoURL.text = "Search the web for: " + exercise.name
         binding.txtExerciseVideoURL.setOnClickListener {
@@ -41,27 +31,25 @@ class ExercisesDetailsFragment(val exercise: Exercise) : Fragment() {
             intent.putExtra(SearchManager.QUERY, exercise.name + " exercise")
             startActivity(intent)
         }
-        val dw = description_webscrape(binding, exercise.name + " exercise description")
+        val dw = DescriptionWebscrape(binding, exercise.name)
         dw.execute()
         return binding.root
     }
 
-    private class description_webscrape(val binding: FragmentExerciseDetailsBinding, val query: String): AsyncTask<Void, Void, Void>() {
+    private class DescriptionWebscrape(val binding: FragmentExerciseDetailsBinding, val query: String): AsyncTask<Void, Void, Void>() {
 
         override fun doInBackground(vararg p0: Void?): Void? {
-            lateinit var document: Document
+            lateinit var descriptionDoc: Document
             try{
-                document = Jsoup.connect("https://www.google.com/search?q=" + query).get()
+                descriptionDoc = Jsoup.connect("https://www.google.com/search?q=$query exercise description").get()
             }
             catch (e: IOException){
                 e.printStackTrace()
             }
-
-            var elements: Elements= document.getElementsByClass("hgKElc")
-            val theDescription: String = elements.text()
+            val descriptionElements: Elements= descriptionDoc.getElementsByClass("hgKElc")
+            val theDescription: String = descriptionElements.text()
             binding.txtExplanation.text = theDescription
             return null
             }
-
         }
     }

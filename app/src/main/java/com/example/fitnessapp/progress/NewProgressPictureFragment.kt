@@ -8,7 +8,6 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.PermissionChecker
@@ -26,13 +25,12 @@ import java.util.*
 class NewProgressPictureFragment : Fragment() {
 
     private lateinit var binding: FragmentNewProgresPictureBinding
-
     private lateinit var cameraPermissionResult: ActivityResultLauncher<String>
     private lateinit var pictureResult: ActivityResultLauncher<Void>
-    private lateinit var snapshot: ImageView
     private lateinit var parentActivity: MainActivity
     private lateinit var pictureDao: PictureDao
-    private lateinit var tempBitmap: Bitmap
+    private var tempBitmap: Bitmap? = null
+    private val symbols = "0123456789"
 
 
     override fun onCreateView(
@@ -40,22 +38,18 @@ class NewProgressPictureFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = FragmentNewProgresPictureBinding.inflate(inflater)
         parentActivity = activity as MainActivity
         pictureDao = parentActivity.db.pictureDao()
-        binding = FragmentNewProgresPictureBinding.inflate(inflater)
-        snapshot = binding.foto1
-
         binding.foto1.setOnClickListener(this::tryToMakeSnapshot)
-
         binding.btnToGallery.setOnClickListener {
             val fragment: Fragment = ProgressPictureGalleryFragment()
             val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             val containerId = R.id.fragment_container
-            fragmentTransaction.replace(containerId, fragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
         }
+
         cameraPermissionResult =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) { succeeded ->
                 if (succeeded) {
@@ -67,26 +61,37 @@ class NewProgressPictureFragment : Fragment() {
 
         pictureResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
             // photo taken!
-            snapshot.setImageBitmap(it)
+            binding.foto1.setImageBitmap(it)
             tempBitmap = it
         }
 
         binding.savePhoto.setOnClickListener {
-            if(binding.editTextWeight.text.toString() != ""){
-                val tempDate = DateFormat.format("dd-MM-yyyy", Date())
-                val tempWeight = binding.editTextWeight.text.toString()
-                val tempPicture = Picture(tempDate.toString(), bitMapToString(tempBitmap), tempWeight)
-                /*var tempDate = DateFormat.format("dd-MM-yyyy\nHH.mm.ss", Date()).toString()
-                val tempPicture = Picture(tempDate, BitMapToString(it))*/
-                pictureDao.insert(tempPicture)
-                Snackbar.make(binding.root, "Progress Picture Saved", Snackbar.LENGTH_SHORT).show()
+            val textWeight = binding.editTextWeight.text.toString()
+            if(textWeight != ""){
+                var weightIsOnlyDigits = true
+                for (item in textWeight){
+                    if (item !in symbols){
+                        weightIsOnlyDigits = false
+                    }
+                }
+                if (weightIsOnlyDigits && tempBitmap != null){
+                    val tempDate = DateFormat.format("dd-MM-yyyy", Date())
+                    val tempWeight = binding.editTextWeight.text.toString()
+                    val tempPicture = Picture(tempDate.toString(), bitMapToString(tempBitmap), tempWeight)
+                    pictureDao.insert(tempPicture)
+                    Snackbar.make(binding.root, "Progress Picture Saved", Snackbar.LENGTH_SHORT).show()
+                }
+                if (!weightIsOnlyDigits){
+                    Snackbar.make(binding.root, "Weight can only consist of digits", Snackbar.LENGTH_SHORT).show()
+                }
+                if (tempBitmap == null){
+                    Snackbar.make(binding.root, "Make a picture before trying to save it", Snackbar.LENGTH_SHORT).show()
+                }
             }
             else{
                 Snackbar.make(binding.root, "Take a picture and enter weight", Snackbar.LENGTH_SHORT).show()
             }
-
         }
-
         return binding.root
     }
 
@@ -107,9 +112,9 @@ class NewProgressPictureFragment : Fragment() {
     }
 }
 
-fun bitMapToString(bitmap: Bitmap): String {
+fun bitMapToString(bitmap: Bitmap?): String {
     val bas = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.PNG, 100, bas)
+    bitmap?.compress(Bitmap.CompressFormat.PNG, 100, bas)
     val b: ByteArray = bas.toByteArray()
     return Base64.encodeToString(b, Base64.DEFAULT)
 }
