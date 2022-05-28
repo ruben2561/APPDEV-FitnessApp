@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
+import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.example.fitnessapp.databinding.FragmentNewProgresPictureBinding
 import com.google.android.material.snackbar.Snackbar
 import java.io.ByteArrayOutputStream
@@ -82,6 +83,12 @@ class NewProgressPictureFragment(val takenBitmap: Bitmap?) : Fragment() {
                     val tempPicture = Picture(tempDate.toString(), bitMapToString(tempBitmap), tempWeight)
                     pictureDao.insert(tempPicture)
                     Snackbar.make(binding.root, "Progress Picture Saved", Snackbar.LENGTH_SHORT).show()
+
+                    val fragment: Fragment = ProgressPictureGalleryFragment()
+                    val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+                    val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+                    val containerId = R.id.fragment_container
+                    fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
                 }
                 if (!weightIsOnlyDigits){
                     Snackbar.make(binding.root, "Weight can only consist of digits", Snackbar.LENGTH_SHORT).show()
