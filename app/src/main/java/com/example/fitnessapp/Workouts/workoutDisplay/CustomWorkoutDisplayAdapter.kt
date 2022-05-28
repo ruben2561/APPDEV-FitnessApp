@@ -22,8 +22,8 @@ class CustomWorkoutDisplayAdapter(private var items: List<CustomExercise>):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val exercise = items[position]
 
-        var input: String = exercise.repsAndWeight
-        var result = input.split(",").map { it.trim() }
+        val input: String = exercise.repsAndWeight
+        val result = input.split(",").map { it.trim() }
 
         holder.result = result
         holder.bind(exercise)

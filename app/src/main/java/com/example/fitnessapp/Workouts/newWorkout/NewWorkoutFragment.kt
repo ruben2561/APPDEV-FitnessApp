@@ -84,7 +84,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
             if(toggleState == 0){
                 binding.exerciseFilter.visibility = View.INVISIBLE
                 binding.rvwExercises.adapter = ChosenExercisesAdapter(choicesListCustom, this)
-                binding.rvwExercises.layoutManager = LinearLayoutManager(context);
+                binding.rvwExercises.layoutManager = LinearLayoutManager(context)
                 toggleState = 1
             }
 
