@@ -59,6 +59,7 @@ class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(){
 
 
 
+
         return binding.root
     }
 }
