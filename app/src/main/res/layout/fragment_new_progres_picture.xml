@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/foto1"
+        android:id="@+id/imgTakenImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_centerInParent="true"
@@ -27,34 +27,31 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/savePhoto"
-        android:layout_width="125dp"
-        android:layout_height="60dp"
+        android:layout_width="70dp"
+        android:layout_height="75dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/rounded_button"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/ic_save"
         android:backgroundTint="@color/baby_blue"
         android:gravity="center|center_horizontal|center_vertical"
-        android:onClick="onclick2"
-        android:text="Save"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnToGallery"
-        android:layout_width="125dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/rounded_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="80dp"
+        android:background="@drawable/ic_photo_album"
         android:backgroundTint="@color/baby_blue"
-        android:text="Gallery"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/savePhoto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/savePhoto" />
+        app:layout_constraintTop_toTopOf="@+id/savePhoto"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewWeight"
@@ -63,8 +60,8 @@
         android:layout_marginTop="15dp"
         android:text="Weight: "
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/foto1"
-        app:layout_constraintTop_toBottomOf="@+id/foto1" />
+        app:layout_constraintStart_toStartOf="@+id/imgTakenImage"
+        app:layout_constraintTop_toBottomOf="@+id/imgTakenImage" />
 
     <EditText
         android:id="@+id/editTextWeight"
@@ -82,10 +79,57 @@
         android:id="@+id/txtTapToTakePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tap to take picture"
-        app:layout_constraintBottom_toBottomOf="@+id/foto1"
+        android:text="Tap to take new picture"
+        android:textColor="@color/blue_green"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTakenImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/foto1" />
+        app:layout_constraintTop_toTopOf="@+id/imgTakenImage"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtTapToTakePicture2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap to take new picture"
+        android:textColor="@color/blue_green"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTakenImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgTakenImage"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Save"
+        android:textColor="@color/baby_blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/savePhoto"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="@+id/savePhoto" />
+
+    <TextView
+        android:id="@+id/txtGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Gallery"
+        android:textColor="@color/baby_blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnToGallery"
+        app:layout_constraintStart_toStartOf="@+id/btnToGallery" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

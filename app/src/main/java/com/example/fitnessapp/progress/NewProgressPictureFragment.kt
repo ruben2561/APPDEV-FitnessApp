@@ -22,7 +22,7 @@ import java.io.ByteArrayOutputStream
 import java.util.*
 
 
-class NewProgressPictureFragment : Fragment() {
+class NewProgressPictureFragment(val takenBitmap: Bitmap?) : Fragment() {
 
     private lateinit var binding: FragmentNewProgresPictureBinding
     private lateinit var cameraPermissionResult: ActivityResultLauncher<String>
@@ -41,7 +41,9 @@ class NewProgressPictureFragment : Fragment() {
         binding = FragmentNewProgresPictureBinding.inflate(inflater)
         parentActivity = activity as MainActivity
         pictureDao = parentActivity.db.pictureDao()
-        binding.foto1.setOnClickListener(this::tryToMakeSnapshot)
+        tempBitmap = takenBitmap
+        binding.imgTakenImage.setImageBitmap(takenBitmap)
+        binding.imgTakenImage.setOnClickListener(this::tryToMakeSnapshot)
         binding.btnToGallery.setOnClickListener {
             val fragment: Fragment = ProgressPictureGalleryFragment()
             val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
@@ -61,7 +63,7 @@ class NewProgressPictureFragment : Fragment() {
 
         pictureResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
             // photo taken!
-            binding.foto1.setImageBitmap(it)
+            binding.imgTakenImage.setImageBitmap(it)
             tempBitmap = it
         }
 

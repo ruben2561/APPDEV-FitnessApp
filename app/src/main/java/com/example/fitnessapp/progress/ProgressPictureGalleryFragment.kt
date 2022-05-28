@@ -1,10 +1,15 @@
 package com.example.fitnessapp.progress
 
 
+import android.Manifest
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.PermissionChecker
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -22,6 +27,8 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
     private lateinit var parentActivity: MainActivity
     private lateinit var pictureDao: PictureDao
     private lateinit var pictureList: MutableList<Picture>
+    private lateinit var cameraPermissionResult: ActivityResultLauncher<String>
+    private lateinit var pictureResult: ActivityResultLauncher<Void>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +46,20 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         val gridLayoutManager = GridLayoutManager(context, 3)
         binding.galleryGrid.layoutManager = gridLayoutManager
         binding.btnToNewProgressPictureFragment.setOnClickListener{
-            val fragment: Fragment = NewProgressPictureFragment()
+            tryToMakeSnapshot(this.requireView())
+        }
+        cameraPermissionResult =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { succeeded ->
+                if (succeeded) {
+                    makeSnapshot()
+                } else {
+                    Snackbar.make(binding.root, "Request denied...", Snackbar.LENGTH_SHORT).show()
+                }
+            }
+
+        pictureResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
+            // photo taken!
+            val fragment: Fragment = NewProgressPictureFragment(it)
             val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
             val containerId = R.id.fragment_container
@@ -48,6 +68,21 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         return binding.root
     }
 
+    private fun makeSnapshot() {
+        pictureResult.launch(null)
+    }
+
+    private fun tryToMakeSnapshot(view: View) {
+        if (PermissionChecker.checkSelfPermission(
+                this.requireContext(),
+                Manifest.permission.CAMERA
+            ) != PermissionChecker.PERMISSION_GRANTED
+        ) {
+            cameraPermissionResult.launch(Manifest.permission.CAMERA)
+        } else {
+            makeSnapshot()
+        }
+    }
     override fun onClick(picture: Picture) {
         val fragment: Fragment = SelectedImageFragment(picture)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
