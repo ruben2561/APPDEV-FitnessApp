@@ -22,6 +22,7 @@ import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.example.fitnessapp.databinding.ActivityMainBinding
 import com.example.fitnessapp.exercises.ExercisesFragment
 import com.example.fitnessapp.progress.NewProgressPictureFragment
+import com.example.fitnessapp.progress.ProgressPictureGalleryFragment
 import com.google.android.material.navigation.NavigationView
 
 
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             ).commit()
             R.id.nav_new_progress_picture -> supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,
-                NewProgressPictureFragment()
+                ProgressPictureGalleryFragment()
             ).commit()
             R.id.nav_info -> supportFragmentManager.beginTransaction().replace(
                 R.id.fragment_container,

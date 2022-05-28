@@ -18,8 +18,8 @@
             android:title="Exercises" />
         <item
             android:id="@+id/nav_new_progress_picture"
-            android:icon="@drawable/ic_new_progress_picture"
-            android:title="New Progress Picture" />
+            android:icon="@drawable/ic_baseline_photo_album_24"
+            android:title="Progress Pictures" />
 
     </group>
 

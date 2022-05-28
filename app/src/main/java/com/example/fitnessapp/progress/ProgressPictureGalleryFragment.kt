@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -32,8 +33,18 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         pictureDao = parentActivity.db.pictureDao()
         pictureList = pictureDao.getAll()
         binding.galleryGrid.adapter = PictureAdapter(pictureList,this)
+        if (!pictureList.isEmpty()){
+            binding.textView.visibility = View.INVISIBLE
+        }
         val gridLayoutManager = GridLayoutManager(context, 3)
         binding.galleryGrid.layoutManager = gridLayoutManager
+        binding.btnToNewProgressPictureFragment.setOnClickListener{
+            val fragment: Fragment = NewProgressPictureFragment()
+            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            val containerId = R.id.fragment_container
+            fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
+        }
         return binding.root
     }
 
@@ -42,9 +53,7 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         val containerId = R.id.fragment_container
-        fragmentTransaction.replace(containerId, fragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 
     override fun onLongClick(picture: Picture) {
@@ -57,6 +66,9 @@ class ProgressPictureGalleryFragment () : Fragment(), PictureAdapter.OnItemClick
                 val gridLayoutManager = GridLayoutManager(context, 3)
                 binding.galleryGrid.layoutManager = gridLayoutManager
                 Snackbar.make(this.requireView(), "Picture successfully deleted.", Snackbar.LENGTH_SHORT).show()
+                if (pictureList.isEmpty()){
+                    binding.textView.visibility = View.VISIBLE
+                }
             }
         snackbar.show()
     }
