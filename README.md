@@ -4,13 +4,15 @@ FITNESS APP TODO:
 
 Algemeen:
 - visueel aspect overaal hetzelfde maken (kleur, teller grootte, alle fragment titels centreren en even groot,...)
--alle knoppen mooi maken zoals die van progress om foto te nemen
+- alle knoppen mooi maken zoals die van progress om foto te nemen
+- bij alle edittext's een max aantal chars zetten
 
 Custom Workout:
 - bij edit positie meegeven en met saven terug op juiste positie zetten
 
 New Workout:
-/
+- functie om oefeningen van plaats te kunnen veranderen 
+- add exercise icoontje verandere telkens als je switch tussen oefeningen kiezen en gekozen oefeningen
 
 All Workouts:
 /
