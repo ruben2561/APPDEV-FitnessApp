@@ -16,9 +16,6 @@ import com.example.fitnessapp.R
 import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsFragment
 import com.example.fitnessapp.Workouts.allWorkouts.DefaultWorkout
 import com.example.fitnessapp.Workouts.allWorkouts.DefaultWorkoutDao
-import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
-import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutDao
-import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.example.fitnessapp.Workouts.newWorkout.CustomExercise
 import com.example.fitnessapp.databinding.FragmentWorkoutDisplayBinding
 import com.example.fitnessapp.exercises.Exercise

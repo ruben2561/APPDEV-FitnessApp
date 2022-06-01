@@ -1,0 +1,9 @@
+defaultWorkoutDao.insert(listOf(
+            DefaultWorkout("Biceps Workout - by Joe Wicks", "10,208,200", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
+            DefaultWorkout("Back Workout - by Scott Laidler", "888,103,861,358", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
+            DefaultWorkout("Triceps Workout - by Nick Mitchell", "236,152,851,198", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
+            DefaultWorkout("Chest Workout - by Kayla Itsines", "369,883,590", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
+            DefaultWorkout("Legs Workout - by Adrian Collins", "74,474,73,162,579", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
+            DefaultWorkout("Shoulders Workout - by Jeremy Ethier", "270,960,150,293", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
+            DefaultWorkout("Abs Workout - by Tristyn Lee", "614,216,640,564", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
+            DefaultWorkout("Forearms Workout - by Chris Heria", "808,895", "12, ,12, ,12, ,12, ,12, ,12, ,", 0)))

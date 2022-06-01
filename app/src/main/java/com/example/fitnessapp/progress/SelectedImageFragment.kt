@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.databinding.FragmentSelectedImageBinding
 
-
 class SelectedImageFragment(val picture: Picture) : Fragment() {
 
     private lateinit var binding: FragmentSelectedImageBinding

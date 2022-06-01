@@ -1,6 +1,5 @@
 package com.example.fitnessapp.progress
 
-
 import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater

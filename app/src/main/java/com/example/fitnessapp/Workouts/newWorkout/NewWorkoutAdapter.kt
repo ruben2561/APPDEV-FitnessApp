@@ -1,6 +1,5 @@
 package com.example.fitnessapp.Workouts.newWorkout
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.exercises.Exercise
-
 
 class NewWorkoutAdapter(private var items: List<Exercise>, private var onItemClickListener: OnItemClickListener):
     RecyclerView.Adapter<NewWorkoutAdapter.ViewHolder>() {

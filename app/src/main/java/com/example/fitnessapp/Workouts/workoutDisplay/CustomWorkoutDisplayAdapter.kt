@@ -10,8 +10,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
-import com.example.fitnessapp.Workouts.newWorkout.ChosenExercisesAdapter
 import com.example.fitnessapp.Workouts.newWorkout.CustomExercise
 import java.util.*
 

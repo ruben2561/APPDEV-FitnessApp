@@ -26,7 +26,6 @@ import com.example.fitnessapp.exercises.Exercise
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-
 class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","", 0)):
     Fragment(), NewWorkoutAdapter.OnItemClickListener, ChosenExercisesAdapter.OnItemClickListener {
 

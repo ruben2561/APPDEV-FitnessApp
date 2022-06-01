@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -13,16 +12,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnessapp.MainActivity
 import com.example.fitnessapp.R
-import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
-import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutAdapter
-import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutDao
-import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutFragment
-import com.example.fitnessapp.Workouts.workoutDisplay.CustomWorkoutDisplayFragment
 import com.example.fitnessapp.Workouts.workoutDisplay.DefaultWorkoutDisplayFragment
 import com.example.fitnessapp.databinding.FragmentAllWorkoutsBinding
-import com.example.fitnessapp.databinding.FragmentCustomWorkoutsBinding
 import com.example.fitnessapp.exercises.Exercise
-import com.google.android.material.snackbar.Snackbar
 
 class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
 
@@ -100,13 +92,4 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
 
 }
 
-/*defaultWorkoutDao.insert(listOf(
-            DefaultWorkout("Biceps Workout - by Joe Wicks", "10,208,200", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
-            DefaultWorkout("Back Workout - by Scott Laidler", "888,103,861,358", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
-            DefaultWorkout("Triceps Workout - by Nick Mitchell", "236,152,851,198", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
-            DefaultWorkout("Chest Workout - by Kayla Itsines", "369,883,590", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
-            DefaultWorkout("Legs Workout - by Adrian Collins", "74,474,73,162,579", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
-            DefaultWorkout("Shoulders Workout - by Jeremy Ethier", "270,960,150,293", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
-            DefaultWorkout("Abs Workout - by Tristyn Lee", "614,216,640,564", "12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,12, ,", 0),
-            DefaultWorkout("Forearms Workout - by Chris Heria", "808,895", "12, ,12, ,12, ,12, ,12, ,12, ,", 0)))
-            */
+

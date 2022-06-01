@@ -2,6 +2,7 @@ package com.example.fitnessapp
 
 /**
  * sources:
+ *
  * making recyclerview clickable: https://www.youtube.com/watch?v=NENEcwihMCo
  * sharing data: https://developer.android.com/training/sharing/send
  * Accessing description through JSoup: https://www.youtube.com/watch?v=PgkNC7AneKI&t=551s
@@ -21,7 +22,6 @@ import com.example.fitnessapp.Workouts.allWorkouts.AllWorkoutsFragment
 import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
 import com.example.fitnessapp.databinding.ActivityMainBinding
 import com.example.fitnessapp.exercises.ExercisesFragment
-import com.example.fitnessapp.progress.NewProgressPictureFragment
 import com.example.fitnessapp.progress.ProgressPictureGalleryFragment
 import com.google.android.material.navigation.NavigationView
 

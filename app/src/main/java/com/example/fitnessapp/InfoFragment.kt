@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.fitnessapp.databinding.FragmentInfoBinding
 
-
 class InfoFragment : Fragment(){
 
     private lateinit var binding: FragmentInfoBinding

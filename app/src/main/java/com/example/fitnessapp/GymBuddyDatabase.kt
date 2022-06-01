@@ -11,7 +11,6 @@ import com.example.fitnessapp.Workouts.allWorkouts.DefaultWorkoutDao
 import com.example.fitnessapp.progress.Picture
 import com.example.fitnessapp.progress.PictureDao
 
-
 @Database(entities = arrayOf(Exercise::class, DefaultWorkout::class, CustomWorkout::class, Picture::class), version = 1)
 abstract class GymBuddyDatabase : RoomDatabase() {
     abstract fun exerciseDao() : ExerciseDao
