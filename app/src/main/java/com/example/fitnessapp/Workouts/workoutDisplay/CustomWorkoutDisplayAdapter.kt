@@ -145,14 +145,6 @@ class CustomWorkoutDisplayAdapter(private var items: List<CustomExercise>, priva
             itemView.apply{findViewById<TextView>(R.id.txtExerciseName).text = customExercise.name}
             itemView.apply{findViewById<TextView>(R.id.txtMuscleGroup).text = customExercise.muscleGroup}
 
-            /*itemView.apply { findViewById<TextView>(R.id.reps1).text = result[0] }
-            itemView.apply { findViewById<TextView>(R.id.reps2).text = result[2] }
-            itemView.apply { findViewById<TextView>(R.id.reps3).text = result[4] }
-
-            itemView.apply { findViewById<TextView>(R.id.weight1).text = result[1] }
-            itemView.apply { findViewById<TextView>(R.id.weight2).text = result[3] }
-            itemView.apply { findViewById<TextView>(R.id.weight3).text = result[5] }*/
-
             itemView.apply { findViewById<TextView>(R.id.reps1).text = result[0] }
             itemView.apply { findViewById<TextView>(R.id.reps2).text = result[2] }
             itemView.apply { findViewById<TextView>(R.id.reps3).text = result[4] }
@@ -167,5 +159,4 @@ class CustomWorkoutDisplayAdapter(private var items: List<CustomExercise>, priva
     interface OnItemClickListener{
         fun exerciseInfo(custom: CustomExercise)
     }
-
 }

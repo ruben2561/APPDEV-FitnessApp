@@ -14,9 +14,6 @@ interface DefaultWorkoutDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOne(items: DefaultWorkout)
 
-    //@Query("SELECT * FROM workout WHERE name LIKE :first AND " + "muscleGroup LIKE :last LIMIT 1")
-    //fun findByName(first: String, last: Boolean): Workout
-
     @Delete
     fun delete(defaultWorkout: DefaultWorkout)
 

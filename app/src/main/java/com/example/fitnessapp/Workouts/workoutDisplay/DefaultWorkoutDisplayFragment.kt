@@ -58,7 +58,6 @@ class DefaultWorkoutDisplayFragment(defaultWorkout: DefaultWorkout) : Fragment()
             }
 
             customExercises.add(CustomExercise(item.name,item.muscleGroup, repsAndWeight))
-
             teller = teller + 6
         }
 
@@ -81,7 +80,6 @@ class DefaultWorkoutDisplayFragment(defaultWorkout: DefaultWorkout) : Fragment()
             }
 
             defaultWorkoutDao.delete(defaultWorkout)
-
             defaultWorkoutDao.insertOne(
                 DefaultWorkout(
                 defaultWorkout.name,
