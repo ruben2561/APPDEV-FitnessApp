@@ -10,6 +10,7 @@ data class DefaultWorkout(
 
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "exersices id") var exersicesId: String,
+    @ColumnInfo(name = "reps and weight") var repsAndWeight: String,
     @PrimaryKey (autoGenerate = true) val id: Int = 0
 )
 

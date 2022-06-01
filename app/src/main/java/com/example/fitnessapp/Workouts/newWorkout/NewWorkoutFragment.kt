@@ -167,7 +167,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                     if(!choicesList.contains(exerciseDao.findByName(filteredExercisename))){
                         val exer = exerciseDao.findByName(filteredExercisename)
                         choicesList.add(exer)
-                        choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12,-,12,-,12,-"))
+                        choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12, ,12, ,12, "))
                     }
                 }
 
@@ -199,7 +199,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                 showAddedExercise(exerciseDao.loadByIds(position+1).name)
                 val exer = exerciseDao.loadByIds(position+1)
                 choicesList.add(exer)
-                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12,-,12,-,12,-"))
+                choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12, ,12, ,12, "))
             }
             else{
                 val toast = Toast.makeText(this.context, "Exercise already added to routine", Toast.LENGTH_SHORT)

@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        db = Room.databaseBuilder(this, GymBuddyDatabase::class.java, "gymBuddyDatabase").createFromAsset("databases/gymBuddyDatabase.db").allowMainThreadQueries().build()
+        db = Room.databaseBuilder(this, GymBuddyDatabase::class.java, "gymBuddyDatabase2").createFromAsset("databases/gymBuddyDatabase2.db").allowMainThreadQueries().build()
         val toolbar1 = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar1)
         drawer = findViewById(R.id.drawer_layout)

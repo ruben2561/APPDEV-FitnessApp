@@ -32,6 +32,8 @@ class ExercisesFragment : Fragment(), ExerciseAdapter.OnItemClickListener {
         parentActivity = activity as MainActivity
         exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
         exercises = exerciseDao.getAll()                                                                                             // gets all database items and puts it in a list
+
+
         binding.rvwExercises.adapter = ExerciseAdapter(exercises,this)                                                // adds the exercises list in the recyclerview
         binding.rvwExercises.layoutManager = LinearLayoutManager(context)                                        // chooses what type of layout
         binding.rvwExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))   // this puts a line between every item

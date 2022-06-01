@@ -51,14 +51,6 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         return binding.root
     }
 
-    override fun onClick(customWorkout: CustomWorkout) {
-        val fragment: Fragment = CustomWorkoutDisplayFragment(customWorkout)
-        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        val containerId = R.id.fragment_container
-        fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
-    }
-
     override fun onLongClick(position: Int) {
         //val intent = Intent(fragment, Activity3Recycler::class.java)
         //startActivity(intent)
@@ -127,6 +119,14 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         }
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(shareIntent)
+    }
+
+    override fun beginWorkout(customWorkout: CustomWorkout) {
+        val fragment: Fragment = CustomWorkoutDisplayFragment(customWorkout)
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val containerId = R.id.fragment_container
+        fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 }
 

@@ -1,25 +1,39 @@
 package com.example.fitnessapp.Workouts.workoutDisplay
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnessapp.MainActivity
+import com.example.fitnessapp.R
 import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkout
+import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutDao
+import com.example.fitnessapp.Workouts.customWorkouts.CustomWorkoutsFragment
+import com.example.fitnessapp.Workouts.newWorkout.ChosenExercisesAdapter
 import com.example.fitnessapp.Workouts.newWorkout.CustomExercise
+import com.example.fitnessapp.Workouts.newWorkout.NewWorkoutAdapter
 import com.example.fitnessapp.databinding.FragmentWorkoutDisplayBinding
 import com.example.fitnessapp.exercises.Exercise
 import com.example.fitnessapp.exercises.ExerciseDao
+import com.example.fitnessapp.exercises.ExercisesDetailsFragment
+import java.util.*
+import kotlin.collections.ArrayList
 
-class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(){
+class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(), CustomWorkoutDisplayAdapter.OnItemClickListener{
     private lateinit var binding: FragmentWorkoutDisplayBinding
     private lateinit var exerciseDao: ExerciseDao
+    private lateinit var customWorkoutDao: CustomWorkoutDao
     private var ids = customWorkout.exersicesId
     private var customWorkout = customWorkout
     lateinit var parentActivity: MainActivity
+    var choicesListCustom = ArrayList<CustomExercise>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,13 +67,48 @@ class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(){
         binding.txtWorkoutTitle.text = customWorkout.name
         binding.txtWorkoutQuantity.text = "Number of exercises: " + resultInt.size
 
-        binding.rvExercises.adapter = CustomWorkoutDisplayAdapter(customExercises)                                                  // adds the exercises list in the recyclerview
+        binding.rvExercises.adapter = CustomWorkoutDisplayAdapter(customExercises, this)                                                  // adds the exercises list in the recyclerview
         binding.rvExercises.layoutManager = LinearLayoutManager(context)                                                // chooses what type of layout
         binding.rvExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))    // this puts a line between every item
 
 
+        binding.endWorkout.setOnClickListener{
+            parentActivity = activity as MainActivity
+            customWorkoutDao = parentActivity.db.customWorkoutDao()
+            val tempDate = DateFormat.format("dd-MM-yyyy", Date())
+
+            var exercisesRepsAndWeight = ""
+            for(item in customExercises){
+                exercisesRepsAndWeight = exercisesRepsAndWeight + item.repsAndWeight + ","
+            }
+
+            customWorkoutDao.delete(customWorkout)
+
+            customWorkoutDao.insertOne(CustomWorkout(
+                customWorkout.name,
+                customWorkout.exersicesId,
+                tempDate.toString(),
+                exercisesRepsAndWeight,
+                0)
+            )
+            Toast.makeText(this.context, "Workout ended!", Toast.LENGTH_LONG).show()
+
+            val fragment: Fragment = CustomWorkoutsFragment()
+            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            val containerId = R.id.fragment_container
+            fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
+        }
 
 
         return binding.root
+    }
+
+    override fun exerciseInfo(custom: CustomExercise) {
+        val fragment: Fragment = ExercisesDetailsFragment(Exercise(custom.name,custom.muscleGroup,0))
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val containerId = R.id.fragment_container
+        fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 }

@@ -29,9 +29,6 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
     class ViewHolder(itemView: View, onItemClickListener: OnItemClickListener): RecyclerView.ViewHolder(itemView) {
         lateinit var customWorkout: CustomWorkout
         init {
-            itemView.setOnClickListener {
-                onItemClickListener.onClick(customWorkout)
-            }
             itemView.setOnLongClickListener {
                 onItemClickListener.onLongClick(adapterPosition)
                 return@setOnLongClickListener true
@@ -45,6 +42,9 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
             }}
             itemView.apply { findViewById<ImageButton>(R.id.shareButton).setOnClickListener{
                 onItemClickListener.shareWorkout(customWorkout)
+            }}
+            itemView.apply { findViewById<ImageButton>(R.id.beginButton).setOnClickListener{
+                onItemClickListener.beginWorkout(customWorkout)
             }}
         }
 
@@ -62,10 +62,10 @@ class CustomWorkoutAdapter(private var items: List<CustomWorkout>, private var o
     }
 
     interface OnItemClickListener{
-        fun onClick(customWorkout: CustomWorkout)
         fun onLongClick(position: Int)
         fun deleteWorkout(customWorkout: CustomWorkout)
         fun editWorkout(customWorkout: CustomWorkout)
         fun shareWorkout(customWorkout: CustomWorkout)
+        fun beginWorkout(customWorkout: CustomWorkout)
     }
 }

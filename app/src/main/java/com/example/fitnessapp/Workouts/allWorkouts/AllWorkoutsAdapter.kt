@@ -4,6 +4,7 @@ package com.example.fitnessapp.Workouts.allWorkouts
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
@@ -28,14 +29,12 @@ class AllWorkoutsAdapter(private var items: List<DefaultWorkout>, private var on
     class ViewHolder(itemView: View, onItemClickListener: OnItemClickListener): RecyclerView.ViewHolder(itemView) {
         lateinit var defaultWorkout: DefaultWorkout
         init {
-            itemView.setOnClickListener {
-                onItemClickListener.onClick(defaultWorkout.exersicesId, defaultWorkout.name)
-            }
-
-            itemView.setOnLongClickListener {
-                onItemClickListener.onLongClick(adapterPosition)
-                return@setOnLongClickListener true
-            }
+            itemView.apply { findViewById<ImageButton>(R.id.shareButton).setOnClickListener{
+                onItemClickListener.shareWorkout(defaultWorkout)
+            }}
+            itemView.apply { findViewById<ImageButton>(R.id.beginButton).setOnClickListener{
+                onItemClickListener.beginWorkout(defaultWorkout)
+            }}
         }
 
         fun bind(defaultWorkout: DefaultWorkout) {
@@ -52,7 +51,7 @@ class AllWorkoutsAdapter(private var items: List<DefaultWorkout>, private var on
 
 
     interface OnItemClickListener{
-        fun onClick(ids: String, title: String)
-        fun onLongClick(position: Int)
+        fun shareWorkout(defaultWorkout: DefaultWorkout)
+        fun beginWorkout(defaultWorkout: DefaultWorkout)
     }
 }
