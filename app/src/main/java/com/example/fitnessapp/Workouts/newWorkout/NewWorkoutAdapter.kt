@@ -30,10 +30,6 @@ class NewWorkoutAdapter(private var items: List<Exercise>, private var onItemCli
             itemView.setOnClickListener{
                 onItemClickListener.onClick(adapterPosition)
             }
-            itemView.setOnLongClickListener{
-                onItemClickListener.onLongClick(adapterPosition)
-                return@setOnLongClickListener true
-            }
         }
 
         fun bind(exercise: Exercise){
@@ -44,7 +40,6 @@ class NewWorkoutAdapter(private var items: List<Exercise>, private var onItemCli
 
     interface OnItemClickListener{
         fun onClick(position: Int)
-        fun onLongClick(position: Int)
     }
 
 

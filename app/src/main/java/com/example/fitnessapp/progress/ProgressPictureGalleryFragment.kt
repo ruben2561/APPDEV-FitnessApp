@@ -89,7 +89,7 @@ class ProgressPictureGalleryFragment : Fragment(), PictureAdapter.OnItemClickLis
 
     override fun onLongClick(picture: Picture) {
         val snackbar = Snackbar
-            .make(this.requireView(), "Selected: " + picture.name+". Confirm delete?", Snackbar.LENGTH_LONG)
+            .make(this.requireView(), "Confirm delete?", Snackbar.LENGTH_LONG)
             .setAction("YES") {
                 pictureDao.delete(picture)
                 pictureList = pictureDao.getAll()

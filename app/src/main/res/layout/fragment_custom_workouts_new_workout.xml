@@ -90,7 +90,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Add"
-        android:textColor="@color/black"
+        android:textColor="@color/baby_blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/addExercise"
         app:layout_constraintStart_toStartOf="@+id/addExercise"
         app:layout_constraintTop_toBottomOf="@+id/addExercise" />

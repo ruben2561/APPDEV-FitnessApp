@@ -15,7 +15,7 @@
         <item
             android:id="@+id/nav_exercises"
             android:icon="@drawable/ic_exercises_xml"
-            android:title="Exercises" />
+            android:title="Exercises Database" />
         <item
             android:id="@+id/nav_new_progress_picture"
             android:icon="@drawable/ic_photo_album"

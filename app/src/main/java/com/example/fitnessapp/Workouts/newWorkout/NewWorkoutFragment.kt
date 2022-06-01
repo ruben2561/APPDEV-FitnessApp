@@ -84,6 +84,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                 binding.exerciseFilter.visibility = View.INVISIBLE
                 binding.rvwExercises.adapter = ChosenExercisesAdapter(choicesListCustom, this)
                 binding.rvwExercises.layoutManager = LinearLayoutManager(context)
+                binding.textView1.text = "Add"
                 toggleState = 1
             }
 
@@ -93,6 +94,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                 recyclerList = exerciseDao.getAll()
                 binding.rvwExercises.adapter = NewWorkoutAdapter(recyclerList, this)                                              // adds the exercises list in the recyclerview
                 binding.rvwExercises.layoutManager = LinearLayoutManager(context)                                        // chooses what type of layout
+                binding.textView1.text = "Back to list"
                 toggleState = 0
             }
 
@@ -169,10 +171,6 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                         choicesListCustom.add(CustomExercise(exer.name, exer.muscleGroup,"12, ,12, ,12, "))
                     }
                 }
-
-                override fun onLongClick(position: Int) {
-                    TODO("Not yet implemented")
-                }
             })
         }
         return binding.root
@@ -182,10 +180,6 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
         parentActivity.db.exerciseDao()
         val toast = Toast.makeText(this.context, "$name added to routine", Toast.LENGTH_SHORT)
         toast.show()
-        /*
-        this makes the toast message fade quicker
-        source: https://stackoverflow.com/questions/3775074/set-toast-appear-length/9715422#9715422
-         */
         Handler(Looper.getMainLooper()).postDelayed({
             toast.cancel()
         }, 3000)
@@ -207,7 +201,7 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
         }
     }
 
-    override fun onLongClick(position: Int) {
+    override fun delete(position: Int) {
         val snack = Snackbar
             .make(this.requireView(), "Selected: $position. Confirm delete?", Snackbar.LENGTH_LONG)
             .setAction("YES") {
@@ -229,6 +223,4 @@ class NewWorkoutFragment(customWorkout: CustomWorkout = CustomWorkout("","","","
                     binding.rvwExercises[position].findViewById<TextView>(R.id.reps3).text.toString() + "," +
                     binding.rvwExercises[position].findViewById<TextView>(R.id.weight3).text.toString()
     }
-
-
 }
