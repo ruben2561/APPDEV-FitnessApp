@@ -84,7 +84,7 @@ class NewProgressPictureFragment(private val takenBitmap: Bitmap?) : Fragment() 
                         }
                     }
                     if (weightIsOnlyDigits && tempBitmap != null) {
-                        val tempDate = DateFormat.format("dd-MM-yyyy", Date())
+                        val tempDate = DateFormat.format("dd-MM-yyyy_hh.mm:ss", Date())
                         val tempWeight = binding.editTextWeight.text.toString()
                         val tempPicture =
                             Picture(tempDate.toString(), bitMapToString(tempBitmap), tempWeight)
