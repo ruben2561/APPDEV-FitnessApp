@@ -91,13 +91,7 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
     }
 
     override fun beginWorkout(defaultWorkout: DefaultWorkout) {
-        val fragment: Fragment = CustomWorkoutDisplayFragment(CustomWorkout(
-            defaultWorkout.name,
-            defaultWorkout.exersicesId,
-            "0",
-            defaultWorkout.repsAndWeight,
-            defaultWorkout.id)
-        )
+        val fragment: Fragment = DefaultWorkoutDisplayFragment(defaultWorkout)
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         val containerId = R.id.fragment_container
