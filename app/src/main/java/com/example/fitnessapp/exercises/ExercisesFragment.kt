@@ -33,26 +33,26 @@ class ExercisesFragment : Fragment(), ExerciseAdapter.OnItemClickListener {
         exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
         exercises = exerciseDao.getAll()                                                                                             // gets all database items and puts it in a list
         binding.rvwExercises.adapter = ExerciseAdapter(exercises,this)                                                // adds the exercises list in the recyclerview
-        binding.rvwExercises.layoutManager = LinearLayoutManager(context)                                        // chooses what type of layout
-        binding.rvwExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))   // this puts a line between every item
+        binding.rvwExercises.layoutManager = LinearLayoutManager(context)
+        binding.rvwExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        binding.filter.addTextChangedListener(object : TextWatcher {                                //this is used to check the typed word which than filters the recyclerview to show to exercises that have a matching name or muscle group
+        binding.filter.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable) {
-                filteredList.clear()                                                          // clear arraylist where the matches item are stored
-                for (item in exercises) {                                                     // for loop checks for match with every item
-                    if (item.name.lowercase().contains(s.toString().lowercase())) {           // name match check
-                        filteredList.add(item)                                                //
-                    }                                                                         //
-                    else if (item.muscleGroup.lowercase().contains(s.toString().lowercase())) {    // muscle group match check
-                        filteredList.add(item)                                                //
-                    }                                                                         //
-                }                                                                             //
+                filteredList.clear()
+                for (item in exercises) {
+                    if (item.name.lowercase().contains(s.toString().lowercase())) {
+                        filteredList.add(item)
+                    }
+                    else if (item.muscleGroup.lowercase().contains(s.toString().lowercase())) {
+                        filteredList.add(item)
+                    }
+                }
                 binding.rvwExercises.adapter = ExerciseAdapter(filteredList,this@ExercisesFragment)                  // redraws the recyclerview
-                binding.rvwExercises.layoutManager = LinearLayoutManager(context)             //
-            }                                                                                 //
-        })                                                                                    //
+                binding.rvwExercises.layoutManager = LinearLayoutManager(context)
+            }
+        })
 
         return binding.root
     }

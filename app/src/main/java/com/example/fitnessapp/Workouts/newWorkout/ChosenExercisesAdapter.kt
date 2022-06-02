@@ -36,7 +36,6 @@ class ChosenExercisesAdapter(private var items: List<CustomExercise>, private va
         lateinit var result: List<String>
 
         init{
-
             itemView.setOnClickListener{
                 onItemClickListener.delete(adapterPosition)
             }
@@ -52,5 +51,4 @@ class ChosenExercisesAdapter(private var items: List<CustomExercise>, private va
         fun delete(position: Int)
         fun addWeights(position: Int)
     }
-
 }

@@ -30,7 +30,6 @@ class InfoFragment : Fragment(){
         return binding.root
     }
 
-
     private fun goToUrl(url: String) {
         val uriUrl: Uri = Uri.parse(url)
         val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)

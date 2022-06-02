@@ -41,6 +41,4 @@ class NewWorkoutAdapter(private var items: List<Exercise>, private var onItemCli
     interface OnItemClickListener{
         fun onClick(position: Int)
     }
-
-
 }

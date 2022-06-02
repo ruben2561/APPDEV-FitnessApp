@@ -32,13 +32,11 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
         parentActivity = activity as MainActivity
         defaultWorkoutDao = parentActivity.db.defaultWorkoutDao()
 
+        defaultWorkout = defaultWorkoutDao.getAll()
 
-
-        defaultWorkout = defaultWorkoutDao.getAll()                                                                              // gets all database items and puts it in a list
-
-        binding.rvwWorkouts.adapter = AllWorkoutsAdapter(defaultWorkout, this)                                                   // adds the exercises list in the recyclerview
-        binding.rvwWorkouts.layoutManager = LinearLayoutManager(context)                                        // chooses what type of layout
-        binding.rvwWorkouts.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))   // this puts a line between every item
+        binding.rvwWorkouts.adapter = AllWorkoutsAdapter(defaultWorkout, this)
+        binding.rvwWorkouts.layoutManager = LinearLayoutManager(context)
+        binding.rvwWorkouts.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         return binding.root
     }
@@ -52,10 +50,8 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
         val result2 = input2.split(",").map { it.trim() }
         var teller = 0
 
-        val exerciseDao = parentActivity.db.exerciseDao()                                                                                                               //
-
+        val exerciseDao = parentActivity.db.exerciseDao()
         val exercises: List<Exercise> = exerciseDao.loadAllByIds(resultInt)
-
         var stringToSend: String = defaultWorkout.name + "\n" + "----------------------" + "\n"
 
         for(item in exercises){
@@ -71,7 +67,6 @@ class AllWorkoutsFragment : Fragment(), AllWorkoutsAdapter.OnItemClickListener{
             stringToSend = stringToSend + "\n"
             teller = teller + 6
         }
-
 
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND

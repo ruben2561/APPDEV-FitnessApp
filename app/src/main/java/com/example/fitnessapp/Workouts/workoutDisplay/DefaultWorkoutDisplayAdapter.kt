@@ -32,9 +32,6 @@ class DefaultWorkoutDisplayAdapter(private var items: List<CustomExercise>, priv
         holder.result = result
         holder.custom = exercise
         holder.bind(exercise)
-
-
-
     }
 
     class ViewHolder(itemView: View, onItemClickListener: OnItemClickListener): RecyclerView.ViewHolder(itemView){
@@ -146,17 +143,8 @@ class DefaultWorkoutDisplayAdapter(private var items: List<CustomExercise>, priv
 
         fun bind(customExercise: CustomExercise){
 
-
             itemView.apply{findViewById<TextView>(R.id.txtExerciseName).text = customExercise.name}
             itemView.apply{findViewById<TextView>(R.id.txtMuscleGroup).text = customExercise.muscleGroup}
-
-            /*itemView.apply { findViewById<TextView>(R.id.reps1).text = result[0] }
-            itemView.apply { findViewById<TextView>(R.id.reps2).text = result[2] }
-            itemView.apply { findViewById<TextView>(R.id.reps3).text = result[4] }
-
-            itemView.apply { findViewById<TextView>(R.id.weight1).text = result[1] }
-            itemView.apply { findViewById<TextView>(R.id.weight2).text = result[3] }
-            itemView.apply { findViewById<TextView>(R.id.weight3).text = result[5] }*/
 
             itemView.apply { findViewById<TextView>(R.id.reps1).text = result[0] }
             itemView.apply { findViewById<TextView>(R.id.reps2).text = result[2] }
@@ -166,7 +154,6 @@ class DefaultWorkoutDisplayAdapter(private var items: List<CustomExercise>, priv
             itemView.apply { findViewById<TextView>(R.id.weight2).text = result[3] }
             itemView.apply { findViewById<TextView>(R.id.weight3).text = result[5] }
         }
-
     }
 
     interface OnItemClickListener{

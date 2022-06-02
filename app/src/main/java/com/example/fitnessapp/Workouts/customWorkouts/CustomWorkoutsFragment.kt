@@ -52,9 +52,6 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
     }
 
     override fun onLongClick(position: Int) {
-        //val intent = Intent(fragment, Activity3Recycler::class.java)
-        //startActivity(intent)
-
         Toast.makeText(this.context, "long click on item: " + position, Toast.LENGTH_SHORT).show()
     }
 
@@ -71,8 +68,6 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
                 Snackbar.make(this.requireView(), "" + custom.name + " successfully deleted.", Snackbar.LENGTH_SHORT).show()
             }
         snack.show()
-
-
     }
 
     override fun editWorkout(customWorkout: CustomWorkout) {
@@ -111,7 +106,6 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
             teller = teller + 6
         }
 
-
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, stringToSend)
@@ -129,12 +123,3 @@ class CustomWorkoutsFragment : Fragment(), CustomWorkoutAdapter.OnItemClickListe
         fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
     }
 }
-
-
-
-/*var i = 0
-        while(i <= 4800){
-            stringToSend = stringToSend + "ok\n" //"\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-            i++
-        }
-        stringToSend = stringToSend + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"*/

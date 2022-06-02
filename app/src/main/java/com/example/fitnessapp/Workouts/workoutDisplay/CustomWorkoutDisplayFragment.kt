@@ -31,7 +31,6 @@ class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(), C
     private var ids = customWorkout.exersicesId
     private var customWorkout = customWorkout
     lateinit var parentActivity: MainActivity
-    var choicesListCustom = ArrayList<CustomExercise>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,9 +55,7 @@ class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(), C
             for (i in 0..5) {
                 repsAndWeight = repsAndWeight + result2[i+teller] + ","
             }
-
             customExercises.add(CustomExercise(item.name,item.muscleGroup, repsAndWeight))
-
             teller = teller + 6
         }
 
@@ -68,7 +65,6 @@ class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(), C
         binding.rvExercises.adapter = CustomWorkoutDisplayAdapter(customExercises, this)                                                  // adds the exercises list in the recyclerview
         binding.rvExercises.layoutManager = LinearLayoutManager(context)                                                // chooses what type of layout
         binding.rvExercises.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))    // this puts a line between every item
-
 
         binding.endWorkout.setOnClickListener{
             parentActivity = activity as MainActivity
@@ -97,8 +93,6 @@ class CustomWorkoutDisplayFragment(customWorkout: CustomWorkout) : Fragment(), C
             val containerId = R.id.fragment_container
             fragmentTransaction.replace(containerId, fragment).addToBackStack(null).commit()
         }
-
-
         return binding.root
     }
 
