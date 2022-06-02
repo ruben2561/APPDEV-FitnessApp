@@ -17,6 +17,20 @@
         app:srcCompat="@android:drawable/ic_menu_delete" />
 
     <TextView
+        android:id="@+id/txtStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-5dp"
+        android:gravity="center"
+        android:text="Start"
+        android:textColor="@color/tiffany_blue"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/beginButton"
+        app:layout_constraintStart_toStartOf="@+id/beginButton"
+        app:layout_constraintTop_toBottomOf="@+id/beginButton" />
+
+    <TextView
         android:id="@+id/txtWorkoutName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -79,7 +93,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="-5dp"
         android:backgroundTint="@color/transparant"
-        android:tint="@color/tiffany_blue"
+        app:tint="@color/tiffany_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

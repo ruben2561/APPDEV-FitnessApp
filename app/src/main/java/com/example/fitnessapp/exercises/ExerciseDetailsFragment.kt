@@ -2,6 +2,7 @@ package com.example.fitnessapp.exercises
 
 import android.app.SearchManager
 import android.content.Intent
+import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,8 +29,8 @@ class ExercisesDetailsFragment(val exercise: Exercise) : Fragment() {
         binding.txtSelectedExerciseMuscleGroup.text = exercise.muscleGroup
         binding.txtExerciseVideoURL.text = "Search the web for: " + exercise.name
         binding.txtExerciseVideoURL.setOnClickListener {
-            val intent = Intent(Intent.ACTION_WEB_SEARCH)
-            intent.putExtra(SearchManager.QUERY, exercise.name + " exercise")
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.setData(Uri.parse("http://www.google.com/search?q=${exercise.name}+exercise&tbm=isch"))
             startActivity(intent)
         }
         val dw = DescriptionWebscrape(binding, exercise.name)
