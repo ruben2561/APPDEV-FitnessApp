@@ -44,6 +44,7 @@ class ProgressPictureGalleryFragment : Fragment(), PictureAdapter.OnItemClickLis
         binding.btnToNewProgressPictureFragment.setOnClickListener{
             tryToMakeSnapshot(this.requireView())
         }
+
         cameraPermissionResult =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) { succeeded ->
                 if (succeeded) {

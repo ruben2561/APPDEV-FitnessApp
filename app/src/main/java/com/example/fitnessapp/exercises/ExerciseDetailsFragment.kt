@@ -43,7 +43,7 @@ class ExercisesDetailsFragment(val exercise: Exercise) : Fragment() {
         override fun doInBackground(vararg p0: Void?): Void? {
             lateinit var descriptionDoc: Document
             try{
-                descriptionDoc = Jsoup.connect("https://www.google.com/search?q=$query exercise description").get()
+                descriptionDoc = Jsoup.connect("https://www.google.com/search?q=$query description").get()
             }
             catch (e: IOException){
                 e.printStackTrace()
